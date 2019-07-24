@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import java.io.*;
-/
+
 @WebServlet("/ListarSitiosRecomendados")
 public class ListarSitiosRecomendados extends HttpServlet {
 	
