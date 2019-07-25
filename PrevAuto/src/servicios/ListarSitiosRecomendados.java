@@ -1,22 +1,29 @@
 package servicios;
 
 import core.TransformacionObjetos;
+import datos.SitiosJDBC;
+import domain.Sitio;
+
 import java.io.*;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
 
 
-@WebServlet("/ListarSitiosServlet")
-public class ListarSitiosServlet extends HttpServlet {
+@WebServlet("/ListarSitiosRecomendados")
+public class ListarSitiosRecomendados extends HttpServlet {
 	
-	TransformacionObjetos transformacion = new TransformacionObjetos();
+	
 	//Obtiene la cadena json de sitios y lo envia como respuesta
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		
-		String json = transformacion.obtenerJsonSitios();
+		List<Sitio> listaSitios = SitiosJDBC.selectSitios();
+		
+		String json = TransformacionObjetos.obtenerJson(listaSitios);
 		PrintWriter out = response.getWriter();
 		response.setContentType("application/json");
 		out.print(json);

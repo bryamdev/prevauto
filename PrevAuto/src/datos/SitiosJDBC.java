@@ -6,11 +6,11 @@ import domain.Sitio;
 
 public class SitiosJDBC {
 	
-	private final String SQL_SELECT = "SELECT * FROM sitio ";
+	private static final String SQL_SELECT = "SELECT * FROM pa.sitio ";
 	
 	//Toma todos los sitios de la base de datos
 	//Devuelve una lista con objetos de tipo Sitio
-	public List<Sitio> selectSitios(){
+	public static List<Sitio> selectSitios(){
 		Connection con = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;

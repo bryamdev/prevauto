@@ -7,28 +7,39 @@ import domain.*;
 
 public class TransformacionObjetos {
 	
-	Gson gson = new Gson();
-	SitiosJDBC sitioJDBC = null;
-	VehiculosJDBC vehiculoJDBC = null;
+	static Gson gson = new Gson();
 	
 	//Toma la lista de Sitios y lo serializa a json
 	//Devuelve un string con el json de los sitios
-	public String obtenerJsonSitios() {
+	public static String obtenerJson(Object c) {
 	
-		sitioJDBC = new SitiosJDBC();
-		List<Sitio> sitios = sitioJDBC.selectSitios();
-		String sitiosJson = gson.toJson(sitios);
+		String sitiosJson = gson.toJson(c);
+	
+		return sitiosJson;
+	}
+	
+	public static String obtenerJson(List<Object> lista) {
+		
+		String sitiosJson = gson.toJson(lista);
 	
 		return sitiosJson;
 	}
 	
 	
-	public String obtenerVehiculosJson(int idUsuario) {
+	/*public String obtenerVehiculosJson(int idUsuario) {
 		vehiculoJDBC = new VehiculosJDBC();
 		List<Vehiculo> vehiculos = vehiculoJDBC.selectVehiculos(idUsuario);
 		String vehiculosJson = gson.toJson(vehiculos);
 		
 		return vehiculosJson;
 	}
+	
+	public String obtenerDocumentosJson(int vehiculoId) {
+		documentosJDBC = new DocumentosJDBC();
+		List<Documento> documentos = documentosJDBC.selectDocumentos(vehiculoId);
+		String documentosJson = gson.toJson(documentos);
+		
+		return documentosJson;
+	}*/
 			
 }
