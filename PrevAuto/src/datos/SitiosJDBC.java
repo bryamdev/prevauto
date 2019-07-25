@@ -24,7 +24,7 @@ public class SitiosJDBC {
 			
 			while(rs.next()) {
 				sitio = new Sitio(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4),
-						rs.getString(5), rs.getString(6), rs.getInt(7), rs.getString(8), 
+						rs.getString(5), rs.getString(6), rs.getLong(7), rs.getString(8), 
 						rs.getString(9));
 				
 				sitios.add(sitio);

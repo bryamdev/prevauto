@@ -8,12 +8,12 @@ public class Sitio {
 	private int prioridad;
 	private String horario;
 	private String descripcion;
-	private int telefono;
+	private long telefono;
 	private String direccion;
 	private String urlFoto;
 	
 	public Sitio(int sitioId,String nombre, int tipo, int prioridad, 
-			String horario, String descripcion, int telefono, String direccion, String urlFoto) {
+			String horario, String descripcion, long telefono, String direccion, String urlFoto) {
 		this.sitioId = sitioId;
 		this.nombre = nombre;
 		this.tipo = tipo;
