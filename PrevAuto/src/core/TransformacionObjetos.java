@@ -9,7 +9,7 @@ public class TransformacionObjetos {
 	
 	static Gson gson = new Gson();
 	
-	//cambio de ejemplo
+	//comentario de ejemplo
 	
 	//Toma la lista de Sitios y lo serializa a json
 	//Devuelve un string con el json de los sitios
