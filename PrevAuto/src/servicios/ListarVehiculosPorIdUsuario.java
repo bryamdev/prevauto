@@ -22,9 +22,11 @@ public class ListarVehiculosPorIdUsuario extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		
-		int idUsuarioResp = 2;
 		
-		List<Vehiculo> listaVehiculos = VehiculosJDBC.selectVehiculos(idUsuarioResp);
+		int idUsuarioReq = Integer.parseInt(request.getParameter("idUsuario"));
+		
+		
+		List<Vehiculo> listaVehiculos = VehiculosJDBC.selectVehiculos(idUsuarioReq);
 				
 		String json = TransformacionObjetos.obtenerJson(listaVehiculos);
 		
@@ -32,6 +34,8 @@ public class ListarVehiculosPorIdUsuario extends HttpServlet {
 		response.setContentType("application/json");
 		out.print(json);
 		out.flush();
+		
+	
 	}
 
 }
