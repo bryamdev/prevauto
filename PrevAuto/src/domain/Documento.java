@@ -8,7 +8,7 @@ public class Documento {
 	private Date fechaExpedicion;
 	private Date fechaVencimiento;
 	private String tipo_documento;
-	private String asd;
+	
 	
 	public Documento(int idDocumento, Date fechaExpedicion, Date fechaVencimiento, 
 			String tipo_documento) {
