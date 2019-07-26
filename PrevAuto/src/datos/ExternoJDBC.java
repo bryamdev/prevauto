@@ -14,7 +14,7 @@ public class ExternoJDBC {
 			+ " FROM pa.evento_externo, pa.tipo_evento where id_evento_externo = ? AND"
 			+ " pa.evento_externo.tipo_evento_id=pa.tipo_evento.id_tipo_evento;";
 	
-	public static List<Externo> selectSitios(int id){
+	public static List<Externo> selectExternos(int id){
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
