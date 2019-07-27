@@ -12,8 +12,8 @@ import datos.DocumentosJDBC;
 import domain.Documento;
 
 
-@WebServlet("/ListarDocumentos")
-public class ListarDocumentos extends HttpServlet {
+@WebServlet("/ListarDocumentosPorIdVehiculo")
+public class ListarDocumentosPorIdVehiculo extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		

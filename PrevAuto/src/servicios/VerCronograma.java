@@ -34,12 +34,10 @@ public class VerCronograma extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int id = 1;
-		List<Externo> externos = ExternoJDBC.selectExternos();
-		//String json = TransformacionObjetos.obtenerJson(externos);
+		int idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
 		
-		List<Documento> documentos = DocumentosJDBC.selectDocumentosCro(id);
-		//String json2 = TransformacionObjetos.obtenerJson(documentos);
+		List<Externo> externos = ExternoJDBC.selectExternos();
+		List<Documento> documentos = DocumentosJDBC.selectDocumentosCro(idUsuario);
 		
 		Cronograma cronograma = new Cronograma(documentos, externos);
 		String json = TransformacionObjetos.obtenerJson(cronograma);
@@ -47,11 +45,7 @@ public class VerCronograma extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		response.setContentType("application/json");
 		
-		out.print(json);
-
-		//out.print(externos.size());
-		
-		
+		out.print(json);		
 		out.flush();
 		
 	}
