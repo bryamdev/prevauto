@@ -11,10 +11,11 @@ public class ExternoJDBC {
 
 	private static final String SQL_SELECT = "SELECT pa.evento_externo.nombre,"
 			+ " pa.evento_externo.fecha_evento, pa.tipo_evento.nombre, pa.evento_externo.descripcion"
-			+ " FROM pa.evento_externo, pa.tipo_evento where id_evento_externo = ? AND"
-			+ " pa.evento_externo.tipo_evento_id=pa.tipo_evento.id_tipo_evento;";
+			+ " FROM pa.evento_externo, pa.tipo_evento WHERE"
+			+ " pa.evento_externo.tipo_evento_id=pa.tipo_evento.id_tipo_evento"
+			+ " ORDER BY pa.evento_externo.fecha_evento;";
 	
-	public static List<Externo> selectExternos(int id){
+	public static List<Externo> selectExternos(){
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -24,7 +25,7 @@ public class ExternoJDBC {
 		try {
 			con = Conexion.getConnection();
 			pstmt = con.prepareStatement(SQL_SELECT);
-			pstmt.setInt(1, id);
+			//pstmt.setInt(1, id);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
