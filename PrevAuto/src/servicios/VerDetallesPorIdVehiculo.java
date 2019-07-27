@@ -8,7 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
 import core.TransformacionObjetos;
+import datos.VehiculosJDBC;
 import datos.VerDetallesVehiculoJDBC;
+import domain.Vehiculo;
 import domain.VerDetalles;
 
 
@@ -19,7 +21,7 @@ public class VerDetallesPorIdVehiculo extends HttpServlet {
 		
 		int idVehiculoReq = Integer.parseInt(request.getParameter("idVehiculo"));
 		
-		List<VerDetalles> listaDetalles = VerDetallesVehiculoJDBC.selectVehiculos(idVehiculoReq);
+		List<Vehiculo> listaDetalles = VehiculosJDBC.selectDetallesVehiculo(idVehiculoReq);
 		
 		String json = TransformacionObjetos.obtenerJson(listaDetalles);
 		
