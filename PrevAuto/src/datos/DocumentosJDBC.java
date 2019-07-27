@@ -10,9 +10,9 @@ public class DocumentosJDBC {
 private static final String SQL_SELECT = "SELECT id_documento, fecha_expedicion, fecha_vencimiento, "
 		+ "tipo_documento FROM pa.documento WHERE vehiculo_id = ?";
 
-private static final String SQL_SELECT_CRO = "Select pa.documento.fecha_vencimiento, pa.vehiculo.nombre,"
-		+ " pa.tipo_documento.nombre from pa.documento, pa.vehiculo, pa.tipo_documento, pa.usuario" + 
-		"where pa.usuario.id_usuario = pa.vehiculo.usuario_id" + 
+private static final String SQL_SELECT_CRO = "SELECT pa.documento.fecha_vencimiento, pa.vehiculo.nombre,"
+		+ " pa.tipo_documento.nombre FROM pa.documento, pa.vehiculo, pa.tipo_documento, pa.usuario" + 
+		"WHERE pa.usuario.id_usuario = pa.vehiculo.usuario_id" + 
 		"AND pa.vehiculo.id_vehiculo = pa.documento.vehiculo_id" + 
 		"AND pa.tipo_documento.id_tipo_documento = pa.documento.tipo_documento" + 
 		"AND pa.usuario.id_usuario = ? order by pa.vehiculo.nombre;";
