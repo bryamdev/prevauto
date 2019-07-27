@@ -9,9 +9,8 @@ import javax.servlet.http.*;
 
 import core.TransformacionObjetos;
 import datos.VehiculosJDBC;
-import datos.VerDetallesVehiculoJDBC;
 import domain.Vehiculo;
-import domain.VerDetalles;
+
 
 
 @WebServlet("/VerDetallesPorIdVehiculo")
