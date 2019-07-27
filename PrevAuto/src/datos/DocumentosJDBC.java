@@ -7,8 +7,10 @@ import domain.Documento;
 
 public class DocumentosJDBC {
 	
-private static final String SQL_SELECT = "SELECT id_documento, fecha_expedicion, fecha_vencimiento, "
-		+ "tipo_documento FROM pa.documento WHERE vehiculo_id = ?";
+private static final String SQL_SELECT = "SELECT pa.tipo_documento.nombre, pa.documento.numero, pa.documento.fecha_expedicion, pa.documento.fecha_vencimiento" + 
+		" FROM pa.documento, pa.tipo_documento" + 
+		" WHERE pa.documento.vehiculo_id = ?" + 
+		" AND pa.documento.tipo_documento = pa.tipo_documento.id_tipo_documento";
 
 private static final String SQL_SELECT_CRO = "SELECT documento.fecha_vencimiento, vehiculo.nombre,"
 		+ "tipo_documento.nombre FROM pa.documento, pa.vehiculo, pa.tipo_documento, pa.usuario" + 
@@ -34,7 +36,7 @@ private static final String SQL_SELECT_CRO = "SELECT documento.fecha_vencimiento
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
-				documento = new Documento(rs.getInt(1), rs.getDate(2), rs.getDate(3), rs.getString(4));
+				documento = new Documento(rs.getString(1), rs.getInt(2), rs.getDate(3), rs.getDate(4));
 				
 				documentos.add(documento);
 			}
