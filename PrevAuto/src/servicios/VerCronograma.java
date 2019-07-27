@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import datos.ExternoJDBC;
-import domain.Externo;
+import datos.*;
+import domain.*;
 import core.*;
 
 /**
@@ -38,9 +38,16 @@ public class VerCronograma extends HttpServlet {
 		List<Externo> externos = ExternoJDBC.selectExternos(id);
 		String json = TransformacionObjetos.obtenerJson(externos);
 		
+		List<Documento> documentos = DocumentosJDBC.selectDocumentosCro(id);
+		String json2 = TransformacionObjetos.obtenerJson(documentos);
+		
 		PrintWriter out = response.getWriter();
 		response.setContentType("application/json");
-		out.print(json);
+		//out.print(json);
+		out.print(json2);
+		out.print(documentos.size());
+		
+		
 		out.flush();
 		
 	}
