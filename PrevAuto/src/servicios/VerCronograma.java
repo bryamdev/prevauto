@@ -45,6 +45,9 @@ public class VerCronograma extends HttpServlet {
 		response.setContentType("application/json");
 		//out.print(json);
 		out.print(json2);
+		out.print(documentos.size());
+		
+		
 		out.flush();
 		
 	}
