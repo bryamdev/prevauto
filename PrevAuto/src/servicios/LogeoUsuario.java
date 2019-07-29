@@ -7,7 +7,7 @@ import javax.servlet.http.*;
 
 
 @WebServlet("/LogeoServlet")
-public class LogeoServlet extends HttpServlet {
+public class LogeoUsuario extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
