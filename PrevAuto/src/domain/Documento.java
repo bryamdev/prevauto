@@ -5,7 +5,7 @@ import java.util.Date;
 public class Documento {
 	
 	
-	private String tipo_documento;
+	private String tipoDocumento;
 	private int numero;
 	private Date fechaExpedicion;
 	private Date fechaVencimiento;
@@ -14,19 +14,19 @@ public class Documento {
 	
 	
 	
-	public Documento(String tipo_documento, int numero, Date fechaExpedicion,
+	public Documento(String tipoDocumento, int numero, Date fechaExpedicion,
 			Date fechaVencimiento) {
-		this.tipo_documento = tipo_documento;
+		this.tipoDocumento = tipoDocumento;
 		this.numero = numero;
 		this.fechaExpedicion = fechaExpedicion;
 		this.fechaVencimiento = fechaVencimiento;
 		
 	}
 	
-	public Documento(Date fechaVencimiento, String nombreVehiculo, String tipo_documento) {
+	public Documento(Date fechaVencimiento, String nombreVehiculo, String tipoDocumento) {
 		this.fechaVencimiento = fechaVencimiento;
 		this.nombreVehiculo = nombreVehiculo;
-		this.tipo_documento = tipo_documento;
+		this.tipoDocumento = tipoDocumento;
 		
 	}
 	
