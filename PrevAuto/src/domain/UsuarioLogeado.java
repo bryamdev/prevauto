@@ -1,6 +1,6 @@
 package domain;
 
-public class Usuario {
+public class UsuarioLogeado {
 	
 	private int idUsuario;
 	private String nombre;
@@ -8,7 +8,7 @@ public class Usuario {
 	private String urlFoto;
 	private boolean error;
 	
-	public Usuario(int idUsuario, String nombre, String apellido, String urlFoto, boolean error) {
+	public UsuarioLogeado(int idUsuario, String nombre, String apellido, String urlFoto, boolean error) {
 		this.idUsuario = idUsuario;
 		this.nombre = nombre;
 		this.apellido = apellido;
