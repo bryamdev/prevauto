@@ -8,7 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
 import core.TransformacionObjetos;
-import datos.VerAlertasJDBC;
+import datos.AlertasJDBC;
 import domain.Alerta;
 
 @WebServlet("/VerAlertas")
@@ -18,7 +18,7 @@ public class VerAlertas extends HttpServlet {
 		
 		int idUsuarioReq = Integer.parseInt(request.getParameter("idUsuario"));
 		
-		List<Alerta> listaAlertas = VerAlertasJDBC.selectAlertas(idUsuarioReq);
+		List<Alerta> listaAlertas = AlertasJDBC.selectAlertas(idUsuarioReq);
 		String json = TransformacionObjetos.obtenerJson(listaAlertas);
 		
 		response.setContentType("application/json");

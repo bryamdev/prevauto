@@ -36,7 +36,7 @@ private static final String SQL_SELECT_CRO = "SELECT documento.fecha_vencimiento
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
-				documento = new Documento(rs.getString(1), rs.getInt(2), rs.getDate(3), rs.getDate(4));
+				documento = new Documento(rs.getString(1), rs.getInt(2), rs.getString(3), rs.getString(4));
 				
 				documentos.add(documento);
 			}
@@ -67,7 +67,7 @@ private static final String SQL_SELECT_CRO = "SELECT documento.fecha_vencimiento
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
-				documento = new Documento(rs.getDate(1), rs.getString(2), rs.getString(3));
+				documento = new Documento(rs.getString(1), rs.getString(2), rs.getString(3));
 				documentos.add(documento);
 			}
 			

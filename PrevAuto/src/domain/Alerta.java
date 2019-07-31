@@ -7,11 +7,11 @@ public class Alerta {
 	private String tipoDocumento;
 	private int numeroDocumento;
 	private String nombreVehiculo;
-	private Date fechaVencimiento;
+	private String fechaVencimiento;
 	
 	
 	public Alerta(String tipoDocumento, int numeroDocumento, String nombreVehiculo, 
-			Date fechaVencimiento) {
+			String fechaVencimiento) {
 		this.tipoDocumento = tipoDocumento;
 		this.numeroDocumento = numeroDocumento;
 		this.nombreVehiculo = nombreVehiculo;

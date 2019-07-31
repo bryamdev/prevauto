@@ -6,7 +6,10 @@ import domain.Sitio;
 
 public class SitiosJDBC {
 	
-	private static final String SQL_SELECT = "SELECT * FROM pa.sitio ";
+	private static final String SQL_SELECT = "SELECT pa.sitio.nombre, pa.tipo_sitio.nombre, "
+			+ "pa.sitio.horario, pa.sitio.descripcion, pa.sitio.telefono, pa.sitio.direccion, "
+			+ "pa.sitio.url_foto FROM pa.sitio, pa.tipo_sitio WHERE pa.sitio.tipo = "
+			+ "pa.tipo_sitio.idtipo_sitios ORDER BY pa.sitio.prioridad";
 	
 	//Toma todos los sitios de la base de datos
 	//Devuelve una lista con objetos de tipo Sitio
@@ -23,9 +26,8 @@ public class SitiosJDBC {
 			rs = stmt.executeQuery();
 			
 			while(rs.next()) {
-				sitio = new Sitio(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4),
-						rs.getString(5), rs.getString(6), rs.getLong(7), rs.getString(8), 
-						rs.getString(9));
+				sitio = new Sitio(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4)
+						, rs.getLong(5), rs.getString(6), rs.getString(7));
 				
 				sitios.add(sitio);
 			}

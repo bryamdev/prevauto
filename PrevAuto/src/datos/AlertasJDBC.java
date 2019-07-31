@@ -5,7 +5,7 @@ import java.util.*;
 
 import domain.Alerta;
 
-public class VerAlertasJDBC {
+public class AlertasJDBC {
 	
 	private static final String SQL_SELECT = "SELECT pa.tipo_documento.nombre, pa.documento.numero, "
 			+ "pa.vehiculo.nombre, pa.documento.fecha_vencimiento FROM pa.alerta, pa.documento, "
@@ -31,7 +31,7 @@ public class VerAlertasJDBC {
 				rs = stmt.executeQuery();
 				
 				while(rs.next()) {
-					alerta = new Alerta(rs.getString(1),rs.getInt(2), rs.getString(3), rs.getDate(4));
+					alerta = new Alerta(rs.getString(1),rs.getInt(2), rs.getString(3), rs.getString(4));
 					
 					alertas.add(alerta);
 				}

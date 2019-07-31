@@ -7,15 +7,15 @@ public class Documento {
 	
 	private String tipoDocumento;
 	private int numero;
-	private Date fechaExpedicion;
-	private Date fechaVencimiento;
+	private String fechaExpedicion;
+	private String fechaVencimiento;
 	//atributos agregados para el servicio de verCronograma
 	private String nombreVehiculo;
 	
 	
 	
-	public Documento(String tipoDocumento, int numero, Date fechaExpedicion,
-			Date fechaVencimiento) {
+	public Documento(String tipoDocumento, int numero, String fechaExpedicion,
+			String fechaVencimiento) {
 		this.tipoDocumento = tipoDocumento;
 		this.numero = numero;
 		this.fechaExpedicion = fechaExpedicion;
@@ -23,7 +23,7 @@ public class Documento {
 		
 	}
 	
-	public Documento(Date fechaVencimiento, String nombreVehiculo, String tipoDocumento) {
+	public Documento(String fechaVencimiento, String nombreVehiculo, String tipoDocumento) {
 		this.fechaVencimiento = fechaVencimiento;
 		this.nombreVehiculo = nombreVehiculo;
 		this.tipoDocumento = tipoDocumento;
