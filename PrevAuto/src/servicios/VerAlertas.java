@@ -16,9 +16,9 @@ public class VerAlertas extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int idUsuarioReq = Integer.parseInt(request.getParameter("idUsuario"));
+		int idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
 		
-		List<Alerta> listaAlertas = AlertasJDBC.selectAlertas(idUsuarioReq);
+		List<Alerta> listaAlertas = AlertasJDBC.selectAlertas(idUsuario);
 		String json = TransformacionObjetos.obtenerJson(listaAlertas);
 		
 		response.setContentType("application/json");
