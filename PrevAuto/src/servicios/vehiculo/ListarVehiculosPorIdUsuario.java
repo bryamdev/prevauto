@@ -1,4 +1,4 @@
-package servicios;
+package servicios.vehiculo;
 
 import java.io.*;
 import java.util.List;

@@ -1,4 +1,4 @@
-package servicios;
+package servicios.vehiculo;
 
 import java.io.*;
 import java.util.List;
@@ -13,14 +13,14 @@ import domain.Vehiculo;
 
 
 
-@WebServlet("/VerDetallesPorIdVehiculo")
+@WebServlet("/vehiculo/verDetallesPorId")
 public class VerDetallesPorIdVehiculo extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		int idVehiculoReq = Integer.parseInt(request.getParameter("idVehiculo"));
 		
-		List<Vehiculo> listaDetalles = VehiculosJDBC.selectDetallesVehiculo(idVehiculoReq);
+		List<Vehiculo> listaDetalles = VehiculosJDBC.selectDetallesById(idVehiculoReq);
 		
 		String json = TransformacionObjetos.obtenerJson(listaDetalles);
 		

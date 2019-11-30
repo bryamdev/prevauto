@@ -1,4 +1,4 @@
-package servicios;
+package servicios.core;
 
 import java.io.*;
 import java.util.List;

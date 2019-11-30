@@ -7,7 +7,8 @@ import domain.Documento;
 
 public class DocumentosJDBC {
 	
-private static final String SQL_SELECT = "SELECT pa.tipo_documento.nombre, pa.documento.numero, pa.documento.fecha_expedicion, pa.documento.fecha_vencimiento" + 
+private static final String SQL_SELECT = "SELECT pa.tipo_documento.nombre, pa.documento.numero," +
+		" pa.documento.fecha_expedicion, pa.documento.fecha_vencimiento" + 
 		" FROM pa.documento, pa.tipo_documento" + 
 		" WHERE pa.documento.vehiculo_id = ?" + 
 		" AND pa.documento.tipo_documento = pa.tipo_documento.id_tipo_documento";

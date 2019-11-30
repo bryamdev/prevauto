@@ -1,4 +1,4 @@
-package servicios;
+package servicios.usuario;
 
 import java.io.*;
 import javax.servlet.ServletException;

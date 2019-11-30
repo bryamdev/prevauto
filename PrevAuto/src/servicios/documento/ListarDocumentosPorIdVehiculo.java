@@ -1,4 +1,4 @@
-package servicios;
+package servicios.documento;
 
 import java.io.*;
 import java.util.List;
@@ -12,7 +12,7 @@ import datos.DocumentosJDBC;
 import domain.Documento;
 
 
-@WebServlet("/ListarDocumentosPorIdVehiculo")
+@WebServlet("/vehiculo/documento/ListarPorId")
 public class ListarDocumentosPorIdVehiculo extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

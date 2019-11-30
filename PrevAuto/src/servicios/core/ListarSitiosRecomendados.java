@@ -1,4 +1,4 @@
-package servicios;
+package servicios.core;
 
 import core.TransformacionObjetos;
 import datos.SitiosJDBC;
