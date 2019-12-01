@@ -3,11 +3,11 @@ package datos;
 import java.sql.*;
 import java.util.*;
 
-import domain.Documento;
+import domain.*;
 
 public class DocumentosJDBC {
 	
-private static final String SQL_SELECT = "SELECT pa.tipo_documento.nombre, pa.documento.numero," +
+private static final String SQL_LISTAR = "SELECT pa.tipo_documento.nombre, pa.documento.numero," +
 		" pa.documento.fecha_expedicion, pa.documento.fecha_vencimiento" + 
 		" FROM pa.documento, pa.tipo_documento" + 
 		" WHERE pa.documento.vehiculo_id = ?" + 
@@ -19,6 +19,9 @@ private static final String SQL_SELECT_CRO = "SELECT documento.fecha_vencimiento
 		" AND pa.vehiculo.id_vehiculo = pa.documento.vehiculo_id " + 
 		" AND pa.tipo_documento.id_tipo_documento = pa.documento.tipo_documento " + 
 		" AND pa.usuario.id_usuario = ? ORDER BY pa.vehiculo.nombre; ";
+
+private static final String SQL_INSERT = "INSERT INTO pa.documento(numero, fecha_expedicion, "
+		+ " fecha_vencimiento, vehiculo_id, tipo_documento) VALUES (?, ?, ?, ?, ?); ";
 
 
 	//Toma todos los documentos de un vehiculo de la base de datos
@@ -32,7 +35,7 @@ private static final String SQL_SELECT_CRO = "SELECT documento.fecha_vencimiento
 		
 		try {
 			con = Conexion.getConnection();
-			pstmt = con.prepareStatement(SQL_SELECT);
+			pstmt = con.prepareStatement(SQL_LISTAR);
 			pstmt.setInt(1, vehiculoId);
 			rs = pstmt.executeQuery();
 			
@@ -81,9 +84,28 @@ private static final String SQL_SELECT_CRO = "SELECT documento.fecha_vencimiento
 		}
 		
 		return documentos;
+	}
+	
+	public static Response insertDocumento(Documento documento) {
 		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		Response response = new Response();
 		
+		try{
+			con = Conexion.getConnection();
+			pstmt = con.prepareStatement(SQL_INSERT);
+			pstmt.setInt(1, documento.getNumero());
+			pstmt.setString(2, documento.getFechaExpedicion());
+			pstmt.setString(3, documento.getFechaVencimiento());
+			pstmt.setInt(4, documento.getVehiculoId());
+			pstmt.setInt(5, documento.getTipoDocumento());
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
 		
+		return response;
 		
 	}
 }

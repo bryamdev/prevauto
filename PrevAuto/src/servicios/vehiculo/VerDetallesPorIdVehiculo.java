@@ -18,16 +18,17 @@ public class VerDetallesPorIdVehiculo extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int idVehiculoReq = Integer.parseInt(request.getParameter("idVehiculo"));
+		int idVehiculo = Integer.parseInt(request.getParameter("idVehiculo"));
 		
-		List<Vehiculo> listaDetalles = VehiculosJDBC.selectDetallesById(idVehiculoReq);
+		Vehiculo vehiculo = VehiculosJDBC.selectDetallesById(idVehiculo);
 		
-		String json = TransformacionObjetos.obtenerJson(listaDetalles);
+		String json = TransformacionObjetos.obtenerJson(vehiculo);
 		
 		response.setContentType("application/json");
 		PrintWriter out = response.getWriter();
 		
 		out.print(json);
+		out.println("TEST");
 		out.flush();
 	}
 

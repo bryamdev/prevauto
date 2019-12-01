@@ -9,7 +9,7 @@ public class VehiculosJDBC {
 private static final String SQL_LISTAR = "SELECT id_vehiculo, nombre, url_foto FROM "
 		+ " pa.vehiculo WHERE usuario_id = ?";
 
-private static final String SQL_DETALLES_BY_ID = "SELECT id_vehiculo, nombre, modelo, marca, "
+private static final String SQL_SELECT_BY_ID = "SELECT id_vehiculo, nombre, modelo, marca, "
 		+ " placa, usuario_id, url_foto FROM pa.vehiculo WHERE id_vehiculo = ?";
 
 private static final String SQL_INSERT = "INSERT INTO pa.vehiculo(nombre, modelo, marca, placa, "
@@ -53,24 +53,22 @@ private static final String SQL_DELETE = "DELETE FROM pa.vehiculo WHERE id_vehic
 	}
 	
 	
-	public static List<Vehiculo> selectDetallesById(int vehiculoId){
+	public static Vehiculo selectDetallesById(int vehiculoId){
 		Connection con = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		Vehiculo vehiculo = null;
-		List<Vehiculo> vehiculos = new ArrayList<>();
+	
 		
 		try {
 			con = Conexion.getConnection();
-			stmt = con.prepareStatement(SQL_DETALLES_BY_ID);
+			stmt = con.prepareStatement(SQL_SELECT_BY_ID);
 			stmt.setInt(1, vehiculoId);
 			rs = stmt.executeQuery();
 			
 			while(rs.next()) {
 				vehiculo = new Vehiculo(rs.getInt(1), rs.getString(2), rs.getString(3),
 						rs.getString(4), rs.getString(5), rs.getInt(6), rs.getString(7));
-				
-				vehiculos.add(vehiculo);
 			}
 		}catch (SQLException e) {
 			e.printStackTrace();
@@ -80,7 +78,7 @@ private static final String SQL_DELETE = "DELETE FROM pa.vehiculo WHERE id_vehic
 			Conexion.close(con);
 		}
 		
-		return vehiculos;
+		return vehiculo;
 		
 	}
 	
