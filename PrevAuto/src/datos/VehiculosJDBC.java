@@ -6,19 +6,19 @@ import domain.*;
 
 public class VehiculosJDBC {
 	
-private static final String SQL_LISTAR = "SELECT id_vehiculo, nombre, url_foto FROM "
-		+ " pa.vehiculo WHERE usuario_id = ?";
-
-private static final String SQL_SELECT_BY_ID = "SELECT id_vehiculo, nombre, modelo, marca, "
-		+ " placa, usuario_id, url_foto FROM pa.vehiculo WHERE id_vehiculo = ?";
-
-private static final String SQL_INSERT = "INSERT INTO pa.vehiculo(nombre, modelo, marca, placa, "
-		+ " usuario_id, url_foto) VALUES (?, ?, ?, ?, ?, ?);";
-
-private static final String SQL_UPDATE = "UPDATE pa.vehiculo set nombre = ?, modelo = ?, "
-		+ " marca = ?, placa = ?, url_foto = ? WHERE id_vehiculo = ?;";
-
-private static final String SQL_DELETE = "DELETE FROM pa.vehiculo WHERE id_vehiculo = ?;";
+	private static final String SQL_LISTAR = "SELECT id_vehiculo, nombre, url_foto FROM "
+			+ " pa.vehiculo WHERE usuario_id = ?";
+	
+	private static final String SQL_SELECT_BY_ID = "SELECT id_vehiculo, nombre, modelo, marca, "
+			+ " placa, usuario_id, url_foto FROM pa.vehiculo WHERE id_vehiculo = ?";
+	
+	private static final String SQL_INSERT = "INSERT INTO pa.vehiculo(nombre, modelo, marca, placa, "
+			+ " usuario_id, url_foto) VALUES (?, ?, ?, ?, ?, ?);";
+	
+	private static final String SQL_UPDATE = "UPDATE pa.vehiculo set nombre = ?, modelo = ?, "
+			+ " marca = ?, placa = ?, url_foto = ? WHERE id_vehiculo = ?;";
+	
+	private static final String SQL_DELETE = "DELETE FROM pa.vehiculo WHERE id_vehiculo = ?;";
 	
 	//Toma todos los vehiculos de la base de datos
 	//Devuelve una lista con objetos de tipo vehiculo

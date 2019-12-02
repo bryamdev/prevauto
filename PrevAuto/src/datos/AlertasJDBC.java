@@ -22,7 +22,6 @@ public class AlertasJDBC {
 			Connection con = null;
 			PreparedStatement stmt = null;
 			ResultSet rs = null;
-			Alerta alerta = null;
 			List<Alerta> alertas = new ArrayList<>();
 			
 			try {
@@ -32,7 +31,11 @@ public class AlertasJDBC {
 				rs = stmt.executeQuery();
 				
 				while(rs.next()) {
-					alerta = new Alerta(rs.getString(1),rs.getLong(2), rs.getString(3), rs.getString(4));
+					Alerta alerta = new Alerta();
+					alerta.setTipoDocumento(rs.getString(1));
+					alerta.setNumeroDocumento(rs.getLong(2));
+					alerta.setNombreVehiculo(rs.getString(3));
+					alerta.setFechaVencimiento(rs.getString(4));
 					
 					alertas.add(alerta);
 				}

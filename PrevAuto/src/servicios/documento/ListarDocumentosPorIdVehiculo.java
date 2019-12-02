@@ -12,16 +12,18 @@ import datos.DocumentosJDBC;
 import domain.Documento;
 
 
-@WebServlet("/vehiculo/documento/ListarPorId")
+@WebServlet("/vehiculo/documento/listarPorId")
 public class ListarDocumentosPorIdVehiculo extends HttpServlet {
+	
+	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int idVehiculoReq = Integer.parseInt(request.getParameter("idVehiculo")); 
+		int idVehiculo = Integer.parseInt(request.getParameter("idVehiculo")); 
 		
-		List<Documento> listaDocumentos = DocumentosJDBC.selectDocumentos(idVehiculoReq);
+		List<Documento> documentos = DocumentosJDBC.selectDocumentos(idVehiculo);
 		
-		String json = TransformacionObjetos.obtenerJson(listaDocumentos);
+		String json = TransformacionObjetos.obtenerJson(documentos);
 		
 		response.setContentType("application/json");
 		

@@ -1,51 +1,47 @@
 package domain;
 
-import java.util.Date;
-
 public class Documento {
 	
 	
-	
-	private int numero;
+	private int idDocumento;
+	private Long numero;
 	private String fechaExpedicion;
 	private String fechaVencimiento;
 	private int vehiculoId;
-	private String tipoDocumento;
+	private int tipoDocumento;
+	
 	
 	//atributos agregados para el servicio de verCronograma
 	private String nombreVehiculo;
+	private String tipoDocumentoNombre;
 	
 	
-	
-	public Documento(String tipoDocumento, int numero, String fechaExpedicion,
-			String fechaVencimiento) {
-		this.tipoDocumento = tipoDocumento;
-		this.numero = numero;
-		this.fechaExpedicion = fechaExpedicion;
-		this.fechaVencimiento = fechaVencimiento;
-		
+	public Documento() {
 	}
 	
-	public Documento(String fechaVencimiento, String nombreVehiculo, String tipoDocumento) {
-		this.fechaVencimiento = fechaVencimiento;
-		this.nombreVehiculo = nombreVehiculo;
-		this.tipoDocumento = tipoDocumento;
-		
+	public int getIdDocumento() {
+		return idDocumento;
 	}
 
-	public String getTipoDocumento() {
+
+	public void setIdDocumento(int idDocumento) {
+		this.idDocumento = idDocumento;
+	}
+
+
+	public int getTipoDocumento() {
 		return tipoDocumento;
 	}
 
-	public void setTipoDocumento(String tipoDocumento) {
+	public void setTipoDocumento(int tipoDocumento) {
 		this.tipoDocumento = tipoDocumento;
 	}
 
-	public int getNumero() {
+	public Long getNumero() {
 		return numero;
 	}
 
-	public void setNumero(int numero) {
+	public void setNumero(Long numero) {
 		this.numero = numero;
 	}
 
@@ -81,6 +77,16 @@ public class Documento {
 	public void setNombreVehiculo(String nombreVehiculo) {
 		this.nombreVehiculo = nombreVehiculo;
 	}
+
+	public String getTipoDocumentoNombre() {
+		return tipoDocumentoNombre;
+	}
+
+	public void setTipoDocumentoNombre(String tipoDocumentoNombre) {
+		this.tipoDocumentoNombre = tipoDocumentoNombre;
+	}
+	
+	
 	
 	
 	

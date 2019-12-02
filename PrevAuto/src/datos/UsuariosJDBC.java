@@ -105,7 +105,7 @@ public class UsuariosJDBC {
 			if(res != 0) {
 				response.setMensaje("El usuario se actualizó correctamente!");
 			}else {
-				response.setMensaje("EL usuario NO se actualizó!");
+				response.setMensaje("El usuario NO se actualizó!");
 				response.setError(true);;
 			}
 			
