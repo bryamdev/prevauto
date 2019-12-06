@@ -13,7 +13,7 @@ import javax.servlet.http.*;
 
 
 
-@WebServlet("/ListarSitiosRecomendados")
+@WebServlet("/core/listarSitiosRecomendados")
 public class ListarSitiosRecomendados extends HttpServlet {
 	
 	
