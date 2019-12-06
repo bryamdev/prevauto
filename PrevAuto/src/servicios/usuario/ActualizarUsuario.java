@@ -17,7 +17,7 @@ import domain.Usuario;
 /**
  * Servlet implementation class ActualizarUsuario
  */
-@WebServlet("/ActualizarUsuario")
+@WebServlet("/usuario/actualizar")
 public class ActualizarUsuario extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

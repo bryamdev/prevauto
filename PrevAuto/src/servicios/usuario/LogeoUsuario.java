@@ -10,7 +10,7 @@ import datos.ValidacionUsuarioJDBC;
 import domain.Response;
 
 
-@WebServlet("/LogeoUsuario")
+@WebServlet("/usuario/validar")
 public class LogeoUsuario extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
@@ -28,11 +28,13 @@ public class LogeoUsuario extends HttpServlet {
 		
 		if(!res.isError()) {
 			Cookie cookie = new Cookie("idUsuario",res.getMensaje());
+			
 			response.addCookie(cookie);
+
 		}
 		
 		PrintWriter out = response.getWriter();
-		out.print(json);
+		out.println(json);
 				
 	}
 

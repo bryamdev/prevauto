@@ -16,7 +16,7 @@ import domain.*;
 /**
  * Servlet implementation class RegistrarUsuario
  */
-@WebServlet("/RegistrarUsuario")
+@WebServlet("/usuario/registrar")
 public class RegistrarUsuario extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

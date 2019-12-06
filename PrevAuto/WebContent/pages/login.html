@@ -1,0 +1,61 @@
+<html>
+
+<head>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <meta charset="UTF-8">
+
+</head>
+
+<body>
+    <script>
+        window.onload = function() {
+
+            document.querySelector('#validar').addEventListener('click', validarLogin);
+        }
+
+        function validarLogin() {
+
+            let usuario = document.querySelector('#usuario').value;
+            let password = document.querySelector('#password').value;
+
+            //console.log(usuario + password);
+
+            let serviceURL = 'http://localhost:9090/PrevAuto/usuario/validar?correo=' + usuario + '&password=' + password;
+
+            const request = new XMLHttpRequest();
+
+            request.open('GET', serviceURL, true);
+            request.send();
+
+            request.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    //console.log(this.responseText);
+                    let datos = JSON.parse(this.responseText);
+                    console.log(datos);
+                    console.log(datos.mensaje);
+                    alert(datos.mensaje);
+                }
+            }
+
+        }
+    </script>
+
+    <div class="container">
+        <div class="section">
+            <button class="btn" id="boton">json</button>
+
+            <form action="#" method="GET">
+                Usuario: <input type="text" id="usuario">
+                <br> Contraseña: <input type="text" id="password">
+                <br>
+                <button class="validar" id="validar">Validar</button>
+
+            </form>
+
+        </div>
+
+    </div>
+</body>
+
+</html>
