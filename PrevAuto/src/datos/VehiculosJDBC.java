@@ -6,7 +6,7 @@ import domain.*;
 
 public class VehiculosJDBC {
 	
-	private static final String SQL_LISTAR = "SELECT id_vehiculo, nombre, url_foto FROM "
+	private static final String SQL_LISTAR = "SELECT id_vehiculo, nombre, marca, url_foto FROM "
 			+ " pa.vehiculo WHERE usuario_id = ?";
 	
 	private static final String SQL_SELECT_BY_ID = "SELECT id_vehiculo, nombre, modelo, marca, "
@@ -36,7 +36,11 @@ public class VehiculosJDBC {
 			rs = stmt.executeQuery();
 			
 			while(rs.next()) {
-				vehiculo = new Vehiculo(rs.getInt(1), rs.getString(2), rs.getString(3));
+				vehiculo = new Vehiculo();
+				vehiculo.setIdVehiculo(rs.getInt(1));
+				vehiculo.setNombre(rs.getString(2));
+				vehiculo.setMarca(rs.getString(3));
+				vehiculo.setUrlFoto(rs.getString(4));
 				
 				vehiculos.add(vehiculo);
 			}

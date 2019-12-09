@@ -25,14 +25,15 @@ public class RegistrarVehiculo extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		Cookie[] cookies = request.getCookies();
+		//Cookie[] cookies = request.getCookies();
 
-		int idUsuario = 0;
-		for(Cookie c : cookies) {
+		int idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
+		/*for(Cookie c : cookies) {
 			if(c.getName().equals("idUsuario")) {
 				idUsuario = Integer.parseInt(c.getValue());
 			}
 		}
+		*/
 		
 		String nombre = request.getParameter("nombre");
 		String modelo = request.getParameter("modelo");
@@ -40,7 +41,14 @@ public class RegistrarVehiculo extends HttpServlet {
 		String placa = request.getParameter("placa");
 		String urlFoto = request.getParameter("urlFoto");
 		
-		Vehiculo vehiculo = new Vehiculo(nombre, modelo, marca, placa, idUsuario, urlFoto);
+		Vehiculo vehiculo = new Vehiculo();
+		vehiculo.setNombre(nombre);
+		vehiculo.setModelo(modelo);
+		vehiculo.setMarca(marca);
+		vehiculo.setPlaca(placa);
+		vehiculo.setUsuarioId(idUsuario);
+		vehiculo.setUrlFoto(urlFoto);
+		
 		Response res = VehiculosJDBC.insertVehiculo(vehiculo);
 		String json = TransformacionObjetos.obtenerJson(res);
 		

@@ -14,7 +14,7 @@ import domain.Vehiculo;
 /**
  * Servlet implementation class ListarVehiculosServlet
  */
-@WebServlet("/ListarVehiculosPorIdUsuario")
+@WebServlet("/vehiculo/listarPorId")
 public class ListarVehiculosPorIdUsuario extends HttpServlet {
 
 	TransformacionObjetos transformacion = new TransformacionObjetos();
@@ -23,12 +23,12 @@ public class ListarVehiculosPorIdUsuario extends HttpServlet {
 			throws ServletException, IOException {
 		
 		
-		int idUsuarioReq = Integer.parseInt(request.getParameter("idUsuario"));
+		int idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
 		
 		
-		List<Vehiculo> listaVehiculos = VehiculosJDBC.selectVehiculos(idUsuarioReq);
+		List<Vehiculo> vehiculos = VehiculosJDBC.selectVehiculos(idUsuario);
 				
-		String json = TransformacionObjetos.obtenerJson(listaVehiculos);
+		String json = TransformacionObjetos.obtenerJson(vehiculos);
 		
 		PrintWriter out = response.getWriter();
 		response.setContentType("application/json");

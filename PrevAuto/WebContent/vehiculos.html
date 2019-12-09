@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+
+    <style type="text/css">
+        .content {
+            padding-left: 300px;
+        }
+        
+        @media only screen and (max-width: 992px) {
+            header,
+            main,
+            footer,
+            .content {
+                padding-left: 0;
+            }
+        }
+        
+        b {
+            font-size: 20px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper blue darken-2">
+                <a href="#!" class="brand-logo right">PrevAuto</a>
+                <a href="#" data-target="slide-out" class="sidenav-trigger show-on-large"><i class="material-icons">menu</i>a</a>
+            </div>
+        </nav>
+    </div>
+
+
+    <!--SideNav-->
+    <ul id="slide-out" class="sidenav sidenav-fixed">
+        <li>
+            <div class="user-view">
+                <div class="background">
+                    <img src="img/office.jpg">
+                </div>
+                <a href="#user"><img class="circle" src="img/yuna.jpg"></a>
+                <a href="#name"><span class="white-text name" id="name">John Doe</span></a>
+                <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
+            </div>
+        </li>
+        <li class="active"><a href="#!"><i class="material-icons">directions_car</i>Vehiculos</a></li>
+        <li><a href="#!"><i class="material-icons">date_range</i>Cronograma</a></li>
+        <li><a href="#!"><i class="material-icons">notifications</i>Alertas</a></li>
+        <li><a href="sitiosRecomendados.html"><i class="material-icons">collections_bookmark</i>Sitios Recomendados</a></li>
+        <li>
+            <div class="divider"></div>
+        </li>
+        <li><a class="subheader">Configuración</a></li>
+        <li><a class="waves-effect" href="#!"><i class="material-icons">account_box</i>Cuenta</a></li>
+        <li><a class="waves-effect" href="#!"><i class="material-icons">exit_to_app</i>Salir</a></li>
+    </ul>
+
+    <div class="content">
+        <div class="container">
+            <div class="section" id="vehiculos">
+
+                <!-- Ejemplo para estrucutrar la respuesta del servicio -->
+                <!--
+                <div class="col s12 m7">
+                    <div class="card horizontal">
+                        <div class="card-image">
+                            <img src="img/vehiculos/3.jpg">
+                        </div>
+                        <div class="card-stacked">
+                            <div class="card-content">
+                                <p><b> La Nave</b></p>
+                                <p>Tesla Model X </p>
+                            </div>
+                            <div class="card-action">
+                                <a href="#">Detalles</a>
+                                <a href="#">Eliminar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                -->
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="js/ajax.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            M.AutoInit();
+        });
+
+        window.onload = function() {
+            listarVehiculos();
+        }
+    </script>
+</body>
+
+</html>

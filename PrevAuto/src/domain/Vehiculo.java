@@ -14,12 +14,6 @@ public class Vehiculo {
 	public Vehiculo() {
 		
 	}
-	
-	public Vehiculo(int idVehiculo, String nombre, String urlFoto) {
-		this.idVehiculo = idVehiculo;
-		this.nombre = nombre;
-		this.urlFoto = urlFoto;
-	}
 
 
 	public Vehiculo(int idVehiculo, String nombre, String modelo, String marca, String placa,
@@ -34,17 +28,6 @@ public class Vehiculo {
 		
 	}
 	
-	//Constructor para el servicio de Registro
-	public Vehiculo(String nombre, String modelo, String marca, String placa,
-			int usuarioId, String urlFoto) {
-		this.nombre = nombre;
-		this.modelo = modelo;
-		this.marca = marca;
-		this.placa = placa;
-		this.usuarioId = usuarioId;
-		this.urlFoto = urlFoto;
-	}
-
 
 	public int getIdVehiculo() {
 		return idVehiculo;
