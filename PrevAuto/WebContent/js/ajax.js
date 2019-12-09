@@ -4,8 +4,8 @@ function listarVehiculos() {
     console.log("Estoy listando vehiculos!!");
 
 
-    let param = '1';
-    let serviceUrl = 'http://localhost:9090/PrevAuto/vehiculo/listarPorId?idUsuario=' + param;
+    let idUsuario = '1';
+    let serviceUrl = 'http://localhost:9090/PrevAuto/vehiculo/listarPorId?idUsuario=' + idUsuario;
 
     const request = new XMLHttpRequest();
     request.open('GET', serviceUrl, true);
@@ -78,7 +78,7 @@ function listarSitiosRecomendados() {
             let sitiosRecomentados = document.querySelector('#sitiosRecomendados');
 
             let datos = JSON.parse(this.responseText);
-            //console.log(res);
+            console.log(datos);
 
             for (item of datos) {
 
@@ -94,11 +94,60 @@ function listarSitiosRecomendados() {
                     <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
                 </li>
             </ul>`;
-
             }
         }
-
     }
+}
+
+function verCronograma() {
+
+    console.log("Cargando cronograma");
+
+    let idUsuario = 1;
+    let serviceUrl = 'http://localhost:9090/PrevAuto/core/verCronograma?idUsuario=' + idUsuario;
+
+    const request = new XMLHttpRequest();
+    request.open('GET', serviceUrl, true);
+    request.send();
+
+    request.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+
+            let datos = JSON.parse(this.responseText);
+            //console.log(datos);
+
+            let documentos = document.querySelector('#documentos');
+            let externos = document.querySelector('#externos');
+
+            console.log("Documentos");
+            for (let item of datos.documentos) {
+                //console.log(item.idDocumento);
+                documentos.innerHTML += `<ul class="collection">
+                                            <li class="collection-item avatar">
+                                                <i class="material-icons circle red">contact_mail</i>
+                                                <span class="title">${item.fechaVencimiento}</span>
+                                                <p>${item.nombreVehiculo}</p>
+                                                <p>${item.tipoDocumentoNombre}</p>
+                                            </li>
+                                        </ul>`;
+            }
+
+            console.log("Externos");
+            for (let item of datos.externos) {
+                //console.log(item.nombre);
+                externos.innerHTML += `<ul class="collection">
+                                            <li class="collection-item avatar">
+                                                <i class="material-icons circle green">public</i>
+                                                <span class="title">${item.fecha}</span>
+                                                <p>${item.nombre}</p>
+                                                <p>${item.tipoEvento}</p>
+                                                <p>${item.descripcion}</p>
+                                            </li>
+                                        </ul>`;
+            }
+        }
+    }
+
 
 
 }

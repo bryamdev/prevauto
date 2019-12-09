@@ -17,7 +17,7 @@ import core.*;
 /**
  * Servlet implementation class VerCronograma
  */
-@WebServlet("/VerCronograma")
+@WebServlet("/core/verCronograma")
 public class VerCronograma extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

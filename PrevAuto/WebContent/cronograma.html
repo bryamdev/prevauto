@@ -56,8 +56,8 @@
                 <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
             </div>
         </li>
-        <li class="active"><a href="#!"><i class="material-icons">directions_car</i>Vehiculos</a></li>
-        <li><a href="cronograma.html"><i class="material-icons">date_range</i>Cronograma</a></li>
+        <li><a href="vehiculos.html"><i class="material-icons">directions_car</i>Vehiculos</a></li>
+        <li class="active"><a href="#!"><i class="material-icons">date_range</i>Cronograma</a></li>
         <li><a href="#!"><i class="material-icons">notifications</i>Alertas</a></li>
         <li><a href="sitiosRecomendados.html"><i class="material-icons">collections_bookmark</i>Sitios Recomendados</a></li>
         <li>
@@ -70,29 +70,46 @@
 
     <div class="content">
         <div class="container">
-            <div class="section" id="vehiculos">
+            <div class="section">
 
-                <!-- Ejemplo para estrucutrar la respuesta del servicio -->
-                <!--
-                <div class="col s12 m7">
-                    <div class="card horizontal">
-                        <div class="card-image">
-                            <img src="img/vehiculos/3.jpg">
-                        </div>
-                        <div class="card-stacked">
-                            <div class="card-content">
-                                <p><b> La Nave</b></p>
-                                <p>Tesla Model X </p>
-                            </div>
-                            <div class="card-action">
-                                <a href="#">Detalles</a>
-                                <a href="#">Eliminar</a>
-                            </div>
-                        </div>
-                    </div>
+                <h3>Documentos</h3>
+                <div id="documentos">
+
+                    <!-- Ejemplo para estrucutrar la respuesta del servicio -->
+                    <!--    
+                    <ul class="collection">
+                        <li class="collection-item avatar">
+                            <i class="material-icons circle red">contact_mail</i>
+                            <span class="title">fechaVencimiento</span>
+                            <p>nombreVehiculo</p>
+                            <p>tipoDocumentoNombre</p>
+                        </li>
+                    </ul>
+                    -->
+
                 </div>
 
-                -->
+
+                <h3>Eventos externos</h3>
+                <div id="externos">
+
+                    <!-- Ejemplo para estrucutrar la respuesta del servicio -->
+                    <!-- 
+                    <ul class="collection">
+                        <li class="collection-item avatar">
+                            <i class="material-icons circle green">public</i>
+                            <span class="title">fecha</span>
+                            <p>nombre</p>
+                            <p>tipoEvento</p>
+                            <p>descripcion</p>
+                        </li>
+                    </ul>
+                    -->
+
+                </div>
+
+
+
 
             </div>
         </div>
@@ -111,7 +128,7 @@
         });
 
         window.onload = function() {
-            listarVehiculos();
+            verCronograma();
         }
     </script>
 </body>
