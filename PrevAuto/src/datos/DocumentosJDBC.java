@@ -9,7 +9,7 @@ public class DocumentosJDBC {
 	
 	private static final String SQL_LISTAR = "SELECT documento.id_documento, "
 			+ " tipo_documento.nombre, documento.numero, "
-			+ " pa.documento.fecha_expedicion, pa.documento.fecha_vencimiento "
+			+ " documento.fecha_expedicion, documento.fecha_vencimiento "
 			+ " FROM pa.documento, pa.tipo_documento "
 			+ " WHERE pa.documento.vehiculo_id = ? "
 			+ " AND pa.documento.tipo_documento = pa.tipo_documento.id_tipo_documento";

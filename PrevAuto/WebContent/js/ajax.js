@@ -16,9 +16,9 @@ function listarVehiculos() {
 
             let vehiculos = document.querySelector('#vehiculos');
 
-            console.log(this.responseText);
             let datos = JSON.parse(this.responseText);
-            //console.log(datos);
+            console.log(datos);
+            console.log("Hola");
 
             for (let item of datos) {
 
@@ -58,6 +58,7 @@ function eliminarVehiculo(idVehiculo) {
         if (this.readyState == 4 && this.status == 200) {
             let res = JSON.parse(this.responseText);
             alert(res.mensaje);
+            console.log(res.mensaje);
 
         }
     }
@@ -114,7 +115,7 @@ function verCronograma() {
         if (this.readyState == 4 && this.status == 200) {
 
             let datos = JSON.parse(this.responseText);
-            //console.log(datos);
+            console.log(datos);
 
             let documentos = document.querySelector('#documentos');
             let externos = document.querySelector('#externos');
