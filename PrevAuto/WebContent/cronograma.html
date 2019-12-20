@@ -51,9 +51,9 @@
                 <div class="background">
                     <img src="img/office.jpg">
                 </div>
-                <a href="#user"><img class="circle" src="img/yuna.jpg"></a>
-                <a href="#name"><span class="white-text name" id="name">John Doe</span></a>
-                <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
+                <a href="#user" id="urlFoto"><img class="circle" src="img/yuna.jpg"></a>
+                <a href="#name"><span class="white-text name" id="nombre">John Doe</span></a>
+                <a href="#email"><span class="white-text email" id="correo">jdandturk@gmail.com</span></a>
             </div>
         </li>
         <li><a href="vehiculos.html"><i class="material-icons">directions_car</i>Vehiculos</a></li>
@@ -65,7 +65,7 @@
         </li>
         <li><a class="subheader">Configuración</a></li>
         <li><a class="waves-effect" href="#!"><i class="material-icons">account_box</i>Cuenta</a></li>
-        <li><a class="waves-effect" href="#!"><i class="material-icons">exit_to_app</i>Salir</a></li>
+        <li><a class="waves-effect" href="#!" onclick="cerrarSesion();"><i class="material-icons">exit_to_app</i>Salir</a></li>
     </ul>
 
     <div class="content">
@@ -129,6 +129,7 @@
 
         window.onload = function() {
             verCronograma();
+            leerCookies();
         }
     </script>
 </body>

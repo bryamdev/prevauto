@@ -4,11 +4,13 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <meta charset="UTF-8">
-    <title>Login - PrevAuto</title>
+    <title>Registro - PrevAuto</title>
 
 </head>
 
 <body>
+
+
     <div class="container">
         <div class="row">
             <div class="col s10 offset-s3">
@@ -16,9 +18,22 @@
             </div>
             <div class="col s10 offset-s3">
                 <form action="#" method="GET">
+
                     <div class="row">
                         <div class="input-field col s6">
-                            <input type="email" class="validate" id="usuario">
+                            <input type="text" class="validate" id="nombre">
+                            <label for="text">Nombre</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input type="text" class="validate" id="apellido">
+                            <label for="text">Apellido</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input type="email" class="validate" id="correo">
                             <label for="email">Email</label>
                         </div>
                     </div>
@@ -29,19 +44,32 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col s6">
-                            <a class="waves-effect waves-light btn" id="validar" onclick="validarLogin();">Ingresar</a>
+                        <div class="input-field col s6">
+                            <input type="number" class="validate" id="cedula">
+                            <label for="text">Cedula</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input type="number" class="validate" id="telefono">
+                            <label for="text">Telefono</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col s6">
-                            <p>Si no tienes cuenta <a href="registro.html">Registrate aqui</a></p>
+                            <a class="waves-effect waves-light btn" id="validar" onclick="registrarUsuario();">Registrar</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s6">
+                            <p>Ya estas registrado? <a href="login.html">Regresar al Login</a></p>
                         </div>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>

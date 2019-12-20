@@ -12,31 +12,10 @@ public class Usuario {
 	private String urlFoto;
 	
 	
-	public Usuario(int idUsuario, String nombre, String apellido, String correo, String contraseña,
-			Long cedula, Long telefono, String urlFoto) {
-		this.idUsuario = idUsuario;
-		this.nombre= nombre;
-		this.apellido = apellido;
-		this.correo = correo;
-		this.contraseña = contraseña;
-		this.cedula = cedula;
-		this.telefono = telefono;
-		this.urlFoto = urlFoto;	
-	}
-	
-	
-	//Constructor para el servicio /RegistrarUsuario
-	public Usuario(String nombre, String apellido, String correo, String contraseña,
-			Long cedula, Long telefono) {
-		this.nombre= nombre;
-		this.apellido = apellido;
-		this.correo = correo;
-		this.contraseña = contraseña;
-		this.cedula = cedula;
-		this.telefono = telefono;
+	public Usuario() {
 		
 	}
-	
+		
 	
 
 	public int getIdUsuario() {

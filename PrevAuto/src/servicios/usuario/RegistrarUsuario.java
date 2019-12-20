@@ -41,7 +41,14 @@ public class RegistrarUsuario extends HttpServlet {
 		Long cedula = Long.parseLong(request.getParameter("cedula"));
 		Long telefono = Long.parseLong(request.getParameter("telefono"));
 		
-		Usuario usuario = new Usuario(nombre, apellido, correo, contraseña, cedula, telefono);
+		Usuario usuario = new Usuario();
+		usuario.setNombre(nombre);
+		usuario.setApellido(apellido);
+		usuario.setCorreo(correo);
+		usuario.setContraseña(contraseña);
+		usuario.setCedula(cedula);
+		usuario.setTelefono(telefono);
+		
 		Response res = UsuariosJDBC.insertUsuario(usuario);
 		
 		String json = TransformacionObjetos.obtenerJson(res);

@@ -36,10 +36,13 @@ public class VerCronograma extends HttpServlet {
 		
 		int idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
 		
-		List<Externo> externos = ExternoJDBC.selectExternos();
 		List<Documento> documentos = DocumentosJDBC.selectDocumentosCro(idUsuario);
+		List<Externo> externos = ExternoJDBC.selectExternos();
 		
-		Cronograma cronograma = new Cronograma(documentos, externos);
+		Cronograma cronograma = new Cronograma();
+		cronograma.setDocumentos(documentos);
+		cronograma.setExternos(externos);
+		
 		String json = TransformacionObjetos.obtenerJson(cronograma);
 		
 		PrintWriter out = response.getWriter();

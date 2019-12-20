@@ -33,8 +33,16 @@ public class UsuariosJDBC {
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
-				usuario = new Usuario(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
-						rs.getString(5), rs.getLong(6), rs.getLong(7), rs.getString(8));
+				usuario = new Usuario();
+				usuario.setIdUsuario(rs.getInt(1));
+				usuario.setNombre(rs.getString(2));
+				usuario.setApellido(rs.getString(3));
+				usuario.setCorreo(rs.getString(4));
+				usuario.setContraseña(rs.getString(5));
+				usuario.setCedula(rs.getLong(6));
+				usuario.setTelefono(rs.getLong(7));
+				usuario.setUrlFoto(rs.getString(8));
+				
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();

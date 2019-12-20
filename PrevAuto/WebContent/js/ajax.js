@@ -1,5 +1,75 @@
 console.log("SALUDO");
 
+
+function validarLogin() {
+    console.log("Dentro de validar Login");
+
+    let usuario = document.querySelector('#usuario').value;
+    let password = document.querySelector('#password').value;
+
+    console.log(usuario + password);
+
+    let serviceUrl = 'http://localhost:9090/PrevAuto/usuario/validar?correo=' + usuario + '&password=' + password;
+
+    const request = new XMLHttpRequest();
+
+    request.open('GET', serviceUrl, true);
+    request.send();
+
+    request.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            //console.log(this.responseText);
+            let datos = JSON.parse(this.responseText);
+            console.log(datos);
+            if (!datos.error) {
+                alert("Bienvenido!");
+                location.href = "cronograma.html";
+            } else {
+                alert(datos.mensaje);
+            }
+        }
+    }
+}
+
+function registrarUsuario() {
+
+    let nombre = document.querySelector('#nombre').value;
+    let apellido = document.querySelector('#apellido').value;
+    let correo = document.querySelector('#correo').value;
+    let password = document.querySelector('#password').value;
+    let cedula = document.querySelector('#cedula').value;
+    let telefono = document.querySelector('#telefono').value;
+    console.log(nombre);
+    console.log(apellido);
+    console.log(correo);
+    console.log(password);
+    console.log(cedula);
+    console.log(telefono);
+
+    let serviceUrl = `http://localhost:9090/PrevAuto/usuario/registrar?nombre=${nombre}&apellido=${apellido}&correo=${correo}&password=${password}&cedula=${cedula}&telefono=${telefono}`;
+
+    const request = new XMLHttpRequest();
+    request.open('GET', serviceUrl, true);
+    request.send();
+
+    console.log("Antes de verificar");
+    console.log(serviceUrl);
+    request.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(this.responseText);
+            let res = JSON.parse(this.responseText);
+
+            if (!res.error) {
+                alert(res.mensaje);
+                location.href = "login.html";
+            } else {
+                alert(res.mensaje);
+            }
+        }
+    }
+}
+
+
 function listarVehiculos() {
     console.log("Estoy listando vehiculos!!");
 
@@ -148,7 +218,50 @@ function verCronograma() {
             }
         }
     }
+}
 
 
+function obtenerValorCookie(clave) {
+
+    var nameEQ = clave + "=";
+    var ca = document.cookie.split(';');
+
+    for (var i = 0; i < ca.length; i++) {
+
+        var c = ca[i];
+        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) == 0) {
+            return decodeURIComponent(c.substring(nameEQ.length, c.length));
+        }
+
+    }
+
+    return null;
+
+}
+
+function leerCookies() {
+
+    let nombre = document.querySelector('#nombre');
+    let correo = document.querySelector('#correo');
+    let urlFoto = document.querySelector('#urlFoto');
+
+    nombre.innerHTML = obtenerValorCookie('nombre');
+    correo.innerHTML = obtenerValorCookie('correo');
+    urlFoto.innerHTML = `<img class="circle" src="${obtenerValorCookie('urlFoto')}">`;
+
+}
+
+
+
+function cerrarSesion() {
+
+    console.log("Eliminando cookies");
+    document.cookie = 'nombre' + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    document.cookie = 'correo' + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    document.cookie = 'urlFoto' + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    document.cookie = 'idUsuario' + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+
+    location.href = "login.html";
 
 }

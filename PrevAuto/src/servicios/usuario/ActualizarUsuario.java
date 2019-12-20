@@ -41,8 +41,15 @@ public class ActualizarUsuario extends HttpServlet {
 		Long telefono = Long.parseLong(request.getParameter("telefono"));
 		String urlFoto = request.getParameter("urlFoto");
 		
-		Usuario usuario = new Usuario(idUsuario, nombre, apellido, correo, contraseña
-				, cedula, telefono, urlFoto);
+		Usuario usuario = new Usuario();
+		usuario.setIdUsuario(idUsuario);
+		usuario.setNombre(nombre);
+		usuario.setApellido(apellido);
+		usuario.setCorreo(correo);
+		usuario.setContraseña(contraseña);
+		usuario.setCedula(cedula);
+		usuario.setTelefono(telefono);
+		usuario.setUrlFoto(urlFoto);
 		
 		Response res = UsuariosJDBC.updateUsuario(usuario);
 		String json = TransformacionObjetos.obtenerJson(res);
