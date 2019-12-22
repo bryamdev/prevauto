@@ -13,7 +13,7 @@ public class VehiculosJDBC {
 			+ " placa, usuario_id, url_foto FROM pa.vehiculo WHERE id_vehiculo = ?";
 	
 	private static final String SQL_INSERT = "INSERT INTO pa.vehiculo(nombre, modelo, marca, placa, "
-			+ " usuario_id, url_foto) VALUES (?, ?, ?, ?, ?, ?);";
+			+ " usuario_id) VALUES (?, ?, ?, ?, ?);";
 	
 	private static final String SQL_UPDATE = "UPDATE pa.vehiculo set nombre = ?, modelo = ?, "
 			+ " marca = ?, placa = ?, url_foto = ? WHERE id_vehiculo = ?;";
@@ -100,7 +100,7 @@ public class VehiculosJDBC {
 			pstmt.setString(3, vehiculo.getMarca());
 			pstmt.setString(4, vehiculo.getPlaca());
 			pstmt.setInt(5, vehiculo.getUsuarioId());
-			pstmt.setString(6, vehiculo.getUrlFoto());
+			//pstmt.setString(6, vehiculo.getUrlFoto());
 			
 			int res = pstmt.executeUpdate();
 			

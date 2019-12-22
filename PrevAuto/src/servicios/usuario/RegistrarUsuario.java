@@ -34,10 +34,10 @@ public class RegistrarUsuario extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		String nombre = request.getParameter("nombre");
-		String apellido = request.getParameter("apellido");
-		String email = request.getParameter("email");
-		String password = request.getParameter("password");
+		String nombre = request.getParameter("nombre").trim();
+		String apellido = request.getParameter("apellido").trim();
+		String email = request.getParameter("email").trim();
+		String password = request.getParameter("password").trim();
 		Long cedula = Long.parseLong(request.getParameter("cedula"));
 		Long telefono = Long.parseLong(request.getParameter("telefono"));
 		

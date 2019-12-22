@@ -23,7 +23,7 @@ function validarLogin() {
             console.log(datos);
             if (!datos.error) {
                 alert("Bienvenido!");
-                location.href = "cronograma.html";
+                location.href = "vehiculos.html";
             } else {
                 alert(datos.mensaje);
             }
@@ -56,8 +56,9 @@ function registrarUsuario() {
     console.log(serviceUrl);
     request.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            console.log(this.responseText);
+
             let res = JSON.parse(this.responseText);
+            console.log(res);
 
             if (!res.error) {
                 alert(res.mensaje);
@@ -73,9 +74,7 @@ function registrarUsuario() {
 function listarVehiculos() {
     console.log("Estoy listando vehiculos!!");
 
-
-    let idUsuario = '1';
-    let serviceUrl = 'vehiculo/listarPorId?idUsuario=' + idUsuario;
+    let serviceUrl = `vehiculo/listarPorId?idUsuario=${obtenerValorCookie('idUsuario')}`;
 
     const request = new XMLHttpRequest();
     request.open('GET', serviceUrl, true);
@@ -88,11 +87,13 @@ function listarVehiculos() {
 
             let datos = JSON.parse(this.responseText);
             console.log(datos);
+            console.log(datos.length);
             console.log("Hola");
 
-            for (let item of datos) {
+            if (datos.length != 0) {
+                for (let item of datos) {
 
-                vehiculos.innerHTML += `<div class="col s12 m7">
+                    vehiculos.innerHTML += `<div class="col s12 m7">
                                     <div class="card horizontal">
                                         <div class="card-image">
                                             <img src="${item.urlFoto}">
@@ -109,7 +110,11 @@ function listarVehiculos() {
                                         </div>
                                     </div>
                                 </div>`;
+                }
+            } else {
+                vehiculos.innerHTML = ` <blockquote> No tienes vehiculos registrados </blockquote>`;
             }
+
         }
     }
 }
@@ -219,6 +224,47 @@ function verCronograma() {
         }
     }
 }
+
+
+function registrarVehiculo() {
+
+    let nombre = document.querySelector('#nombreVehiculo').value;
+    let marca = document.querySelector('#marca').value;
+    let modelo = document.querySelector('#modelo').value;
+    let placa = document.querySelector('#placa').value;
+
+    console.log(nombre);
+    console.log(marca);
+    console.log(modelo);
+    console.log(placa);
+
+    let serviceUrl = `vehiculo/registrar?nombre=${nombre}&marca=${marca}&modelo=${modelo}&placa=${placa}&idUsuario=${obtenerValorCookie('idUsuario')}`;
+
+    const request = new XMLHttpRequest();
+    request.open('GET', serviceUrl, true);
+    request.send();
+
+    console.log("Antes de insertar vehiculo");
+    console.log(serviceUrl);
+
+    request.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+
+            let res = JSON.parse(this.responseText);
+            console.log(res);
+
+            if (!res.error) {
+                alert(res.mensaje);
+                location.href = "vehiculos.html";
+            } else {
+                alert(res.mensaje);
+            }
+        }
+    }
+}
+
+
+
 
 
 function obtenerValorCookie(clave) {

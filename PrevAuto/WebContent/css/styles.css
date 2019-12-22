@@ -1,0 +1,20 @@
+.content {
+    padding-left: 300px;
+}
+
+blockquote {
+    font-size: 25px;
+}
+
+@media only screen and (max-width: 992px) {
+    header,
+    main,
+    footer,
+    .content {
+        padding-left: 0;
+    }
+}
+
+b {
+    font-size: 20px;
+}

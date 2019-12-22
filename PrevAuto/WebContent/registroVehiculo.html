@@ -51,36 +51,53 @@
         <li><a class="waves-effect" href="#!" onclick="cerrarSesion();"><i class="material-icons">exit_to_app</i>Salir</a></li>
     </ul>
 
-    <div class="content">
-        <div class="container">
-            <div class="section" id="vehiculos">
+    <div class="container">
 
-                <!-- Ejemplo para estructurar la respuesta del servicio -->
-                <!--
-                <div class="col s12 m7">
-                    <div class="card horizontal">
-                        <div class="card-image">
-                            <img src="img/vehiculos/3.jpg">
+        <div class="row">
+
+            <div class="col s10 offset-s5">
+                <h4>Registro de vehiculo</h4>
+            </div>
+
+
+            <form action="#" method="GET">
+
+                <div class="col s9 offset-s5">
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input type="text" class="validate" id="nombreVehiculo">
+                            <label for="text">Nombre</label>
                         </div>
-                        <div class="card-stacked">
-                            <div class="card-content">
-                                <p><b> La Nave</b></p>
-                                <p>Tesla Model X </p>
-                            </div>
-                            <div class="card-action">
-                                <a href="#">Detalles</a>
-                                <a href="#">Eliminar</a>
-                            </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input type="text" class="validate" id="marca">
+                            <label for="text">Marca</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input type="text" class="validate" id="modelo">
+                            <label for="text">Modelo</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input type="text" class="validate" id="placa">
+                            <label for="text">Placa</label>
                         </div>
                     </div>
                 </div>
 
-                -->
-            </div>
-            <div>
-                <a class="waves-effect waves-light btn" href="registroVehiculo.html">Añadir</a>
-            </div>
+                <div class="col s10 offset-s5">
+                    <div class="row">
+                        <div class="col s6">
+                            <a class="waves-effect waves-light btn" id="validar" onclick="registrarVehiculo();">Registrar</a>
+                        </div>
+                    </div>
+                </div>
 
+            </form>
 
         </div>
     </div>
@@ -98,7 +115,6 @@
         });
 
         window.onload = function() {
-            listarVehiculos();
             leerCookies();
         }
     </script>

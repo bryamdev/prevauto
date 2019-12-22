@@ -2,8 +2,16 @@
 
 <head>
 
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+
     <title>Registro - PrevAuto</title>
 
 </head>
@@ -12,20 +20,22 @@
 
 
     <div class="container">
+
         <div class="row">
-            <div class="col s10 offset-s3">
+
+            <div class="col s10 offset-s4">
                 <h2>PrevAuto</h2>
             </div>
-            <div class="col s10 offset-s3">
-                <form action="#" method="GET">
 
+
+            <form action="#" method="GET">
+
+                <div class="col s9 offset-s2">
                     <div class="row">
                         <div class="input-field col s6">
                             <input type="text" class="validate" id="nombre">
                             <label for="text">Nombre</label>
                         </div>
-                    </div>
-                    <div class="row">
                         <div class="input-field col s6">
                             <input type="text" class="validate" id="apellido">
                             <label for="text">Apellido</label>
@@ -36,8 +46,6 @@
                             <input type="email" class="validate" id="email">
                             <label for="email">Email</label>
                         </div>
-                    </div>
-                    <div class="row">
                         <div class="input-field col s6">
                             <input type="password" class="validate" id="password">
                             <label for="password">Password</label>
@@ -48,25 +56,34 @@
                             <input type="number" class="validate" id="cedula">
                             <label for="text">Cedula</label>
                         </div>
-                    </div>
-                    <div class="row">
                         <div class="input-field col s6">
                             <input type="number" class="validate" id="telefono">
                             <label for="text">Telefono</label>
                         </div>
                     </div>
+                </div>
+
+                <div class="col s10 offset-s5">
                     <div class="row">
                         <div class="col s6">
                             <a class="waves-effect waves-light btn" id="validar" onclick="registrarUsuario();">Registrar</a>
                         </div>
                     </div>
+                </div>
+
+                <div class="col s10 offset-s4">
                     <div class="row">
                         <div class="col s6">
                             <p>Ya estas registrado? <a href="login.html">Regresar al Login</a></p>
                         </div>
                     </div>
-                </form>
-            </div>
+                </div>
+
+
+
+
+            </form>
+
         </div>
     </div>
 

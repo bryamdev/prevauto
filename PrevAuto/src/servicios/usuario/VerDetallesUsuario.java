@@ -32,6 +32,7 @@ public class VerDetallesUsuario extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
+		/*
 		Cookie[] cookies = request.getCookies();
 		
 		int idUsuario = 0;
@@ -42,8 +43,9 @@ public class VerDetallesUsuario extends HttpServlet {
 		}else {
 			idUsuario = Integer.parseInt(request.getParameter("idUsuario")); 
 		}
+		*/
 		
-		//
+		int idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
 		
 		Usuario usuario = UsuariosJDBC.selectUsuario(idUsuario);
 		

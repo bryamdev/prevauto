@@ -27,6 +27,7 @@ public class LogeoUsuario extends HttpServlet {
 		
 		
 		response.setContentType("application/json");
+		PrintWriter out = response.getWriter();
 		
 		if(!res.isError()) {
 			
@@ -55,8 +56,9 @@ public class LogeoUsuario extends HttpServlet {
 
 		}
 		
-		PrintWriter out = response.getWriter();
+		
 		out.println(json);
+		
 		
 				
 	}
