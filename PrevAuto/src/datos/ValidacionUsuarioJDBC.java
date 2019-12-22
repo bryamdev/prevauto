@@ -6,10 +6,10 @@ import domain.Response;
 
 public class ValidacionUsuarioJDBC {
 	
-	private static final String SQL_SELECT = "SELECT pa.usuario.id_usuario FROM pa.usuario "
-			+ " WHERE correo = ? AND contraseña = ?";
+	private static final String SQL_SELECT = "SELECT id_usuario FROM pa.usuario "
+			+ " WHERE email = ? AND password = ?";
 	
-	public static Response validarUsuario(String correo, String password) {
+	public static Response validarUsuario(String email, String password) {
 		
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -19,7 +19,7 @@ public class ValidacionUsuarioJDBC {
 		try {
 			con = Conexion.getConnection();
 			pstmt = con.prepareStatement(SQL_SELECT);
-			pstmt.setString(1, correo);
+			pstmt.setString(1, email);
 			pstmt.setString(2, password);
 			
 			rs = pstmt.executeQuery();

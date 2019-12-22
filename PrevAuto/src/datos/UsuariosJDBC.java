@@ -8,16 +8,15 @@ import datos.Conexion;
 
 public class UsuariosJDBC {
 	
-	private static final String SQL_SELECT = "SELECT pa.usuario.id_usuario, pa.usuario.nombre, pa.usuario.apellido, "
-			+ " pa.usuario.correo, pa.usuario.contraseña, pa.usuario.cedula, pa.usuario.telefono, "
-			+ " pa.usuario.url_foto FROM pa.usuario WHERE id_usuario = ? ";
+	private static final String SQL_SELECT = "SELECT id_usuario, nombre, apellido, email, "
+			+ " password, cedula, telefono, url_foto FROM pa.usuario WHERE id_usuario = ?;";
 	
-	private static final String SQL_INSERT = "INSERT INTO pa.usuario (nombre, apellido, correo,"
-			+ " contraseña, cedula, telefono) VALUES ( ?, ?, ?, ?, ?, ?);"; 
+	private static final String SQL_INSERT = "INSERT INTO pa.usuario (nombre, apellido, email,"
+			+ " password, cedula, telefono) VALUES ( ?, ?, ?, ?, ?, ?);"; 
 	
 	private static final String SQL_UPDATE = "UPDATE pa.usuario  set nombre = ?, apellido = ?,"
-			+ " correo = ?, contraseña = ?, cedula = ?, telefono = ?, "
-			+ "url_foto = ? WHERE id_usuario = ?;"; 
+			+ " email = ?, password = ?, cedula = ?, telefono = ?, url_foto = ? "
+			+ " WHERE id_usuario = ?;"; 
 	
 	public static Usuario selectUsuario(int idUsuario) {
 		
@@ -37,8 +36,8 @@ public class UsuariosJDBC {
 				usuario.setIdUsuario(rs.getInt(1));
 				usuario.setNombre(rs.getString(2));
 				usuario.setApellido(rs.getString(3));
-				usuario.setCorreo(rs.getString(4));
-				usuario.setContraseña(rs.getString(5));
+				usuario.setEmail(rs.getString(4));
+				usuario.setPassword(rs.getString(5));
 				usuario.setCedula(rs.getLong(6));
 				usuario.setTelefono(rs.getLong(7));
 				usuario.setUrlFoto(rs.getString(8));
@@ -67,8 +66,8 @@ public class UsuariosJDBC {
 			pstmt = con.prepareStatement(SQL_INSERT);
 			pstmt.setString(1, usuario.getNombre());
 			pstmt.setString(2, usuario.getApellido());
-			pstmt.setString(3, usuario.getCorreo());
-			pstmt.setString(4, usuario.getContraseña());
+			pstmt.setString(3, usuario.getEmail());
+			pstmt.setString(4, usuario.getPassword());
 			pstmt.setLong(5, usuario.getCedula());
 			pstmt.setLong(6, usuario.getTelefono());
 			
@@ -101,8 +100,8 @@ public class UsuariosJDBC {
 			pstmt = con.prepareStatement(SQL_UPDATE);
 			pstmt.setString(1, usuario.getNombre());
 			pstmt.setString(2, usuario.getApellido());
-			pstmt.setString(3, usuario.getCorreo());
-			pstmt.setString(4, usuario.getContraseña());
+			pstmt.setString(3, usuario.getEmail());
+			pstmt.setString(4, usuario.getPassword());
 			pstmt.setLong(5, usuario.getCedula());
 			pstmt.setLong(6, usuario.getTelefono());
 			pstmt.setString(7, usuario.getUrlFoto());

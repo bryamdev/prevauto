@@ -4,12 +4,12 @@ console.log("SALUDO");
 function validarLogin() {
     console.log("Dentro de validar Login");
 
-    let usuario = document.querySelector('#usuario').value;
+    let email = document.querySelector('#email').value;
     let password = document.querySelector('#password').value;
 
-    console.log(usuario + password);
+    console.log(email + " - " + password);
 
-    let serviceUrl = 'http://localhost:9090/PrevAuto/usuario/validar?correo=' + usuario + '&password=' + password;
+    let serviceUrl = `usuario/validar?email=${email}&password=${password}`;
 
     const request = new XMLHttpRequest();
 
@@ -35,18 +35,18 @@ function registrarUsuario() {
 
     let nombre = document.querySelector('#nombre').value;
     let apellido = document.querySelector('#apellido').value;
-    let correo = document.querySelector('#correo').value;
+    let email = document.querySelector('#email').value;
     let password = document.querySelector('#password').value;
     let cedula = document.querySelector('#cedula').value;
     let telefono = document.querySelector('#telefono').value;
     console.log(nombre);
     console.log(apellido);
-    console.log(correo);
+    console.log(email);
     console.log(password);
     console.log(cedula);
     console.log(telefono);
 
-    let serviceUrl = `http://localhost:9090/PrevAuto/usuario/registrar?nombre=${nombre}&apellido=${apellido}&correo=${correo}&password=${password}&cedula=${cedula}&telefono=${telefono}`;
+    let serviceUrl = `usuario/registrar?nombre=${nombre}&apellido=${apellido}&email=${email}&password=${password}&cedula=${cedula}&telefono=${telefono}`;
 
     const request = new XMLHttpRequest();
     request.open('GET', serviceUrl, true);
@@ -75,7 +75,7 @@ function listarVehiculos() {
 
 
     let idUsuario = '1';
-    let serviceUrl = 'http://localhost:9090/PrevAuto/vehiculo/listarPorId?idUsuario=' + idUsuario;
+    let serviceUrl = 'vehiculo/listarPorId?idUsuario=' + idUsuario;
 
     const request = new XMLHttpRequest();
     request.open('GET', serviceUrl, true);
@@ -118,7 +118,7 @@ function eliminarVehiculo(idVehiculo) {
 
     //alert("eliminando vehiculo " + idVehiculo);
 
-    let serviceUrl = 'http://localhost:9090/PrevAuto/vehiculo/eliminar?idVehiculo=4' + idVehiculo;
+    let serviceUrl = 'vehiculo/eliminar?idVehiculo=4' + idVehiculo;
 
     const request = new XMLHttpRequest();
     request.open('GET', serviceUrl, true);
@@ -137,7 +137,7 @@ function eliminarVehiculo(idVehiculo) {
 function listarSitiosRecomendados() {
     console.log("Listando sitios");
 
-    let serviceUrl = 'http://localhost:9090/PrevAuto/core/listarSitiosRecomendados';
+    let serviceUrl = 'core/listarSitiosRecomendados';
 
     const request = new XMLHttpRequest();
     request.open('GET', serviceUrl, true);
@@ -175,7 +175,7 @@ function verCronograma() {
     console.log("Cargando cronograma");
 
     let idUsuario = 1;
-    let serviceUrl = 'http://localhost:9090/PrevAuto/core/verCronograma?idUsuario=' + idUsuario;
+    let serviceUrl = 'core/verCronograma?idUsuario=' + idUsuario;
 
     const request = new XMLHttpRequest();
     request.open('GET', serviceUrl, true);
@@ -243,11 +243,11 @@ function obtenerValorCookie(clave) {
 function leerCookies() {
 
     let nombre = document.querySelector('#nombre');
-    let correo = document.querySelector('#correo');
+    let email = document.querySelector('#email');
     let urlFoto = document.querySelector('#urlFoto');
 
     nombre.innerHTML = obtenerValorCookie('nombre');
-    correo.innerHTML = obtenerValorCookie('correo');
+    email.innerHTML = obtenerValorCookie('email');
     urlFoto.innerHTML = `<img class="circle" src="${obtenerValorCookie('urlFoto')}">`;
 
 }
@@ -258,7 +258,7 @@ function cerrarSesion() {
 
     console.log("Eliminando cookies");
     document.cookie = 'nombre' + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-    document.cookie = 'correo' + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    document.cookie = 'email' + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     document.cookie = 'urlFoto' + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     document.cookie = 'idUsuario' + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 

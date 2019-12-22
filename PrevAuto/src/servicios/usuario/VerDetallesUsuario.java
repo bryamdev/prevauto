@@ -33,8 +33,17 @@ public class VerDetallesUsuario extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		Cookie[] cookies = request.getCookies();
-		int idUsuario = Integer.parseInt(cookies[0].getValue());
-		//int idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
+		
+		int idUsuario = 0;
+		
+		if(cookies != null) {
+			
+			idUsuario = Integer.parseInt(cookies[0].getValue());
+		}else {
+			idUsuario = Integer.parseInt(request.getParameter("idUsuario")); 
+		}
+		
+		//
 		
 		Usuario usuario = UsuariosJDBC.selectUsuario(idUsuario);
 		

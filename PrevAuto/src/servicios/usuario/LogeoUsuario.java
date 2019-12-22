@@ -19,10 +19,10 @@ public class LogeoUsuario extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		
-		String correo = request.getParameter("correo");
+		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		
-		Response res = ValidacionUsuarioJDBC.validarUsuario(correo, password);
+		Response res = ValidacionUsuarioJDBC.validarUsuario(email, password);
 		String json = TransformacionObjetos.obtenerJson(res);
 		
 		
@@ -40,9 +40,9 @@ public class LogeoUsuario extends HttpServlet {
 			cookieNombreUsuario.setPath("/PrevAuto");
 			cookieNombreUsuario.setMaxAge(600);
 			
-			Cookie cookieCorreoUsuario = new Cookie("correo", usuLogueado.getCorreo());
-			cookieCorreoUsuario.setPath("/PrevAuto");
-			cookieCorreoUsuario.setMaxAge(600);
+			Cookie cookieEmailUsuario = new Cookie("email", usuLogueado.getEmail());
+			cookieEmailUsuario.setPath("/PrevAuto");
+			cookieEmailUsuario.setMaxAge(600);
 
 			Cookie cookieUrlFoto = new Cookie("urlFoto", usuLogueado.getUrlFoto());
 			cookieUrlFoto.setPath("/PrevAuto");
@@ -50,7 +50,7 @@ public class LogeoUsuario extends HttpServlet {
 			
 			response.addCookie(cookieIdUsuario);
 			response.addCookie(cookieNombreUsuario);
-			response.addCookie(cookieCorreoUsuario);
+			response.addCookie(cookieEmailUsuario);
 			response.addCookie(cookieUrlFoto);
 
 		}

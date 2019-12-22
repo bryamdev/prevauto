@@ -36,16 +36,16 @@ public class RegistrarUsuario extends HttpServlet {
 		
 		String nombre = request.getParameter("nombre");
 		String apellido = request.getParameter("apellido");
-		String correo = request.getParameter("correo");
-		String contraseña = request.getParameter("password");
+		String email = request.getParameter("email");
+		String password = request.getParameter("password");
 		Long cedula = Long.parseLong(request.getParameter("cedula"));
 		Long telefono = Long.parseLong(request.getParameter("telefono"));
 		
 		Usuario usuario = new Usuario();
 		usuario.setNombre(nombre);
 		usuario.setApellido(apellido);
-		usuario.setCorreo(correo);
-		usuario.setContraseña(contraseña);
+		usuario.setEmail(email);
+		usuario.setPassword(password);
 		usuario.setCedula(cedula);
 		usuario.setTelefono(telefono);
 		

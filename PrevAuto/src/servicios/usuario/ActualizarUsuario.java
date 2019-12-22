@@ -35,8 +35,8 @@ public class ActualizarUsuario extends HttpServlet {
 		int idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
 		String nombre = request.getParameter("nombre");
 		String apellido = request.getParameter("apellido");
-		String correo = request.getParameter("correo");
-		String contraseña = request.getParameter("password");
+		String email = request.getParameter("email");
+		String password = request.getParameter("password");
 		Long cedula = Long.parseLong(request.getParameter("cedula"));
 		Long telefono = Long.parseLong(request.getParameter("telefono"));
 		String urlFoto = request.getParameter("urlFoto");
@@ -45,8 +45,8 @@ public class ActualizarUsuario extends HttpServlet {
 		usuario.setIdUsuario(idUsuario);
 		usuario.setNombre(nombre);
 		usuario.setApellido(apellido);
-		usuario.setCorreo(correo);
-		usuario.setContraseña(contraseña);
+		usuario.setEmail(email);
+		usuario.setPassword(password);
 		usuario.setCedula(cedula);
 		usuario.setTelefono(telefono);
 		usuario.setUrlFoto(urlFoto);

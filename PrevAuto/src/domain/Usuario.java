@@ -5,8 +5,8 @@ public class Usuario {
 	private int idUsuario;
 	private String nombre;
 	private String apellido;
-	private String correo;
-	private String contraseña;
+	private String email;
+	private String password;
 	private Long cedula;
 	private Long telefono;
 	private String urlFoto;
@@ -44,20 +44,20 @@ public class Usuario {
 		this.apellido = apellido;
 	}
 
-	public String getCorreo() {
-		return correo;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setCorreo(String correo) {
-		this.correo = correo;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
-	public String getContraseña() {
-		return contraseña;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setContraseña(String contraseña) {
-		this.contraseña = contraseña;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public Long getCedula() {
