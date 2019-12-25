@@ -13,9 +13,9 @@ public class TransformacionObjetos {
 	
 	//Toma la lista de Sitios y lo serializa a json
 	//Devuelve un string con el json de los sitios
-	public static String obtenerJson(Object lista) {
+	public static String obtenerJson(Object objeto) {
 	
-		String sitiosJson = gson.toJson(lista);
+		String sitiosJson = gson.toJson(objeto);
 	
 		return sitiosJson;
 	}

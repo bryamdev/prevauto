@@ -21,7 +21,7 @@
         <nav>
             <div class="nav-wrapper blue darken-2">
                 <a href="#!" class="brand-logo right">PrevAuto</a>
-                <a href="#" data-target="slide-out" class="sidenav-trigger show-on-large"><i class="material-icons">menu</i>a</a>
+                <a href="#!" data-target="slide-out" class="sidenav-trigger show-on-large"><i class="material-icons">menu</i></a>
             </div>
         </nav>
     </div>
@@ -54,32 +54,34 @@
     <div class="content">
         <div class="container">
             <div class="section" id="vehiculos">
-
-                <!-- Ejemplo para estructurar la respuesta del servicio -->
-                <!--
-                <div class="col s12 m7">
-                    <div class="card horizontal">
-                        <div class="card-image">
-                            <img src="img/vehiculos/3.jpg">
-                        </div>
-                        <div class="card-stacked">
-                            <div class="card-content">
-                                <p><b> La Nave</b></p>
-                                <p>Tesla Model X </p>
+                <div id="listaVehiculos">
+                    <!-- Ejemplo para estructurar la respuesta del servicio -->
+                    <!--
+                    <div class="col s12 m7">
+                        <div class="card horizontal">
+                            <div class="card-image">
+                                <img src="img/vehiculos/3.jpg">
                             </div>
-                            <div class="card-action">
-                                <a href="#">Detalles</a>
-                                <a href="#">Eliminar</a>
+                            <div class="card-stacked">
+                                <div class="card-content">
+                                    <p><b> La Nave</b></p>
+                                    <p>Tesla Model X </p>
+                                </div>
+                                <div class="card-action">
+                                    <a href="#">Detalles</a>
+                                    <a href="#">Eliminar</a>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    -->
+                </div>
+                <div>
+                    <a class="waves-effect waves-light btn" href="#!" onclick="mostrarFormRegistroVehiculo();">Añadir</a>
                 </div>
 
-                -->
             </div>
-            <div>
-                <a class="waves-effect waves-light btn" href="registroVehiculo.html">Añadir</a>
-            </div>
+
 
 
         </div>
@@ -90,7 +92,7 @@
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="js/ajax.js"></script>
+    <script src="js/servicesAjax.js"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {

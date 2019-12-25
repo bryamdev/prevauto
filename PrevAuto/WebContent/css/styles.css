@@ -18,3 +18,7 @@ blockquote {
 b {
     font-size: 20px;
 }
+
+b.etiqueta {
+    font-size: 16px;
+}

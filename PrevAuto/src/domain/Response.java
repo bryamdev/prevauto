@@ -24,6 +24,12 @@ public class Response {
 	public void setError(boolean error) {
 		this.error = error;
 	}
+
+	@Override
+	public String toString() {
+		return "Response [mensaje=" + mensaje + ", error=" + error + "]";
+	}
+	
 	
 	
 	

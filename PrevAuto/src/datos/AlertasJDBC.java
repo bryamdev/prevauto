@@ -15,39 +15,41 @@ public class AlertasJDBC {
 			"    AND pa.vehiculo.usuario_id = pa.usuario.id_usuario " + 
 			"    AND pa.usuario.id_usuario = ?" + 
 			"    AND pa.alerta.activo = 1";
+	
+	private static final String SQL_INSERT_AFTER_INSERT_DOCUMENTO = "";
 		
-		//Toma todas las alertas de la base de datos
-		//Devuelve una lista con objetos de tipo alertas
-		public static List<Alerta> selectAlertas(int idUsuario){
-			Connection con = null;
-			PreparedStatement stmt = null;
-			ResultSet rs = null;
-			List<Alerta> alertas = new ArrayList<>();
+	//Toma todas las alertas de la base de datos
+	//Devuelve una lista con objetos de tipo alertas
+	public static List<Alerta> selectAlertas(int idUsuario){
+		Connection con = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		List<Alerta> alertas = new ArrayList<>();
+		
+		try {
+			con = Conexion.getConnection();
+			stmt = con.prepareStatement(SQL_SELECT);
+			stmt.setInt(1, idUsuario);
+			rs = stmt.executeQuery();
 			
-			try {
-				con = Conexion.getConnection();
-				stmt = con.prepareStatement(SQL_SELECT);
-				stmt.setInt(1, idUsuario);
-				rs = stmt.executeQuery();
+			while(rs.next()) {
+				Alerta alerta = new Alerta();
+				alerta.setTipoDocumento(rs.getString(1));
+				alerta.setNumeroDocumento(rs.getLong(2));
+				alerta.setNombreVehiculo(rs.getString(3));
+				alerta.setFechaVencimiento(rs.getString(4));
 				
-				while(rs.next()) {
-					Alerta alerta = new Alerta();
-					alerta.setTipoDocumento(rs.getString(1));
-					alerta.setNumeroDocumento(rs.getLong(2));
-					alerta.setNombreVehiculo(rs.getString(3));
-					alerta.setFechaVencimiento(rs.getString(4));
-					
-					alertas.add(alerta);
-				}
-			}catch (SQLException e) {
-				e.printStackTrace();
-			}finally {
-				Conexion.close(rs);
-				Conexion.close(stmt);
-				Conexion.close(con);
+				alertas.add(alerta);
 			}
-			
-			return alertas;
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			Conexion.close(rs);
+			Conexion.close(stmt);
+			Conexion.close(con);
+		}
+		
+		return alertas;
 			
 		}
 }

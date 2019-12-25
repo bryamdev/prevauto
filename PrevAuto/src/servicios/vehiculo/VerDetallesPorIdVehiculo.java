@@ -28,7 +28,6 @@ public class VerDetallesPorIdVehiculo extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		
 		out.print(json);
-		out.println("TEST");
 		out.flush();
 	}
 

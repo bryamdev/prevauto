@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+
+</head>
+
+<body>
+
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper blue darken-2">
+                <a href="#!" class="brand-logo right">PrevAuto</a>
+                <a href="#" data-target="slide-out" class="sidenav-trigger show-on-large"><i class="material-icons">menu</i>a</a>
+            </div>
+        </nav>
+    </div>
+
+
+    <!--SideNav-->
+    <ul id="slide-out" class="sidenav sidenav-fixed">
+        <li>
+            <div class="user-view">
+                <div class="background">
+                    <img src="img/office.jpg">
+                </div>
+                <a href="#user" id="urlFoto"><img class="circle" src="img/yuna.jpg"></a>
+                <a href="#name"><span class="white-text name" id="nombre">John Doe</span></a>
+                <a href="#email"><span class="white-text email" id="email">jdandturk@gmail.com</span></a>
+            </div>
+        </li>
+        <li><a href="vehiculos.html"><i class="material-icons">directions_car</i>Vehiculos</a></li>
+        <li class="active"><a href="#!"><i class="material-icons">date_range</i>Cronograma</a></li>
+        <li><a href="#!"><i class="material-icons">notifications</i>Alertas</a></li>
+        <li><a href="sitiosRecomendados.html"><i class="material-icons">collections_bookmark</i>Sitios Recomendados</a></li>
+        <li>
+            <div class="divider"></div>
+        </li>
+        <li><a class="subheader">Configuración</a></li>
+        <li><a class="waves-effect" href="#!"><i class="material-icons">account_box</i>Cuenta</a></li>
+        <li><a class="waves-effect" href="#!" onclick="cerrarSesion();"><i class="material-icons">exit_to_app</i>Salir</a></li>
+    </ul>
+
+    <div class="content">
+        <div class="container">
+            <div class="section">
+
+
+                <!--
+                <div class="col xl9 m8 s12">
+                    <div class="card">
+                        <div class="card-content invoice-print-area">
+
+                            <div class="row">
+                                <div class="col m6 s12 display-flex invoice-logo mt-1 push-m6">
+                                    <img src="img/vehiculos/20.jpg" width="220" height="126">
+                                </div>
+                                <div class="col m6 s12 pull-m6">
+                                    <h4 class="indigo-text">Destroyer</h4>
+                                </div>
+                            </div>
+                            <div class="divider mb-3 mt-3"></div>
+                            <div class="row">
+                                <div class="col m6 s12">
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <td><b class="etiqueta">Placa:</b></td>
+                                                <td>
+                                                    <h7>IAM111</h7>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><b class="etiqueta">Marca:</b></td>
+                                                <td>
+                                                    <h7>Ford</h7>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><b class="etiqueta">Modelo:</b></td>
+                                                <td>
+                                                    <h7>2020</h7>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="col m6 s12">
+                                    <br>
+                                    <br>
+                                    <div class="invoice-action-btn">
+                                        <a href="#!" class="waves-effect waves-light btn">
+                                            <span>Modificar</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="divider mb-3 mt-3"></div>
+                            <div class="invoice-action-btn">
+                                <br>
+                                <a href="#!" class="waves-effect waves-light btn">
+                                    <span>Documentos</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                -->
+
+                <nav>
+                    <div class="nav-wrapper blue darken-2">
+                        <div class="col s12">
+                            <a href="vehiculos.html" class="breadcrumb"> Vehiculos</a>
+                            <a href="#!" class="breadcrumb">Detalles</a>
+                        </div>
+                    </div>
+                </nav>
+                <br>
+
+
+                <div class="col xl9 m8 s12">
+                    <div class="card">
+                        <div class="card-content invoice-print-area">
+
+                            <div class="row">
+                                <div class="col m6 s12 display-flex invoice-logo mt-1 push-m6">
+                                    <img src="img/vehiculos/20.jpg" width="220" height="126">
+                                </div>
+                                <div class="col m6 s12 pull-m6">
+                                    <h4 class="indigo-text">Destroyer</h4>
+                                    <h6><b class="etiqueta">Placa: </b>IAM345</h6>
+                                    <h6><b class="etiqueta">Marca: </b>Ford</h6>
+                                    <h6><b class="etiqueta">Modelo: </b>2019</h6>
+                                </div>
+                            </div>
+                            <div class="divider mb-3 mt-3"></div>
+                            <div class="row">
+                                <div class="col m6 s12">
+                                    <br>
+                                    <div class="invoice-action-btn">
+                                        <a href="#!" class="waves-effect waves-light btn">
+                                            <span>Modificar</span>
+                                        </a>
+                                        <a href="#!" class="waves-effect waves-light btn">
+                                            <span>Documentos</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="js/servicesAjax.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            M.AutoInit();
+        });
+
+        window.onload = function() {}
+    </script>
+</body>
+
+</html>

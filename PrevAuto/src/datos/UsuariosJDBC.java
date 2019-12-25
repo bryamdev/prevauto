@@ -18,6 +18,8 @@ public class UsuariosJDBC {
 			+ " email = ?, password = ?, cedula = ?, telefono = ?, url_foto = ? "
 			+ " WHERE id_usuario = ?;"; 
 	
+	private static final String SQL_DELETE = "DELETE FROM pa.usuario WHERE id_usuario = ?; ";
+	
 	public static Usuario selectUsuario(int idUsuario) {
 		
 		Connection con = null;
@@ -74,7 +76,14 @@ public class UsuariosJDBC {
 			int res = pstmt.executeUpdate();
 			
 			if(res != 0) {
-				response.setMensaje("El usuario se guardó correctamente!");
+				//'Triger' que guarda configuracion despues de insertar el usuario
+				Response resTriger = ConfiguracionJDBC.insertAfterInsertUsuario(getMaxAutoincrement());
+				if(!resTriger.isError()) {
+					response.setMensaje("El usuario se guardó correctamente!");
+				}else {
+					response.setMensaje("El usuario se guardó pero NO la configuracion!");
+				}
+				
 			}else {
 				response.setMensaje("EL usuario NO se guardó!");
 				response.setError(true);
@@ -84,6 +93,9 @@ public class UsuariosJDBC {
 			response.setMensaje("Error al registrar el usuario: " + e.getMessage());
 			response.setError(true);
 			e.printStackTrace();
+		}finally {
+			Conexion.close(con);
+			Conexion.close(pstmt);
 		}
 		
 		return response;
@@ -125,5 +137,70 @@ public class UsuariosJDBC {
 		return response;
 		
 	}
-
+	
+	public static Response deleteUsuario(int idUsuario) {
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		Response response = new Response();
+		
+		try {
+			
+			Response resTriger = ConfiguracionJDBC.DeleteBeforeDeleteUsuario(idUsuario);
+			
+			con = Conexion.getConnection();
+			pstmt = con.prepareStatement(SQL_DELETE);
+			pstmt.setInt(1, idUsuario);
+			
+			if(!resTriger.isError()) {
+				
+				int res = pstmt.executeUpdate();
+				
+				if(res != 0) {
+					response.setMensaje("El usuario se eliminó correctamente!");
+				}else {
+					response.setMensaje("El usuario NO se eliminó!");
+					response.setError(true);	
+				}
+			}else {
+				response.setMensaje(resTriger.getMensaje());
+				response.setError(true);
+			}
+			
+		}catch(Exception e) {
+			response.setMensaje("Error al intentar elminar el usuario: " + e.getMessage());
+			response.setError(true);
+			e.printStackTrace();
+		}
+		
+		return response;		
+	}
+	
+	public static int getMaxAutoincrement() {
+		
+		Connection con = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		
+		int id = 0;
+		
+		try {
+			
+			con = Conexion.getConnection();
+			stmt = con.createStatement();
+			rs = stmt.executeQuery("SELECT MAX(id_usuario) FROM pa.usuario; ");
+			rs.next();
+			id = rs.getInt(1);
+			
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return id;
+	}
+	
+	
 }
+
+

@@ -12,8 +12,8 @@ public class VehiculosJDBC {
 	private static final String SQL_SELECT_BY_ID = "SELECT id_vehiculo, nombre, modelo, marca, "
 			+ " placa, usuario_id, url_foto FROM pa.vehiculo WHERE id_vehiculo = ?";
 	
-	private static final String SQL_INSERT = "INSERT INTO pa.vehiculo(nombre, modelo, marca, placa, "
-			+ " usuario_id) VALUES (?, ?, ?, ?, ?);";
+	private static final String SQL_INSERT = "INSERT INTO pa.vehiculo(nombre, modelo, marca, "
+			+ " placa, usuario_id) VALUES (?, ?, ?, ?, ?);";
 	
 	private static final String SQL_UPDATE = "UPDATE pa.vehiculo set nombre = ?, modelo = ?, "
 			+ " marca = ?, placa = ?, url_foto = ? WHERE id_vehiculo = ?;";
@@ -71,8 +71,14 @@ public class VehiculosJDBC {
 			rs = stmt.executeQuery();
 			
 			while(rs.next()) {
-				vehiculo = new Vehiculo(rs.getInt(1), rs.getString(2), rs.getString(3),
-						rs.getString(4), rs.getString(5), rs.getInt(6), rs.getString(7));
+				vehiculo = new Vehiculo();
+				vehiculo.setIdVehiculo(rs.getInt(1));
+				vehiculo.setNombre(rs.getString(2));
+				vehiculo.setModelo(rs.getString(3));
+				vehiculo.setMarca(rs.getString(4));
+				vehiculo.setPlaca(rs.getString(5));
+				vehiculo.setUsuarioId(rs.getInt(6));
+				vehiculo.setUrlFoto(rs.getString(7));
 			}
 		}catch (SQLException e) {
 			e.printStackTrace();
