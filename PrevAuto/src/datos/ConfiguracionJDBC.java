@@ -31,7 +31,7 @@ public class ConfiguracionJDBC {
 				response.setMensaje("La configuracion se guardó correctamente!");
 			}else {
 				response.setMensaje("El documento NO se guardó!");
-				response.setError(true);;
+				response.setError(true);
 			}
 			
 			
@@ -60,8 +60,14 @@ public class ConfiguracionJDBC {
 			pstmt = con.prepareStatement(SQL_DELETE_BEFORE_DELETE_USUARIO);
 			pstmt.setInt(1, idUsuario);
 			
-			pstmt.executeUpdate();
-			response.setMensaje("La configuracion se eliminó correctamente!");
+			int res = pstmt.executeUpdate();
+			
+			if(res != 0) {
+				response.setMensaje("La configuracion se eliminó correctamente!");
+			}else {
+				response.setMensaje("La configuracion NO se eliminó!");
+			}
+			
 			
 			
 		}catch(Exception e) {

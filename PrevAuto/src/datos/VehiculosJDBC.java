@@ -174,16 +174,26 @@ public class VehiculosJDBC {
 		Response response = new Response();
 		
 		try {
+			
+			Response resTrigger = DocumentosJDBC.deleteDocumentoBeforeDeleteVehiculo(idVehiculo);
+			
 			con = Conexion.getConnection();
 			pstmt = con.prepareStatement(SQL_DELETE);
 			pstmt.setInt(1, idVehiculo);
 			
-			int res = pstmt.executeUpdate();
 			
-			if(res!=0) {
-				response.setMensaje("El vehiculo se eliminó correctamente!");
+			if(!resTrigger.isError()) {
+				int res = pstmt.executeUpdate();
+				
+				if(res!=0) {
+					response.setMensaje("El vehiculo se eliminó correctamente!");
+				}else {
+					response.setMensaje("El vehiculo NO se eliminó!");
+					response.setError(true);
+				}
+				
 			}else {
-				response.setMensaje("El vehiculo NO se eliminó!");
+				response.setMensaje(resTrigger.getMensaje());
 				response.setError(true);
 			}
 			

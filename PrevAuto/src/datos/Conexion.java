@@ -41,10 +41,10 @@ public class Conexion {
 		}
 	}
 	
-	public static void close(PreparedStatement stmt) {
+	public static void close(PreparedStatement pstmt) {
 		try {
-			if(stmt != null) {
-				stmt.close();
+			if(pstmt != null) {
+				pstmt.close();
 			}
 		}catch (SQLException e) {
 			e.printStackTrace();

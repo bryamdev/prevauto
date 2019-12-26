@@ -32,6 +32,9 @@ public class DocumentosJDBC {
 			+ " fecha_vencimiento = ?, tipo_documento = ? WHERE id_documento = ?; ";
 
 	private static final String SQL_DELETE = "DELETE FROM pa.documento WHERE id_documento = ?; ";
+	
+	private static final String SQL_DELETE_BEFORE_DELETE_VEHICULO = "Delete FROM pa.documento "
+			+ " WHERE vehiculo_id = ?; ";
 
 	
 	public static List<Documento> selectDocumentosCro(int idUsuario){
@@ -152,13 +155,17 @@ public class DocumentosJDBC {
 			int res = pstmt.executeUpdate();
 			
 			if(res != 0) {
-				response.setMensaje("El documento se guardó correctamente!");
+				Response resTrigger = AlertasJDBC.insertAfterInsertDocumento(getMaxAutoincrement());
+				if(!resTrigger.isError()) {
+					response.setMensaje("El documento se guardó correctamente!");
+				}else {
+					response.setMensaje("El documnto se guardo pero NO la alerta");
+				}
 			}else {
 				response.setMensaje("El documento NO se guardó!");
 				response.setError(true);;
 			}
-			
-			
+						
 		}catch(SQLException e) {
 			response.setMensaje("Error al intentar registrar el documento: " + e.getMessage());
 			response.setError(true);;
@@ -212,18 +219,27 @@ public class DocumentosJDBC {
 		Response response = new Response();
 		
 		try{
+			Response resTrigger = AlertasJDBC.deleteBeforeDeleteDocumento(idDocumento);
+			
 			con = Conexion.getConnection();
 			pstmt = con.prepareStatement(SQL_DELETE);
 			pstmt.setInt(1, idDocumento);
 			
-			int res = pstmt.executeUpdate();
-			
-			if(res != 0) {
-				response.setMensaje("El documento se eliminó correctamente!");
+			if(!resTrigger.isError()) {
+				
+				int res = pstmt.executeUpdate();
+				
+				if(res != 0) {
+					response.setMensaje("El documento se eliminó correctamente!");
+				}else {
+					response.setMensaje("El documento NO se eliminó!");
+					response.setError(true);;
+				}
 			}else {
-				response.setMensaje("El documento NO se eliminó!");
-				response.setError(true);;
+				response.setMensaje(resTrigger.getMensaje());
+				response.setError(true);
 			}
+			
 			
 		}catch(SQLException e) {
 			response.setMensaje("Error al intentar eliminar el documento: " + e.getMessage());
@@ -235,4 +251,67 @@ public class DocumentosJDBC {
 		}
 		return response;
 	}
+	
+	public static Response deleteDocumentoBeforeDeleteVehiculo(int idVehiculo) {
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		Response response = new Response();
+		
+		try {
+			con = Conexion.getConnection();
+			pstmt = con.prepareStatement(SQL_DELETE_BEFORE_DELETE_VEHICULO);
+			pstmt.setInt(1, idVehiculo);
+			
+			pstmt.executeUpdate();
+			response.setMensaje("Documentos eliminados!");
+			
+			/*
+			if(res != 0) {
+				response.setMensaje("El documento se eliminó correctamente!");
+			}else {
+				response.setMensaje("El documento NO se eliminó!");
+				response.setError(true);
+			}
+			
+			*/
+			
+		}catch(Exception e) {
+			response.setMensaje("Error al intentar eliminar el documento: " + e.getMessage());
+			response.setError(true);
+			e.printStackTrace();
+		}finally {
+			Conexion.close(con);
+			Conexion.close(pstmt);
+		}
+				
+		return response;
+		
+	}
+	
+	public static int getMaxAutoincrement() {
+		
+		Connection con = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		
+		int id = 0;
+		
+		try {
+			
+			con = Conexion.getConnection();
+			stmt = con.createStatement();
+			rs = stmt.executeQuery("SELECT MAX(id_documento) FROM pa.documento; ");
+			rs.next();
+			id = rs.getInt(1);
+			
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return id;
+	}
+	
 }
