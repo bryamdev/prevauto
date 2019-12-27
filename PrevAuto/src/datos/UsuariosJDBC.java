@@ -146,13 +146,14 @@ public class UsuariosJDBC {
 		
 		try {
 			
-			Response resTriger = ConfiguracionJDBC.DeleteBeforeDeleteUsuario(idUsuario);
+			Response resTrigger = ConfiguracionJDBC.DeleteBeforeDeleteUsuario(idUsuario);
+			Response resTrigger2 = VehiculosJDBC.deleteBeforeDeleteUsuario(idUsuario);
 			
 			con = Conexion.getConnection();
 			pstmt = con.prepareStatement(SQL_DELETE);
 			pstmt.setInt(1, idUsuario);
 			
-			if(!resTriger.isError()) {
+			if(!resTrigger.isError() && !resTrigger2.isError()) {
 				
 				int res = pstmt.executeUpdate();
 				
@@ -162,8 +163,12 @@ public class UsuariosJDBC {
 					response.setMensaje("El usuario NO se eliminó!");
 					response.setError(true);	
 				}
-			}else {
-				response.setMensaje(resTriger.getMensaje());
+			}else if(resTrigger.isError()) {
+				response.setMensaje(resTrigger.getMensaje());
+				response.setError(true);
+				
+			}else if(resTrigger2.isError()) {
+				response.setMensaje(resTrigger2.getMensaje());
 				response.setError(true);
 			}
 			

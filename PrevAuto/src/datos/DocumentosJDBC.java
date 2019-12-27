@@ -33,8 +33,8 @@ public class DocumentosJDBC {
 
 	private static final String SQL_DELETE = "DELETE FROM pa.documento WHERE id_documento = ?; ";
 	
-	private static final String SQL_DELETE_BEFORE_DELETE_VEHICULO = "Delete FROM pa.documento "
-			+ " WHERE vehiculo_id = ?; ";
+	private static final String SQL_SELECT_BY_VEHICULO_ID = "SELECT id_documento FROM pa.documento "
+			+ " WHERE vehiculo_id = ?"; 
 
 	
 	public static List<Documento> selectDocumentosCro(int idUsuario){
@@ -256,16 +256,20 @@ public class DocumentosJDBC {
 		
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		
 		Response response = new Response();
 		
 		try {
 			con = Conexion.getConnection();
-			pstmt = con.prepareStatement(SQL_DELETE_BEFORE_DELETE_VEHICULO);
+			pstmt = con.prepareStatement(SQL_SELECT_BY_VEHICULO_ID);
 			pstmt.setInt(1, idVehiculo);
 			
-			pstmt.executeUpdate();
-			response.setMensaje("Documentos eliminados!");
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				deleteDocumento(rs.getInt(1));
+			}
 			
 			/*
 			if(res != 0) {

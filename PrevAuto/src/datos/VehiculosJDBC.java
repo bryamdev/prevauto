@@ -20,6 +20,9 @@ public class VehiculosJDBC {
 	
 	private static final String SQL_DELETE = "DELETE FROM pa.vehiculo WHERE id_vehiculo = ?;";
 	
+	private static final String SQL_SELECT_BY_USUARIO_ID = "SELECT id_vehiculo FROM pa.vehiculo "
+			+ " WHERE usuario_id = ?; ";
+	
 	//Toma todos los vehiculos de la base de datos
 	//Devuelve una lista con objetos de tipo vehiculo
 	public static List<Vehiculo> selectVehiculos(int usuarioId){
@@ -208,4 +211,40 @@ public class VehiculosJDBC {
 		
 		return response;
 	}
+	
+	public static Response deleteBeforeDeleteUsuario(int idUsuario) {
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Response response = new Response();
+		
+		try {
+			con = Conexion.getConnection();
+			pstmt = con.prepareStatement(SQL_SELECT_BY_USUARIO_ID);
+			pstmt.setInt(1, idUsuario);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				deleteVehiculo(rs.getInt(1));
+			}
+			
+			response.setMensaje("Los vehiculos se eliminaron correctamente!");
+			
+		}catch(Exception e) {
+			response.setMensaje("Error al intentar eliminar los vehiculos: " + e.getMessage());
+			response.setError(true);
+			e.printStackTrace();
+		}finally {
+			Conexion.close(con);
+			Conexion.close(pstmt);
+		}
+		
+		
+		return response;
+		
+	}
+	
+	
 }
