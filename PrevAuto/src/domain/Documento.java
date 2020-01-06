@@ -85,10 +85,13 @@ public class Documento {
 	public void setTipoDocumentoNombre(String tipoDocumentoNombre) {
 		this.tipoDocumentoNombre = tipoDocumentoNombre;
 	}
-	
-	
-	
-	
-	
+
+	@Override
+	public String toString() {
+		return "Documento: {idDocumento=" + idDocumento + ", numero=" + numero + ", fechaExpedicion=" + fechaExpedicion
+				+ ", fechaVencimiento=" + fechaVencimiento + ", vehiculoId=" + vehiculoId + ", tipoDocumento="
+				+ tipoDocumento + ", nombreVehiculo=" + nombreVehiculo + ", tipoDocumentoNombre=" + tipoDocumentoNombre
+				+ "}";
+	}
 	
 }

@@ -84,12 +84,13 @@ public class Vehiculo {
 	public void setUsuarioId(int usuarioId) {
 		this.usuarioId = usuarioId;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Vehiculo: {idVehiculo=" + idVehiculo + ", nombre=" + nombre + ", modelo=" + modelo + ", marca=" + marca
+				+ ", placa=" + placa + ", usuarioId=" + usuarioId + ", urlFoto=" + urlFoto + "}";
+	}
 	
-	
-	
-	
-	
-	
-	
-	
+		
 }

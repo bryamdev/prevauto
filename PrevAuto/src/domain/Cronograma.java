@@ -26,7 +26,11 @@ public class Cronograma {
 	public void setExternos(List<Externo> externos) {
 		this.externos = externos;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Cronograma: {documentos=" + documentos + ", externos=" + externos + "}";
+	}
 	
 
 }

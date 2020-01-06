@@ -27,6 +27,7 @@ public class Test {
 		
 		*/
 		
+		/*
 		Connection con = null;
 		
 		try {
@@ -36,6 +37,13 @@ public class Test {
 			
 		}catch(Exception e) {
 			e.printStackTrace();
+		}
+		*/
+		
+		List<Vehiculo> vehiculos = VehiculosJDBC.selectVehiculos(25);
+		
+		for(Vehiculo v : vehiculos) {
+			System.out.println(v);
 		}
 		
 	

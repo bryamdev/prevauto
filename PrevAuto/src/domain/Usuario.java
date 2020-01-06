@@ -83,7 +83,13 @@ public class Usuario {
 	public void setUrlFoto(String urlFoto) {
 		this.urlFoto = urlFoto;
 	}
-	
-	
+
+
+	@Override
+	public String toString() {
+		return "Usuario: {idUsuario=" + idUsuario + ", nombre=" + nombre + ", apellido=" + apellido + ", email=" + email
+				+ ", password=" + password + ", cedula=" + cedula + ", telefono=" + telefono + ", urlFoto=" + urlFoto
+				+ "}";
+	}
 
 }

@@ -582,7 +582,13 @@ function actualizarDocumento(idDocumento) {
         if (this.readyState == 4 && this.status == 200) {
             let res = JSON.parse(this.responseText);
             console.log(res);
-            alert(res.mensaje);
+            if (!res.error) {
+                alert(res.mensaje);
+                verDetallesVehiculo(obtenerValorCookie('idVehiculo'));
+                listarDocumentos(obtenerValorCookie('idVehiculo'));
+            } else {
+                alert(res.mensaje);
+            }
         }
     }
 }
@@ -602,6 +608,7 @@ function eliminarDocumento(idDocumento) {
 
             if (!res.error) {
                 alert(res.mensaje);
+                verDetallesVehiculo(obtenerValorCookie('idVehiculo'));
                 listarDocumentos(obtenerValorCookie('idVehiculo'));
             } else {
                 alert(res.mensaje);

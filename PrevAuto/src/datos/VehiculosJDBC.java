@@ -7,20 +7,20 @@ import domain.*;
 public class VehiculosJDBC {
 	
 	private static final String SQL_LISTAR = "SELECT id_vehiculo, nombre, marca, url_foto FROM "
-			+ " pa.vehiculo WHERE usuario_id = ?";
+			+ " vehiculo WHERE usuario_id = ?";
 	
 	private static final String SQL_SELECT_BY_ID = "SELECT id_vehiculo, nombre, modelo, marca, "
-			+ " placa, usuario_id, url_foto FROM pa.vehiculo WHERE id_vehiculo = ?";
+			+ " placa, usuario_id, url_foto FROM vehiculo WHERE id_vehiculo = ?";
 	
-	private static final String SQL_INSERT = "INSERT INTO pa.vehiculo(nombre, modelo, marca, "
+	private static final String SQL_INSERT = "INSERT INTO vehiculo(nombre, modelo, marca, "
 			+ " placa, usuario_id) VALUES (?, ?, ?, ?, ?);";
 	
-	private static final String SQL_UPDATE = "UPDATE pa.vehiculo set nombre = ?, modelo = ?, "
+	private static final String SQL_UPDATE = "UPDATE vehiculo set nombre = ?, modelo = ?, "
 			+ " marca = ?, placa = ? WHERE id_vehiculo = ?;";
 	
-	private static final String SQL_DELETE = "DELETE FROM pa.vehiculo WHERE id_vehiculo = ?;";
+	private static final String SQL_DELETE = "DELETE FROM vehiculo WHERE id_vehiculo = ?;";
 	
-	private static final String SQL_SELECT_BY_USUARIO_ID = "SELECT id_vehiculo FROM pa.vehiculo "
+	private static final String SQL_SELECT_BY_USUARIO_ID = "SELECT id_vehiculo FROM vehiculo "
 			+ " WHERE usuario_id = ?; ";
 	
 	//Toma todos los vehiculos de la base de datos
