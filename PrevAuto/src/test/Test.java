@@ -1,6 +1,7 @@
 package test;
 
 import java.sql.*;
+import java.util.List;
 
 import datos.*;
 import domain.*;
@@ -38,13 +39,38 @@ public class Test {
 		System.out.println(res);
 		*/
 		
-		Response res = AlertasJDBC.insertAfterInsertDocumento(8);
+		/*Response res = AlertasJDBC.insertAfterInsertDocumento(8);
+		System.out.println(res);
+		*/
+		
+		
+		
+		Usuario usuario = new Usuario();
+		usuario.setNombre("Daniela");
+		usuario.setApellido("Gomez");
+		usuario.setEmail("daniela@hotmail.com");
+		usuario.setPassword("daniela1234");
+		usuario.setCedula(76534221L);
+		usuario.setTelefono(3463465478L);
+		
+		//Response res = UsuariosJDBC.insertUsuario(usuario);
+		Response res = UsuariosJDBC.deleteUsuario(23);
 		System.out.println(res);
 		
 		
-				
+		/*
+		List<Alerta> res = AlertasJDBC.selectAlertas(21);
+		if(res.size()!=0) {
+			for(Alerta a : res) {
+				System.out.println(a);
+			}
+		}else {
+			System.out.println("No hay aleras!");
+		}
 		
-
+		*/
+		
+	
 	}
 
 }

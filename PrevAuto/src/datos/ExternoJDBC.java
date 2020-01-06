@@ -5,15 +5,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import domain.Externo;
-import datos.*;
+
 
 public class ExternoJDBC {
 
-	private static final String SQL_SELECT = "SELECT pa.evento_externo.nombre,"
-			+ " pa.evento_externo.fecha_evento, pa.tipo_evento.nombre, pa.evento_externo.descripcion"
-			+ " FROM pa.evento_externo, pa.tipo_evento WHERE"
-			+ " pa.evento_externo.tipo_evento_id=pa.tipo_evento.id_tipo_evento"
-			+ " ORDER BY pa.evento_externo.fecha_evento;";
+	private static final String SQL_SELECT = "SELECT evento_externo.nombre,"
+			+ " evento_externo.fecha_evento, tipo_evento.nombre, evento_externo.descripcion"
+			+ " FROM evento_externo, tipo_evento WHERE"
+			+ " evento_externo.tipo_evento_id = tipo_evento.id_tipo_evento"
+			+ " ORDER BY evento_externo.fecha_evento;";
 	
 	public static List<Externo> selectExternos(){
 		Connection con = null;

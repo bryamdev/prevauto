@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+
+</head>
+
+<body>
+
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper blue darken-2">
+                <a href="#!" class="brand-logo right">PrevAuto</a>
+                <a href="#!" data-target="slide-out" class="sidenav-trigger show-on-large"><i class="material-icons">menu</i></a>
+            </div>
+        </nav>
+    </div>
+
+
+    <!--SideNav-->
+    <ul id="slide-out" class="sidenav sidenav-fixed">
+        <li>
+            <div class="user-view">
+                <div class="background">
+                    <img src="img/office.jpg">
+                </div>
+                <a href="#user" id="urlFoto"><img class="circle" src="img/yuna.jpg"></a>
+                <a href="#name"><span class="white-text name" id="nombre">John Doe</span></a>
+                <a href="#email"><span class="white-text email" id="email">jdandturk@gmail.com</span></a>
+            </div>
+        </li>
+        <li class="active"><a href="#!"><i class="material-icons">directions_car</i>Vehiculos</a></li>
+        <li><a href="cronograma.html"><i class="material-icons">date_range</i>Cronograma</a></li>
+        <li><a href="#!"><i class="material-icons">notifications</i>Alertas</a></li>
+        <li><a href="sitiosRecomendados.html"><i class="material-icons">collections_bookmark</i>Sitios Recomendados</a></li>
+        <li>
+            <div class="divider"></div>
+        </li>
+        <li><a class="subheader">Configuración</a></li>
+        <li><a class="waves-effect" href="#!"><i class="material-icons">account_box</i>Cuenta</a></li>
+        <li><a class="waves-effect" href="#!" onclick="cerrarSesion();"><i class="material-icons">exit_to_app</i>Salir</a></li>
+    </ul>
+
+    <div class="content">
+        <div class="container">
+            <div class="section" id="vehiculos">
+
+                <nav>
+                    <div class="nav-wrapper blue darken-2">
+                        <div class="col s12">
+                            <a href="vehiculos.html" class="breadcrumb"> Vehiculos</a>
+                            <a href="#!" class="breadcrumb">Documentos</a>
+                            <a href="#!" class="breadcrumb">Registro</a>
+
+                        </div>
+                    </div>
+                </nav>
+                <br>
+                <div class="row">
+                    <div class="col s10 offset-s3">
+                        <h4>Registro de documento</h4>
+                    </div>
+                    <form action="#" method="GET">
+                        <div class="col s9 offset-s3">
+                            <div class="row">
+                                <div class="input-field col s7">
+                                    <label for="text">Numero</label>
+                                    <input type="text" id="numero" class="validate">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s7">
+                                    <label class="active">Tipo Documento</label>
+                                    <select id="tDocumento" class="browser-default">
+                                        <option value="1">Soat</option>
+                                        <option value="2">Tecno-Mecánica</option>
+                                        <option value="3">Impuesto Vehicular</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s7">
+                                    <label for="text">Fecha Vencimiento</label>
+                                    <input type="date" id="fExpedicion" value="2020-01-01">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s7">
+                                    <label for="text">Fecha Vencimiento</label>
+                                    <input type="date" id="fVencimiento" value="2020-01-01">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col s10 offset-s4">
+                            <div class="row">
+                                <div class="col s6">
+                                    <a class="waves-effect waves-light btn" id="validar" onclick="">Registrar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="js/servicesAjax.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            M.AutoInit();
+        });
+
+        window.onload = function() {
+            listarVehiculos();
+            leerCookies();
+        }
+    </script>
+</body>
+
+</html>

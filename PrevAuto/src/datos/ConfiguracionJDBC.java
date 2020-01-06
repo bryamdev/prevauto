@@ -6,10 +6,10 @@ import domain.Response;
 
 public class ConfiguracionJDBC {
 	
-	private static final String SQL_INSERT_AFTER_INSERT_USUARIO = "INSERT INTO pa.configuracion "
-			+ " (valor, usuario_id, tipo_config_id) VALUES (10, ?, 1);";
+	private static final String SQL_INSERT_AFTER_INSERT_USUARIO = "INSERT INTO configuracion "
+			+ " (tipo_config_id, valor, usuario_id) VALUES (1, 10, ?);";
 	
-	private static final String SQL_DELETE_BEFORE_DELETE_USUARIO = "DELETE FROM pa.configuracion "
+	private static final String SQL_DELETE_BEFORE_DELETE_USUARIO = "DELETE FROM configuracion "
 			+ " WHERE configuracion.usuario_id = ?; ";
 	
 	

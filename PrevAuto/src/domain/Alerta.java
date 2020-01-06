@@ -1,6 +1,6 @@
 package domain;
 
-import java.util.Date;
+
 
 public class Alerta {
 	
@@ -53,6 +53,15 @@ public class Alerta {
 	public void setFechaVencimiento(String fechaVencimiento) {
 		this.fechaVencimiento = fechaVencimiento;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Alerta: {tipoDocumento=" + tipoDocumento + ", numeroDocumento=" + numeroDocumento + ", nombreVehiculo="
+				+ nombreVehiculo + ", fechaVencimiento=" + fechaVencimiento + "}";
+	}
+	
+	
 	
 	
 	

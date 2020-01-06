@@ -16,7 +16,7 @@ public class VehiculosJDBC {
 			+ " placa, usuario_id) VALUES (?, ?, ?, ?, ?);";
 	
 	private static final String SQL_UPDATE = "UPDATE pa.vehiculo set nombre = ?, modelo = ?, "
-			+ " marca = ?, placa = ?, url_foto = ? WHERE id_vehiculo = ?;";
+			+ " marca = ?, placa = ? WHERE id_vehiculo = ?;";
 	
 	private static final String SQL_DELETE = "DELETE FROM pa.vehiculo WHERE id_vehiculo = ?;";
 	
@@ -145,8 +145,8 @@ public class VehiculosJDBC {
 			pstmt.setString(2, vehiculo.getModelo());
 			pstmt.setString(3, vehiculo.getMarca());
 			pstmt.setString(4, vehiculo.getPlaca());
-			pstmt.setString(5, vehiculo.getUrlFoto());
-			pstmt.setInt(6, vehiculo.getIdVehiculo());
+			//pstmt.setString(5, vehiculo.getUrlFoto());
+			pstmt.setInt(5, vehiculo.getIdVehiculo());
 			
 			int res = pstmt.executeUpdate();
 			

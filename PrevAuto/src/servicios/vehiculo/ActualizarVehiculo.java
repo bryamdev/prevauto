@@ -33,7 +33,7 @@ public class ActualizarVehiculo extends HttpServlet {
 		String modelo = request.getParameter("modelo");
 		String marca = request.getParameter("marca");
 		String placa = request.getParameter("placa");
-		String urlFoto = request.getParameter("urlFoto");
+		//String urlFoto = request.getParameter("urlFoto");
 		
 		Vehiculo vehiculo = new Vehiculo();
 		vehiculo.setIdVehiculo(idVehiculo);
@@ -41,7 +41,7 @@ public class ActualizarVehiculo extends HttpServlet {
 		vehiculo.setModelo(modelo);
 		vehiculo.setMarca(marca);
 		vehiculo.setPlaca(placa);
-		vehiculo.setUrlFoto(urlFoto);
+		//vehiculo.setUrlFoto(urlFoto);
 		
 		Response res = VehiculosJDBC.updateVehiculo(vehiculo);
 		String json = TransformacionObjetos.obtenerJson(res);

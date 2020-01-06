@@ -6,10 +6,10 @@ import domain.Sitio;
 
 public class SitiosJDBC {
 	
-	private static final String SQL_SELECT = "SELECT pa.sitio.nombre, pa.tipo_sitio.nombre, "
-			+ "pa.sitio.horario, pa.sitio.descripcion, pa.sitio.telefono, pa.sitio.direccion, "
-			+ "pa.sitio.url_foto FROM pa.sitio, pa.tipo_sitio WHERE pa.sitio.tipo = "
-			+ "pa.tipo_sitio.idtipo_sitios ORDER BY pa.sitio.prioridad";
+	private static final String SQL_SELECT = "SELECT sitio.nombre, tipo_sitio.nombre, "
+			+ " sitio.horario, sitio.descripcion, sitio.telefono, sitio.direccion, sitio.url_foto "
+			+ " FROM sitio, tipo_sitio WHERE sitio.tipo = tipo_sitio.id_tipo_sitio "
+			+ " ORDER BY sitio.prioridad; ";
 	
 	//Toma todos los sitios de la base de datos
 	//Devuelve una lista con objetos de tipo Sitio
@@ -26,8 +26,14 @@ public class SitiosJDBC {
 			rs = stmt.executeQuery();
 			
 			while(rs.next()) {
-				sitio = new Sitio(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4)
-						, rs.getLong(5), rs.getString(6), rs.getString(7));
+				sitio = new Sitio();
+				sitio.setNombre(rs.getString(1));
+				sitio.setTipoNombre(rs.getString(2));
+				sitio.setHorario(rs.getString(3));
+				sitio.setDescripcion(rs.getString(4));
+				sitio.setTelefono(rs.getLong(5));
+				sitio.setDireccion(rs.getString(6));
+				sitio.setUrlFoto(rs.getString(7));
 				
 				sitios.add(sitio);
 			}

@@ -8,19 +8,19 @@ import domain.Response;
 
 public class AlertasJDBC {
 	
-	private static final String SQL_SELECT = "SELECT pa.tipo_documento.nombre, pa.documento.numero, "
-			+ " pa.vehiculo.nombre, pa.documento.fecha_vencimiento "
-			+ " FROM pa.alerta, pa.documento, pa.tipo_documento, pa.vehiculo, pa.usuario "
-			+ " WHERE pa.alerta.documento_id = pa.documento.id_documento "
-			+ " AND pa.documento.vehiculo_id = pa.vehiculo.id_vehiculo "
-			+ " AND pa.documento.tipo_documento = pa.tipo_documento.id_tipo_documento "
-			+ " AND pa.vehiculo.usuario_id = pa.usuario.id_usuario "
-			+ " AND pa.usuario.id_usuario = ? AND pa.alerta.activo = 1; ";
+	private static final String SQL_SELECT = "SELECT tipo_documento.nombre, documento.numero, "
+			+ " vehiculo.nombre, documento.fecha_vencimiento "
+			+ " FROM alerta, documento, tipo_documento, vehiculo, usuario "
+			+ " WHERE alerta.documento_id = documento.id_documento "
+			+ " AND documento.vehiculo_id = vehiculo.id_vehiculo "
+			+ " AND documento.tipo_documento = tipo_documento.id_tipo_documento "
+			+ " AND vehiculo.usuario_id = usuario.id_usuario "
+			+ " AND usuario.id_usuario = ? AND alerta.activo = 0; ";
 	
 	private static final String SQL_INSERT_AFTER_INSERT_DOCUMENTO = "INSERT INTO alerta(activo, documento_id) "
 			+ " VALUES (0, ?);";
 	
-	private static final String SQL_DELETE_BEFORE_DELETE_DOCUMENTO = "DELETE FROM pa.alerta "
+	private static final String SQL_DELETE_BEFORE_DELETE_DOCUMENTO = "DELETE FROM alerta "
 			+ " WHERE documento_id = ?";
 	
 		

@@ -8,32 +8,32 @@ import domain.*;
 public class DocumentosJDBC {
 	
 	private static final String SQL_LISTAR = "SELECT documento.id_documento, "
-			+ " tipo_documento.nombre, documento.numero, "
-			+ " documento.fecha_expedicion, documento.fecha_vencimiento "
-			+ " FROM pa.documento, pa.tipo_documento "
-			+ " WHERE pa.documento.vehiculo_id = ? "
-			+ " AND pa.documento.tipo_documento = pa.tipo_documento.id_tipo_documento";
+			+ " tipo_documento.nombre, documento.numero, documento.fecha_expedicion, "
+			+ " documento.fecha_vencimiento, documento.tipo_documento "
+			+ " FROM documento, tipo_documento "
+			+ " WHERE documento.vehiculo_id = ? "
+			+ " AND documento.tipo_documento = tipo_documento.id_tipo_documento";
 
 	private static final String SQL_SELECT_CRO = "SELECT documento.fecha_vencimiento, "
 			+ " vehiculo.nombre, tipo_documento.nombre, documento.vehiculo_id, documento.id_documento "
-			+ " FROM pa.documento, pa.vehiculo, pa.tipo_documento, pa.usuario "
-			+ " WHERE pa.usuario.id_usuario = pa.vehiculo.usuario_id "  
-			+ " AND pa.vehiculo.id_vehiculo = pa.documento.vehiculo_id " 
-			+ " AND pa.tipo_documento.id_tipo_documento = pa.documento.tipo_documento "
-			+ " AND pa.usuario.id_usuario = ? ORDER BY pa.vehiculo.nombre; ";
+			+ " FROM documento, vehiculo, tipo_documento, usuario "
+			+ " WHERE usuario.id_usuario = vehiculo.usuario_id "  
+			+ " AND vehiculo.id_vehiculo = documento.vehiculo_id " 
+			+ " AND tipo_documento.id_tipo_documento = documento.tipo_documento "
+			+ " AND usuario.id_usuario = ? ORDER BY documento.fecha_vencimiento; ";
 
 	private static final String SQL_SELECT_BY_ID = "SELECT id_documento, numero, fecha_expedicion, "
-			+ " fecha_vencimiento, tipo_documento FROM pa.documento WHERE id_documento = ?; ";
+			+ " fecha_vencimiento, tipo_documento FROM documento WHERE id_documento = ?; ";
 	
-	private static final String SQL_INSERT = "INSERT INTO pa.documento(numero, fecha_expedicion, "
+	private static final String SQL_INSERT = "INSERT INTO documento(numero, fecha_expedicion, "
 			+ " fecha_vencimiento, vehiculo_id, tipo_documento) VALUES (?, ?, ?, ?, ?); ";
 
-	private static final String SQL_UPDATE = "UPDATE pa.documento SET numero = ?, fecha_expedicion = ?,"
+	private static final String SQL_UPDATE = "UPDATE documento SET numero = ?, fecha_expedicion = ?,"
 			+ " fecha_vencimiento = ?, tipo_documento = ? WHERE id_documento = ?; ";
 
-	private static final String SQL_DELETE = "DELETE FROM pa.documento WHERE id_documento = ?; ";
+	private static final String SQL_DELETE = "DELETE FROM documento WHERE id_documento = ?; ";
 	
-	private static final String SQL_SELECT_BY_VEHICULO_ID = "SELECT id_documento FROM pa.documento "
+	private static final String SQL_SELECT_BY_VEHICULO_ID = "SELECT id_documento FROM documento "
 			+ " WHERE vehiculo_id = ?"; 
 
 	
@@ -92,6 +92,7 @@ public class DocumentosJDBC {
 				documento.setNumero(rs.getLong(3));
 				documento.setFechaExpedicion(rs.getString(4));
 				documento.setFechaVencimiento(rs.getString(5));
+				documento.setTipoDocumento(rs.getInt(6));
 				
 				documentos.add(documento);
 			}
@@ -306,7 +307,7 @@ public class DocumentosJDBC {
 			
 			con = Conexion.getConnection();
 			stmt = con.createStatement();
-			rs = stmt.executeQuery("SELECT MAX(id_documento) FROM pa.documento; ");
+			rs = stmt.executeQuery("SELECT MAX(id_documento) FROM documento; ");
 			rs.next();
 			id = rs.getInt(1);
 			

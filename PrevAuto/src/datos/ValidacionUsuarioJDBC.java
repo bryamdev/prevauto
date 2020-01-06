@@ -6,7 +6,7 @@ import domain.Response;
 
 public class ValidacionUsuarioJDBC {
 	
-	private static final String SQL_SELECT = "SELECT id_usuario FROM pa.usuario "
+	private static final String SQL_SELECT = "SELECT id_usuario FROM usuario "
 			+ " WHERE email = ? AND password = ?";
 	
 	public static Response validarUsuario(String email, String password) {
@@ -35,8 +35,11 @@ public class ValidacionUsuarioJDBC {
 			response.setMensaje("Error al intentar logear: " + e.getMessage());
 			response.setError(true);
 			e.printStackTrace();
+		}finally {
+			Conexion.close(rs);
+			Conexion.close(pstmt);
+			Conexion.close(con);
 		}
-		
 		
 		return response;
 		

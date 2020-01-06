@@ -9,16 +9,16 @@ import datos.Conexion;
 public class UsuariosJDBC {
 	
 	private static final String SQL_SELECT = "SELECT id_usuario, nombre, apellido, email, "
-			+ " password, cedula, telefono, url_foto FROM pa.usuario WHERE id_usuario = ?;";
+			+ " password, cedula, telefono, url_foto FROM usuario WHERE id_usuario = ?;";
 	
-	private static final String SQL_INSERT = "INSERT INTO pa.usuario (nombre, apellido, email,"
+	private static final String SQL_INSERT = "INSERT INTO usuario (nombre, apellido, email,"
 			+ " password, cedula, telefono) VALUES ( ?, ?, ?, ?, ?, ?);"; 
 	
-	private static final String SQL_UPDATE = "UPDATE pa.usuario  set nombre = ?, apellido = ?,"
+	private static final String SQL_UPDATE = "UPDATE usuario  set nombre = ?, apellido = ?,"
 			+ " email = ?, password = ?, cedula = ?, telefono = ?, url_foto = ? "
 			+ " WHERE id_usuario = ?;"; 
 	
-	private static final String SQL_DELETE = "DELETE FROM pa.usuario WHERE id_usuario = ?; ";
+	private static final String SQL_DELETE = "DELETE FROM usuario WHERE id_usuario = ?; ";
 	
 	public static Usuario selectUsuario(int idUsuario) {
 		
@@ -132,6 +132,9 @@ public class UsuariosJDBC {
 			response.setMensaje("Error al actualizar el usuario: " + e.getMessage());
 			response.setError(true);
 			e.printStackTrace();
+		}finally {
+			Conexion.close(con);
+			Conexion.close(pstmt);
 		}
 		
 		return response;
@@ -176,6 +179,9 @@ public class UsuariosJDBC {
 			response.setMensaje("Error al intentar elminar el usuario: " + e.getMessage());
 			response.setError(true);
 			e.printStackTrace();
+		}finally {
+			Conexion.close(con);
+			Conexion.close(pstmt);
 		}
 		
 		return response;		
@@ -193,13 +199,17 @@ public class UsuariosJDBC {
 			
 			con = Conexion.getConnection();
 			stmt = con.createStatement();
-			rs = stmt.executeQuery("SELECT MAX(id_usuario) FROM pa.usuario; ");
+			rs = stmt.executeQuery("SELECT MAX(id_usuario) FROM usuario; ");
 			rs.next();
 			id = rs.getInt(1);
 			
 			
 		}catch(Exception e) {
 			e.printStackTrace();
+		}finally {
+			Conexion.close(rs);
+			Conexion.close(stmt);
+			Conexion.close(con);			
 		}
 		
 		return id;

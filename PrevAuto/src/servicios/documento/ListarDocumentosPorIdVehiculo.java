@@ -19,10 +19,10 @@ public class ListarDocumentosPorIdVehiculo extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		
 		int idVehiculo = Integer.parseInt(request.getParameter("idVehiculo")); 
 		
 		List<Documento> documentos = DocumentosJDBC.selectDocumentos(idVehiculo);
-		
 		String json = TransformacionObjetos.obtenerJson(documentos);
 		
 		response.setContentType("application/json");
@@ -30,6 +30,7 @@ public class ListarDocumentosPorIdVehiculo extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		out.print(json);
 		out.flush();
+		
 	}
 
 }

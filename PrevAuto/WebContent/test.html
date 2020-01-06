@@ -133,17 +133,55 @@
                         <div class="card-content invoice-print-area">
 
                             <div class="row">
+
                                 <div class="col m6 s12 display-flex invoice-logo mt-1 push-m6">
                                     <img src="img/vehiculos/20.jpg" width="220" height="126">
                                 </div>
+
+                                <!--
                                 <div class="col m6 s12 pull-m6">
                                     <h4 class="indigo-text">Destroyer</h4>
                                     <h6><b class="etiqueta">Placa: </b>IAM345</h6>
+                                    Placa:<input type="text" value="PLA34">
                                     <h6><b class="etiqueta">Marca: </b>Ford</h6>
                                     <h6><b class="etiqueta">Modelo: </b>2019</h6>
                                 </div>
+                                -->
+
+                                <div class="col m6 s12 pull-m6">
+                                    <table>
+                                        <tr>
+                                            <td><b class="etiqueta">Nombre:</b></td>
+                                            <td>
+                                                <h6> <input type="text" value="nombre"></h6>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><b class="etiqueta">Placa:</b></td>
+                                            <td>
+                                                <h6> <input type="text" value="PLACA"></h6>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><b class="etiqueta">Marca:</b></td>
+                                            <td>
+                                                <h6> <input type="text" value="PLACA"></h6>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><b class="etiqueta">Modelo:</b></td>
+                                            <td>
+                                                <h6> <input type="text" value="PLACA"></h6>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+
+
                             </div>
                             <div class="divider mb-3 mt-3"></div>
+
                             <div class="row">
                                 <div class="col m6 s12">
                                     <br>
@@ -157,8 +195,106 @@
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
+                </div>
+
+                <div class="documentos">
+
+                    <div class="col xl9 m8 s12">
+                        <div class="card">
+                            <div class="card-content invoice-print-area">
+                                <h4>Documentos</h4>
+
+                                <div class="documento" id="d1">
+                                    <ul class="collection">
+                                        <li class="collection-item avatar">
+                                            <i class="material-icons circle red">contact_mail</i>
+
+                                            <div class="row">
+                                                <div class="input-field col s7">
+                                                    <label class="active">Numero</label>
+                                                    <input type="text" id="numero" value="1234" class="validate">
+                                                </div>
+
+                                            </div>
+                                            <div class="row">
+
+                                                <div class="input-field col s7">
+                                                    <label class="active">Tipo Documento</label>
+                                                    <select id="tDocumento" class="browser-default">
+                                                        <option value="1">Soat</option>
+                                                        <option value="2" selected>Tecno-Mecánica</option>
+                                                        <option value="3">Impuesto Vehicular</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="input-field col s7">
+                                                    <label class="active">Fecha Vencimiento</label>
+                                                    <input type="date" id="fVencimiento" value="2025-03-01">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="input-field col s7">
+                                                    <label class="active">Fecha Expedicion</label>
+                                                    <input type="date" id="fExpedicion" value="2024-02-28">
+                                                </div>
+                                            </div>
+
+                                            <br>
+                                            <a hred="#!" onClick="actualizarDocumento(1);" class="waves-effect waves-light btn">Modificar</a>
+                                            <a hred="#!" class="waves-effect waves-light btn">Eliminar</a>
+                                            <div><br></div>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="documento" id="d2">
+                                    <ul class="collection">
+                                        <li class="collection-item avatar">
+                                            <i class="material-icons circle red">contact_mail</i>
+                                            <div class="row">
+                                                <div class="input-field col s5">
+                                                    <label class="active">Numero</label>
+                                                    <input type="text" id="numero" value="9876" class="validate">
+                                                </div>
+                                                <div class="input-field col s5">
+                                                    <label class="active">Tipo Documento</label>
+                                                    <select id="tDocumento" class="browser-default">
+                                                        <option value="1">Soat</option>
+                                                        <option value="2">Tecno-Mecánica</option>
+                                                        <option value="3">Impuesto Vehicular</option>
+                                                    </select>
+                                                </div>
+
+                                            </div>
+                                            <div class="row">
+                                                <div class="input-field col s5">
+                                                    <label class="active">Fecha Expedicion</label>
+                                                    <input type="date" id="fExpedicion" value="2051-11-28">
+                                                </div>
+                                                <div class="input-field col s5">
+                                                    <label class="active">Fecha Vencimiento</label>
+                                                    <input type="date" id="fVencimiento" value="2055-05-05">
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <a hred="#!" onClick="actualizarDocumento(2);" class="waves-effect waves-light btn">Modificar</a>
+                                            <a hred="#!" class="waves-effect waves-light btn">Eliminar</a>
+                                            <div><br></div>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <a class="waves-effect waves-light btn" href="#!" onclick="mostrarFormRegistroVehiculo();">Añadir</a>
+                    </div>
+
                 </div>
 
 

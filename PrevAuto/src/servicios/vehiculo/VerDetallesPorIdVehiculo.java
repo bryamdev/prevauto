@@ -20,8 +20,12 @@ public class VerDetallesPorIdVehiculo extends HttpServlet {
 		
 		int idVehiculo = Integer.parseInt(request.getParameter("idVehiculo"));
 		
-		Vehiculo vehiculo = VehiculosJDBC.selectDetallesById(idVehiculo);
+		Cookie cookieidVehiculo = new Cookie("idVehiculo", Integer.toString(idVehiculo));
+		cookieidVehiculo.setPath("/PrevAuto");
+		cookieidVehiculo.setMaxAge(300);
+		response.addCookie(cookieidVehiculo);
 		
+		Vehiculo vehiculo = VehiculosJDBC.selectDetallesById(idVehiculo);		
 		String json = TransformacionObjetos.obtenerJson(vehiculo);
 		
 		response.setContentType("application/json");
@@ -29,6 +33,9 @@ public class VerDetallesPorIdVehiculo extends HttpServlet {
 		
 		out.print(json);
 		out.flush();
+		
+		
+		
 	}
 
 }
