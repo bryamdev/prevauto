@@ -6,10 +6,19 @@ import java.sql.*;
 
 public class Conexion {
 	
+	/*
 	private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
 	private static final String JDBC_URL = "jdbc:mysql://localhost:3306/pa?useSSL=false";
 	private static final String JDBC_USER = "root";
 	private static final String JDBC_PASS = "admin";
+	*/
+	
+	
+	private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+	private static final String JDBC_URL = "jdbc:mysql://remotemysql.com:3306/hh4pFTYsk4?useSSL=false";
+	private static final String JDBC_USER = "hh4pFTYsk4";
+	private static final String JDBC_PASS = "3DggfloneO";
+	
 	
 	public static synchronized Connection getConnection()throws SQLException{
 		try {
@@ -20,6 +29,9 @@ public class Conexion {
 		
 		return DriverManager.getConnection(JDBC_URL,JDBC_USER, JDBC_PASS);
 	}
+	
+	
+	
 	
 	public static void close(Connection c) {
 		try {

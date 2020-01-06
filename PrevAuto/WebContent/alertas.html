@@ -21,7 +21,7 @@
         <nav>
             <div class="nav-wrapper blue darken-2">
                 <a href="#!" class="brand-logo right">PrevAuto</a>
-                <a href="#!" data-target="slide-out" class="sidenav-trigger show-on-large"><i class="material-icons">menu</i></a>
+                <a href="#" data-target="slide-out" class="sidenav-trigger show-on-large"><i class="material-icons">menu</i></a>
             </div>
         </nav>
     </div>
@@ -39,9 +39,9 @@
                 <a href="#email"><span class="white-text email" id="email">jdandturk@gmail.com</span></a>
             </div>
         </li>
-        <li class="active"><a href="#!"><i class="material-icons">directions_car</i>Vehiculos</a></li>
+        <li><a href="vehiculos.html"><i class="material-icons">directions_car</i>Vehiculos</a></li>
         <li><a href="cronograma.html"><i class="material-icons">date_range</i>Cronograma</a></li>
-        <li><a href="alertas.html"><i class="material-icons">notifications</i>Alertas</a></li>
+        <li class="active"><a href="#!"><i class="material-icons">notifications</i>Alertas</a></li>
         <li><a href="sitiosRecomendados.html"><i class="material-icons">collections_bookmark</i>Sitios Recomendados</a></li>
         <li>
             <div class="divider"></div>
@@ -53,37 +53,12 @@
 
     <div class="content">
         <div class="container">
-            <div class="section" id="vehiculos">
-                <div id="listaVehiculos">
-                    <!-- Ejemplo para estructurar la respuesta del servicio -->
-                    <!--
-                    <div class="col s12 m7">
-                        <div class="card horizontal">
-                            <div class="card-image">
-                                <img src="img/vehiculos/3.jpg">
-                            </div>
-                            <div class="card-stacked">
-                                <div class="card-content">
-                                    <p><b> La Nave</b></p>
-                                    <p>Tesla Model X </p>
-                                </div>
-                                <div class="card-action">
-                                    <a href="#">Detalles</a>
-                                    <a href="#">Eliminar</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    -->
-                </div>
-                <div>
-                    <a class="waves-effect waves-light btn" href="#!" onclick="mostrarFormRegistroVehiculo();">Añadir</a>
-                </div>
+            <div class="section">
+
+                <h1>ALERTAS!</h1>
+
 
             </div>
-
-
-
         </div>
     </div>
 
@@ -100,7 +75,6 @@
         });
 
         window.onload = function() {
-            listarVehiculos();
             leerCookies();
         }
     </script>
