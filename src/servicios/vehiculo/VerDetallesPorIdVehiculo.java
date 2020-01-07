@@ -21,7 +21,7 @@ public class VerDetallesPorIdVehiculo extends HttpServlet {
 		int idVehiculo = Integer.parseInt(request.getParameter("idVehiculo"));
 		
 		Cookie cookieidVehiculo = new Cookie("idVehiculo", Integer.toString(idVehiculo));
-		cookieidVehiculo.setPath("/PrevAuto");
+		cookieidVehiculo.setPath("/");
 		cookieidVehiculo.setMaxAge(300);
 		response.addCookie(cookieidVehiculo);
 		

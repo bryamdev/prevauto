@@ -34,19 +34,19 @@ public class LogeoUsuario extends HttpServlet {
 			Usuario usuLogueado = UsuariosJDBC.selectUsuario(Integer.parseInt(res.getMensaje()));
 			
 			Cookie cookieIdUsuario = new Cookie("idUsuario", Integer.toString(usuLogueado.getIdUsuario()));
-			cookieIdUsuario.setPath("/PrevAuto");
+			cookieIdUsuario.setPath("/");
 			cookieIdUsuario.setMaxAge(600);
 			
 			Cookie cookieNombreUsuario = new Cookie("nombre", usuLogueado.getNombre());
-			cookieNombreUsuario.setPath("/PrevAuto");
+			cookieNombreUsuario.setPath("/");
 			cookieNombreUsuario.setMaxAge(600);
 			
 			Cookie cookieEmailUsuario = new Cookie("email", usuLogueado.getEmail());
-			cookieEmailUsuario.setPath("/PrevAuto");
+			cookieEmailUsuario.setPath("/");
 			cookieEmailUsuario.setMaxAge(600);
 
 			Cookie cookieUrlFoto = new Cookie("urlFoto", usuLogueado.getUrlFoto());
-			cookieUrlFoto.setPath("/PrevAuto");
+			cookieUrlFoto.setPath("/");
 			cookieUrlFoto.setMaxAge(600);
 			
 			response.addCookie(cookieIdUsuario);
