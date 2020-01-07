@@ -42,7 +42,7 @@
         <configuration>
           <source>1.8</source>
           <target>1.8</target>
-		  <encoding>ISO-8859-1</encoding>
+		      <encoding>ISO-8859-1</encoding>
         </configuration>
       </plugin>
       <plugin>
@@ -52,6 +52,30 @@
           <warSourceDirectory>WebContent</warSourceDirectory>
         </configuration>
       </plugin>
+      
+      <!-- Este plugin a Maven que copie los archivos jar de los que depende de su aplicación en el directorio target/dependency -->
+      <plugin>
+      	<groupId>org.apache.maven.plugins</groupId>
+       	<artifactId>maven-dependency-plugin</artifactId>
+        <version>3.0.1</version>
+        <executions>
+        	<execution>
+            	<id>copy-dependencies</id>
+                <phase>package</phase>
+                <goals><goal>copy-dependencies</goal></goals>
+             </execution>
+       	</executions>
+      </plugin>
+
+      <!-- Plugin de Heroku -->
+      <plugin>
+        <groupId>com.heroku.sdk</groupId>
+        <artifactId>heroku-maven-plugin</artifactId>
+        <version>2.0.8</version>
+      </plugin>
+
+
+      
     </plugins>
   </build>
 </project>
