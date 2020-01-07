@@ -1,1 +1,1 @@
-web: java -cp target/classes/:target/dependency/* PrevAuto
+web: java -cp target/classes/:target/dependency/* 
