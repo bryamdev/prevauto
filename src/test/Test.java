@@ -1,6 +1,7 @@
 package test;
 
 import java.sql.*;
+import java.time.*;
 import java.util.List;
 
 import datos.*;
@@ -48,7 +49,7 @@ public class Test {
 		}
 		*/
 		
-		
+		/*
 		Configuracion conf = new Configuracion();
 		conf.setValor(20);
 		conf.setUsuarioId(7);
@@ -60,6 +61,10 @@ public class Test {
 		
 		Configuracion conf2 = ConfiguracionJDBC.selectConfiguracion(7);
 		System.out.println(conf2);
+		*/
+		
+		LocalTime myObj = LocalTime.now(); // Create a date object
+	    System.out.println(myObj);
 		
 	
 		
