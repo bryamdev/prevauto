@@ -2,7 +2,7 @@ package test;
 
 import java.sql.*;
 import java.time.*;
-import java.util.List;
+import java.util.Date;
 
 import datos.*;
 import domain.*;
@@ -63,8 +63,15 @@ public class Test {
 		System.out.println(conf2);
 		*/
 		
-		LocalTime myObj = LocalTime.now(); // Create a date object
-	    System.out.println(myObj);
+		LocalDate fecha = LocalDate.now();
+		String fechaTexto = fecha.toString();
+		
+		LocalTime hora = LocalTime.now();
+		String horaTexto = hora.toString();
+		
+		Date date = new Date();
+		System.out.println(date);
+		
 		
 	
 		

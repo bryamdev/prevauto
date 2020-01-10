@@ -3,6 +3,7 @@ package servicios.core;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.*;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,10 +31,13 @@ public class verFecha extends HttpServlet {
 		LocalTime hora = LocalTime.now();
 		String horaTexto = hora.toString();
 		
+		Date date = new Date();
+		
+		
 		PrintWriter out = response.getWriter();
 		out.println(fechaTexto);
 		out.println(horaTexto);
-		
+		out.println(date);
 		
 		
 	}
