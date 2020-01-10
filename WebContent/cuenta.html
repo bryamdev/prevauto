@@ -39,41 +39,32 @@
                 <a href="#email"><span class="white-text email" id="email">jdandturk@gmail.com</span></a>
             </div>
         </li>
-        <li class="active"><a href="#!"><i class="material-icons">directions_car</i>Vehiculos</a></li>
+        <li><a href="vehiculos.html"><i class="material-icons">directions_car</i>Vehiculos</a></li>
         <li><a href="cronograma.html"><i class="material-icons">date_range</i>Cronograma</a></li>
-        <li><a href="#!"><i class="material-icons">notifications</i>Alertas</a></li>
+        <li><a href="alertas.html"><i class="material-icons">notifications</i>Alertas</a></li>
         <li><a href="sitiosRecomendados.html"><i class="material-icons">collections_bookmark</i>Sitios Recomendados</a></li>
         <li>
             <div class="divider"></div>
         </li>
         <li><a class="subheader">Configuración</a></li>
-        <li><a class="waves-effect" href="#!"><i class="material-icons">account_box</i>Cuenta</a></li>
+        <li><a class="active" href="#!"><i class="material-icons">account_box</i>Cuenta</a></li>
         <li><a class="waves-effect" href="#!" onclick="cerrarSesion();"><i class="material-icons">exit_to_app</i>Salir</a></li>
     </ul>
 
     <div class="content">
         <div class="container">
-            <div class="section" id="alertas">
-
-                <!--
-                <h3>Alertas</h3>
-
-                <blockquote class="alerta">
-                    <p>El documento <b>Soat</b> del vehiculo <b>Azulito</b> se vencerá en <b>12-11-2020</b></p>
-                </blockquote>
-                -->
+            <div id="usuario" class="section">
 
 
                 <div class="card">
                     <div class="card-content">
-                        <!-- <div class="card-body"> -->
 
                         <div class="row">
-                            <div class="col s12 active" id="account" style="display: block;">
+                            <div class="col s12 active" style="display: block;">
                                 <!-- users edit media object start -->
                                 <div class="media display-flex align-items-center mb-2">
-                                    <a class="mr-2" href="#">
-                                        <img src="img/usuarios/default.jpg" alt="users avatar" class="z-depth-4 circle" width="64" height="64">
+                                    <a id="urlFotoCuenta" class="mr-2" href="#">
+                                        <img src="img/usuarios/6.jpg" alt="users avatar" class="z-depth-4 circle" width="64" height="64">
                                     </a>
                                 </div>
 
@@ -82,17 +73,17 @@
                                         <div class="col s12 m6">
                                             <div class="row">
                                                 <div class="col s12 input-field">
-                                                    <input id="username" type="text" class="validate" value="dean3004">
+                                                    <input id="nombreCuenta" type="text" class="validate" value=" ">
                                                     <label class="active">Nombre</label>
 
                                                 </div>
                                                 <div class="col s12 input-field">
-                                                    <input id="name" type="text" class="validate" value="Dean Stanley">
+                                                    <input id="apellidoCuenta" type="text" class="validate" value=" ">
                                                     <label class="active">Apellido</label>
 
                                                 </div>
                                                 <div class="col s12 input-field">
-                                                    <input id="email" type="email" class="validate" value="deanstanley@gmail.com">
+                                                    <input id="emailCuenta" type="email" class="validate" value="@">
                                                     <label class="active">E-mail</label>
 
                                                 </div>
@@ -101,22 +92,17 @@
                                         <div class="col s12 m6">
                                             <div class="row">
                                                 <div class="col s12 input-field">
-                                                    <input id="username" type="password" class="validate" value="dean3004">
+                                                    <input id="passwordCuenta" type="password" class="validate" value=" ">
                                                     <label class="active">Password</label>
 
                                                 </div>
                                                 <div class="col s12 input-field">
-                                                    <input id="name" type="number" class="validate" value="1234">
+                                                    <input id="cedulaCuenta" type="number" class="validate" value="0">
                                                     <label class="active">Cedula</label>
 
                                                 </div>
                                                 <div class="col s12 input-field">
-                                                    <input id="email" type="number" class="validate" value="5678">
-                                                    <label class="active">Telefono</label>
-
-                                                </div>
-                                                <div class="col s12 input-field">
-                                                    <input id="email" type="number" class="validate" value="5678">
+                                                    <input id="telefonoCuenta" type="number" class="validate" value="0">
                                                     <label class="active">Telefono</label>
 
                                                 </div>
@@ -124,23 +110,46 @@
                                         </div>
                                         <div class="col s12 display-flex justify-content-end mt-3">
 
-                                            <a hred="#!" onClick="actualizarDocumento(1);" class="waves-effect waves-light btn">Modificar</a>
-                                            <a hred="#!" class="waves-effect waves-light btn">Eliminar</a>
+                                            <a hred="#!" onClick="actualizarUsuario();" class="waves-effect waves-light btn">Modificar</a>
+                                            <a hred="#!" onClick="verConfiguracionUsuario();" class="waves-effect waves-light btn">Ajustes</a>
                                         </div>
                                     </div>
                                 </form>
-                                <!-- users edit account form ends -->
                             </div>
                         </div>
                     </div>
                 </div>
 
+                <div id="ajustes">
 
+                    <!--
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="row">
+                                <div class="col s12 active" style="display: block;">
+                                    <div class="col s12 m6">
+                                        <h4>Ajustes</h4>
+                                        <div class="row">
+                                            <div class="col s12 input-field">
+                                                <input id="diasAjustes" type="number" class="validate" value="10">
+                                                <label class="active">Dias</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col s12 display-flex justify-content-end mt-3">
+                                        <a hred="#!" onClick="" class="waves-effect waves-light btn">Modificar</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    -->
+
+                </div>
 
             </div>
         </div>
     </div>
-
 
 
 
@@ -154,9 +163,8 @@
         });
 
         window.onload = function() {
-            //listarVehiculos();
-            //leerCookies();
             verDetallesUsuario();
+
         }
     </script>
 </body>

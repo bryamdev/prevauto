@@ -70,6 +70,147 @@ function registrarUsuario() {
     }
 }
 
+function verDetallesUsuario() {
+
+    //let idUsuario = 1;
+    let idUsuario = obtenerValorCookie('idUsuario');
+    let serviceUrl = `usuario/verDetalles?idUsuario=${idUsuario}`;
+
+
+    const request = new XMLHttpRequest();
+    request.open('GET', serviceUrl, true);
+    request.send();
+
+    //let usuario = document.querySelector('#usuario');
+
+    let nombre = document.querySelector('#nombreCuenta');
+    let apellido = document.querySelector('#apellidoCuenta');
+    let email = document.querySelector('#emailCuenta');
+    let password = document.querySelector('#passwordCuenta');
+    let cedula = document.querySelector('#cedulaCuenta');
+    let telefono = document.querySelector('#telefonoCuenta');
+    let urlFoto = document.querySelector('#urlFotoCuenta');
+
+
+    request.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            let datos = JSON.parse(this.responseText);
+            console.log(datos);
+
+            nombre.value = datos.nombre;
+            apellido.value = datos.apellido;
+            email.value = datos.email;
+            password.value = datos.password;
+            cedula.value = datos.cedula;
+            telefono.value = datos.telefono;
+            urlFoto.innerHTML = `<img src="${datos.urlFoto}" alt="users avatar" class="z-depth-4 circle" width="64" height="64">`;
+        }
+    }
+
+
+}
+
+function actualizarUsuario() {
+
+    let idUsuario = obtenerValorCookie('idUsuario');
+    let nombre = document.querySelector('#nombreCuenta').value;
+    let apellido = document.querySelector('#apellidoCuenta').value;
+    let email = document.querySelector('#emailCuenta').value;
+    let password = document.querySelector('#passwordCuenta').value;
+    let cedula = document.querySelector('#cedulaCuenta').value;
+    let telefono = document.querySelector('#telefonoCuenta').value;
+
+    console.log(idUsuario);
+    console.log(nombre);
+    console.log(apellido);
+    console.log(email);
+    console.log(password);
+    console.log(cedula);
+    console.log(telefono);
+
+    let serviceUrl = `usuario/actualizar?idUsuario=${idUsuario}&nombre=${nombre}&apellido=${apellido}&email=${email}&password=${password}&cedula=${cedula}&telefono=${telefono}`;
+
+    const request = new XMLHttpRequest();
+    request.open('GET', serviceUrl, true);
+    request.send();
+
+    request.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            let res = JSON.parse(this.responseText);
+            console.log(res);
+
+        }
+    }
+
+}
+
+function verConfiguracionUsuario() {
+
+    let idUsuario = obtenerValorCookie('idUsuario');
+    let serviceUrl = `usuario/configuracion/verPorId?idUsuario=${idUsuario}`;
+
+    const request = new XMLHttpRequest();
+    request.open('GET', serviceUrl, true);
+    request.send();
+
+
+    let ajustes = document.querySelector('#ajustes');
+
+    request.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            let datos = JSON.parse(this.responseText);
+            console.log(datos);
+            ajustes.innerHTML = `<div class="card">
+                                    <div class="card-content">
+                                        <div class="row">
+                                            <div class="col s12 active" style="display: block;">
+                                                <div class="col s12 m6">
+                                                    <h4>Ajustes</h4>
+                                                    <div class="row">
+                                                        <div class="col s12 input-field">
+                                                            <input id="diasAjustes" type="number" class="validate" value="${datos.valor}">
+                                                            <label class="active">Dias</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col s12 display-flex justify-content-end mt-3">
+                                                    <a hred="#!" onClick="actualizarConfiguracionUsuario();" class="waves-effect waves-light btn">Modificar</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>`;
+        }
+    }
+
+
+}
+
+function actualizarConfiguracionUsuario() {
+
+    let idUsuario = obtenerValorCookie('idUsuario');
+    let valor = document.querySelector('#diasAjustes').value;
+
+    console.log(idUsuario);
+    console.log(valor);
+
+    let serviceUrl = `usuario/configuracion/actualizar?valor=${valor}&idUsuario=${idUsuario}`;
+
+    const request = new XMLHttpRequest();
+    request.open('GET', serviceUrl, true);
+    request.send();
+
+    request.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            let res = JSON.parse(this.responseText);
+            console.log(res);
+        }
+    }
+
+
+}
+
+
 function mostrarFormRegistroVehiculo() {
 
     let vehiculos = document.querySelector('#vehiculos');
@@ -132,13 +273,14 @@ function registrarVehiculo() {
     let marca = document.querySelector('#marca').value;
     let modelo = document.querySelector('#modelo').value;
     let placa = document.querySelector('#placa').value;
+    let idUsuario = obtenerValorCookie('idUsuario');
 
     console.log(nombre);
     console.log(marca);
     console.log(modelo);
     console.log(placa);
 
-    let serviceUrl = `vehiculo/registrar?nombre=${nombre}&marca=${marca}&modelo=${modelo}&placa=${placa}&idUsuario=${obtenerValorCookie('idUsuario')}`;
+    let serviceUrl = `vehiculo/registrar?nombre=${nombre}&marca=${marca}&modelo=${modelo}&placa=${placa}&idUsuario=${idUsuario}`;
 
     const request = new XMLHttpRequest();
     request.open('GET', serviceUrl, true);

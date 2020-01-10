@@ -15,7 +15,7 @@ public class UsuariosJDBC {
 			+ " password, cedula, telefono) VALUES ( ?, ?, ?, ?, ?, ?);"; 
 	
 	private static final String SQL_UPDATE = "UPDATE usuario  set nombre = ?, apellido = ?,"
-			+ " email = ?, password = ?, cedula = ?, telefono = ?, url_foto = ? "
+			+ " email = ?, password = ?, cedula = ?, telefono = ? "
 			+ " WHERE id_usuario = ?;"; 
 	
 	private static final String SQL_DELETE = "DELETE FROM usuario WHERE id_usuario = ?; ";
@@ -116,8 +116,8 @@ public class UsuariosJDBC {
 			pstmt.setString(4, usuario.getPassword());
 			pstmt.setLong(5, usuario.getCedula());
 			pstmt.setLong(6, usuario.getTelefono());
-			pstmt.setString(7, usuario.getUrlFoto());
-			pstmt.setInt(8, usuario.getIdUsuario());
+			//pstmt.setString(7, usuario.getUrlFoto());
+			pstmt.setInt(7, usuario.getIdUsuario());
 			
 			int res = pstmt.executeUpdate();
 			
@@ -125,7 +125,7 @@ public class UsuariosJDBC {
 				response.setMensaje("El usuario se actualizó correctamente!");
 			}else {
 				response.setMensaje("El usuario NO se actualizó!");
-				response.setError(true);;
+				response.setError(true);
 			}
 			
 		}catch(SQLException e) {

@@ -40,11 +40,26 @@ public class Test {
 		}
 		*/
 		
+		/*
 		List<Vehiculo> vehiculos = VehiculosJDBC.selectVehiculos(25);
 		
 		for(Vehiculo v : vehiculos) {
 			System.out.println(v);
 		}
+		*/
+		
+		
+		Configuracion conf = new Configuracion();
+		conf.setValor(20);
+		conf.setUsuarioId(7);
+		Response res = ConfiguracionJDBC.updateConfiguracion(conf);
+		System.out.println(res);
+		
+		
+		
+		
+		Configuracion conf2 = ConfiguracionJDBC.selectConfiguracion(7);
+		System.out.println(conf2);
 		
 	
 		
