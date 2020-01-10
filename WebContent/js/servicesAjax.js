@@ -204,6 +204,7 @@ function actualizarConfiguracionUsuario() {
         if (this.readyState == 4 && this.status == 200) {
             let res = JSON.parse(this.responseText);
             console.log(res);
+            alert(res.mensaje);
         }
     }
 
