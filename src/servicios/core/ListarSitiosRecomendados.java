@@ -16,6 +16,14 @@ import javax.servlet.http.*;
 @WebServlet("/core/listarSitiosRecomendados")
 public class ListarSitiosRecomendados extends HttpServlet {
 	
+	private static final long serialVersionUID = 1L;
+    
+	  
+    public ListarSitiosRecomendados() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+	
 	
 	//Obtiene la cadena json de sitios y lo envia como respuesta
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 

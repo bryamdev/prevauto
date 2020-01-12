@@ -138,6 +138,7 @@ function actualizarUsuario() {
         if (this.readyState == 4 && this.status == 200) {
             let res = JSON.parse(this.responseText);
             console.log(res);
+            alert(res.mensaje);
 
         }
     }
@@ -170,6 +171,7 @@ function verConfiguracionUsuario() {
                                                         <div class="col s12 input-field">
                                                             <input id="diasAjustes" type="number" class="validate" value="${datos.valor}">
                                                             <label class="active">Dias</label>
+                                                            <p>Dias de anticipación para las alertas de vencimiento de documentos</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -760,41 +762,6 @@ function eliminarDocumento(idDocumento) {
     }
 }
 
-function listarSitiosRecomendados() {
-    console.log("Listando sitios");
-
-    let serviceUrl = 'core/listarSitiosRecomendados';
-
-    const request = new XMLHttpRequest();
-    request.open('GET', serviceUrl, true);
-    request.send();
-
-    request.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-
-            let sitiosRecomentados = document.querySelector('#sitiosRecomendados');
-
-            let datos = JSON.parse(this.responseText);
-            console.log(datos);
-
-            for (item of datos) {
-
-                sitiosRecomentados.innerHTML += `<ul class="collection">
-                <li class="collection-item avatar">
-                    <i class="material-icons circle green">place</i>
-                    <span class="title">${item.nombre}</span>
-                    <p>${item.tipoNombre}</p>
-                    <p>${item.telefono}</p>
-                    <p>${item.direccion}</p>
-                    <p>${item.horario}</p>
-                    <p>${item.descripcion}</p>
-                    <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-                </li>
-            </ul>`;
-            }
-        }
-    }
-}
 
 function verCronograma() {
 
@@ -856,6 +823,104 @@ function verCronograma() {
 }
 
 
+function actualizarAlertas() {
+    console.log("Actuaizando alertas");
+
+    let idUsuario = obtenerValorCookie('idUsuario');
+    let serviceUrl = `core/actualizarAlertas?idUsuario=${idUsuario}`;
+
+    const request = new XMLHttpRequest();
+    request.open('GET', serviceUrl, true);
+    request.send();
+
+    request.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            let res = JSON.parse(this.responseText);
+            console.log(res);
+        }
+    }
+
+
+}
+
+function verAlertas() {
+
+    console.log("Listando alertas");
+
+    let idUsuario = obtenerValorCookie('idUsuario');
+    let serviceUrl = `core/verAlertas?idUsuario=${idUsuario}`;
+
+    const request = new XMLHttpRequest();
+    request.open('GET', serviceUrl, true);
+    request.send();
+
+
+    request.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+
+            let datos = JSON.parse(this.responseText);
+            console.log(datos);
+
+            let alertas = document.querySelector('#alertas');
+
+            if (datos.length != 0) {
+                for (let item of datos) {
+
+                    alertas.innerHTML += `<blockquote class="alerta">
+                                            <p>El/la <b>${item.tipoDocumentoNombre}</b> 
+                                            con número <b>${item.numeroDocumento}</b> 
+                                            del vehículo <b>${item.nombreVehiculo}</b> 
+                                            se vencerá en <b>${item.fechaVencimiento}</b> 
+                                            <b>(${item.diasRestantes} dias)</b></p>
+                                        </blockquote>`;
+                }
+            } else {
+                alertas.innerHTML = `<blockquote class="alerta">No hay alertas de documentos pendientes</blockquote>`;
+            }
+
+
+        }
+    }
+
+}
+
+
+function listarSitiosRecomendados() {
+    console.log("Listando sitios");
+
+    let serviceUrl = 'core/listarSitiosRecomendados';
+
+    const request = new XMLHttpRequest();
+    request.open('GET', serviceUrl, true);
+    request.send();
+
+    request.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+
+            let sitiosRecomentados = document.querySelector('#sitiosRecomendados');
+
+            let datos = JSON.parse(this.responseText);
+            console.log(datos);
+
+            for (item of datos) {
+
+                sitiosRecomentados.innerHTML += `<ul class="collection">
+                <li class="collection-item avatar">
+                    <i class="material-icons circle green">place</i>
+                    <span class="title">${item.nombre}</span>
+                    <p>${item.tipoNombre}</p>
+                    <p>${item.telefono}</p>
+                    <p>${item.direccion}</p>
+                    <p>${item.horario}</p>
+                    <p>${item.descripcion}</p>
+                    <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+                </li>
+            </ul>`;
+            }
+        }
+    }
+}
+
 
 function obtenerValorCookie(clave) {
 
@@ -876,15 +941,29 @@ function obtenerValorCookie(clave) {
 
 }
 
-function leerCookies() {
+function verificarSesion() {
 
-    let nombre = document.querySelector('#nombre');
-    let email = document.querySelector('#email');
-    let urlFoto = document.querySelector('#urlFoto');
+    let idUsuario = obtenerValorCookie('idUsuario');
 
-    nombre.innerHTML = obtenerValorCookie('nombre');
-    email.innerHTML = obtenerValorCookie('email');
-    urlFoto.innerHTML = `<img class="circle" src="${obtenerValorCookie('urlFoto')}">`;
+    if (idUsuario != null) {
+        console.log("Si");
+
+        actualizarAlertas();
+
+        let nombre = document.querySelector('#nombre');
+        let email = document.querySelector('#email');
+        let urlFoto = document.querySelector('#urlFoto');
+
+        nombre.innerHTML = obtenerValorCookie('nombre');
+        email.innerHTML = obtenerValorCookie('email');
+        urlFoto.innerHTML = `<img class="circle" src="${obtenerValorCookie('urlFoto')}">`;
+
+    } else {
+        console.log("No");
+        location.href = 'login.html';
+    }
+
+    //console.log(idUsuario);
 
 }
 

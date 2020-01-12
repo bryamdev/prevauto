@@ -1,9 +1,14 @@
 package test;
 
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.time.*;
 import java.util.Date;
+import java.util.List;
 
+import com.sun.el.parser.ParseException;
+
+import core.ProcesoFechas;
 import datos.*;
 import domain.*;
 
@@ -63,6 +68,7 @@ public class Test {
 		System.out.println(conf2);
 		*/
 		
+		/*
 		LocalDate fecha = LocalDate.now();
 		String fechaTexto = fecha.toString();
 		
@@ -70,10 +76,61 @@ public class Test {
 		String horaTexto = hora.toString();
 		
 		Date date = new Date();
+		
+		SimpleDateFormat formateador = new SimpleDateFormat("YYYY-MM-DD");
+		String fechaFormateada = formateador.format(date);
+		
+		System.out.println(fechaTexto);
+		System.out.println(horaTexto);
 		System.out.println(date);
+		System.out.println(fechaFormateada);
+		*/
+		
+		/*
+		String fechaInicioTexto = "2020-10-11";
+		String fechaFinalTexto = "2020-11-11";
+		
+		Date fechaInicioDate = ProcesoFechas.convertToDate(fechaInicioTexto);
+		Date fechaFinalDate = ProcesoFechas.convertToDate(fechaFinalTexto);
 		
 		
-	
+		int dias = ProcesoFechas.diferenciaDias(fechaInicioDate, fechaFinalDate);
+		System.out.println(dias);
+		*/
+		
+		
+		/*
+		int idUsuario = 25;
+		
+		
+		System.out.println("Dias de configuracion: " + ConfiguracionJDBC.selectDiasValue(idUsuario));
+		
+		
+		List<Documento> documentos = DocumentosJDBC.selectDocumentosCro(idUsuario);
+		for(Documento d : documentos) {
+			System.out.println(d);
+			
+			Date fecha1 = new Date();
+			Date fecha2 = ProcesoFechas.convertToDate(d.getFechaVencimiento());
+			
+			int dias2 = ProcesoFechas.diferenciaDias(fecha1, fecha2);
+			System.out.println(dias2);
+			
+			int diasConf = ConfiguracionJDBC.selectDiasValue(idUsuario);
+			if(dias2 <= diasConf && dias2>0) {
+				Response res = AlertasJDBC.activarAlerta(d.getIdDocumento());
+				System.out.println(res.getMensaje());
+			}else {
+				Response res = AlertasJDBC.desactivarAlerta(d.getIdDocumento());
+				System.out.println(res.getMensaje());
+			}
+		}	
+		*/
+		
+		int idUsuario = 40;
+		Response response = AlertasJDBC.modificarEstadoAlertas(idUsuario);
+		System.out.println(response);
+		
 		
 	
 	}

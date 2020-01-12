@@ -34,9 +34,9 @@
                 <div class="background">
                     <img src="img/office.jpg">
                 </div>
-                <a href="#user" id="urlFoto"><img class="circle" src="img/yuna.jpg"></a>
-                <a href="#name"><span class="white-text name" id="nombre">John Doe</span></a>
-                <a href="#email"><span class="white-text email" id="email">jdandturk@gmail.com</span></a>
+                <a href="#user" id="urlFoto"><img class="circle" src="img/usuarios/unknown.jpg"></a>
+                <a href="#name"><span class="white-text name" id="nombre"> </span></a>
+                <a href="#email"><span class="white-text email" id="email"> </span></a>
             </div>
         </li>
         <li><a href="vehiculos.html"><i class="material-icons">directions_car</i>Vehiculos</a></li>
@@ -54,9 +54,19 @@
     <div class="content">
         <div class="container">
             <div class="section">
+                <h3>Alertas</h3>
+                <div id="alertas">
 
-                <h1>ALERTAS!</h1>
+                </div>
 
+
+                <!--
+                <h3>Alertas</h3>
+
+                <blockquote class="alerta">
+                    <p>El/la <b>Soat</b> con numero <b>445566</b> del vehiculo <b>Azulito</b> se vencerá en <b>12-11-2020</b> <b>(10 dias)</b></p>
+                </blockquote>
+                -->
 
             </div>
         </div>
@@ -75,7 +85,8 @@
         });
 
         window.onload = function() {
-            leerCookies();
+            verificarSesion();
+            verAlertas();
         }
     </script>
 </body>

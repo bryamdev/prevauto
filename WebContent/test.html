@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 
 <head>
@@ -13,288 +12,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="UTF-8" />
 
+    <title>Login - PrevAuto</title>
+
 </head>
 
 <body>
 
-    <div class="navbar-fixed">
-        <nav>
-            <div class="nav-wrapper blue darken-2">
-                <a href="#!" class="brand-logo right">PrevAuto</a>
-                <a href="#" data-target="slide-out" class="sidenav-trigger show-on-large"><i class="material-icons">menu</i>a</a>
-            </div>
-        </nav>
-    </div>
 
-
-    <!--SideNav-->
-    <ul id="slide-out" class="sidenav sidenav-fixed">
-        <li>
-            <div class="user-view">
-                <div class="background">
-                    <img src="img/office.jpg">
-                </div>
-                <a href="#user" id="urlFoto"><img class="circle" src="img/yuna.jpg"></a>
-                <a href="#name"><span class="white-text name" id="nombre">John Doe</span></a>
-                <a href="#email"><span class="white-text email" id="email">jdandturk@gmail.com</span></a>
-            </div>
-        </li>
-        <li><a href="vehiculos.html"><i class="material-icons">directions_car</i>Vehiculos</a></li>
-        <li class="active"><a href="#!"><i class="material-icons">date_range</i>Cronograma</a></li>
-        <li><a href="#!"><i class="material-icons">notifications</i>Alertas</a></li>
-        <li><a href="sitiosRecomendados.html"><i class="material-icons">collections_bookmark</i>Sitios Recomendados</a></li>
-        <li>
-            <div class="divider"></div>
-        </li>
-        <li><a class="subheader">Configuración</a></li>
-        <li><a class="waves-effect" href="#!"><i class="material-icons">account_box</i>Cuenta</a></li>
-        <li><a class="waves-effect" href="#!" onclick="cerrarSesion();"><i class="material-icons">exit_to_app</i>Salir</a></li>
-    </ul>
-
-    <div class="content">
+    <div class="contentForm">
         <div class="container">
-            <div class="section">
+            <div id="usuario" class="section">
 
+                <div class="row">
+                    <div class="col s12 active" style="display: block;">
 
-                <!--
-                <div class="col xl9 m8 s12">
-                    <div class="card">
-                        <div class="card-content invoice-print-area">
+                        <div class="titulo">
+                            <h3>Registro</h3>
+                            <br>
+                        </div>
 
+                        <form>
                             <div class="row">
-                                <div class="col m6 s12 display-flex invoice-logo mt-1 push-m6">
-                                    <img src="img/vehiculos/20.jpg" width="220" height="126">
-                                </div>
-                                <div class="col m6 s12 pull-m6">
-                                    <h4 class="indigo-text">Destroyer</h4>
-                                </div>
-                            </div>
-                            <div class="divider mb-3 mt-3"></div>
-                            <div class="row">
-                                <div class="col m6 s12">
-                                    <table>
-                                        <tbody>
-                                            <tr>
-                                                <td><b class="etiqueta">Placa:</b></td>
-                                                <td>
-                                                    <h7>IAM111</h7>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><b class="etiqueta">Marca:</b></td>
-                                                <td>
-                                                    <h7>Ford</h7>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><b class="etiqueta">Modelo:</b></td>
-                                                <td>
-                                                    <h7>2020</h7>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="col m6 s12">
-                                    <br>
-                                    <br>
-                                    <div class="invoice-action-btn">
-                                        <a href="#!" class="waves-effect waves-light btn">
-                                            <span>Modificar</span>
-                                        </a>
+                                <div class="col s12 m6">
+                                    <div class="row">
+                                        <div class="col s12 input-field">
+                                            <input id="nombreCuenta" type="text" class="validate" value=" ">
+                                            <label class="active">Nombre</label>
+
+                                        </div>
+                                        <div class="col s12 input-field">
+                                            <input id="apellidoCuenta" type="text" class="validate" value=" ">
+                                            <label class="active">Apellido</label>
+
+                                        </div>
+                                        <div class="col s12 input-field">
+                                            <input id="emailCuenta" type="email" class="validate" value="@">
+                                            <label class="active">E-mail</label>
+
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="divider mb-3 mt-3"></div>
-                            <div class="invoice-action-btn">
-                                <br>
-                                <a href="#!" class="waves-effect waves-light btn">
-                                    <span>Documentos</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                -->
+                                <div class="col s12 m6">
+                                    <div class="row">
+                                        <div class="col s12 input-field">
+                                            <input id="passwordCuenta" type="password" class="validate" value=" ">
+                                            <label class="active">Password</label>
 
-                <nav>
-                    <div class="nav-wrapper blue darken-2">
-                        <div class="col s12">
-                            <a href="vehiculos.html" class="breadcrumb"> Vehiculos</a>
-                            <a href="#!" class="breadcrumb">Detalles</a>
-                        </div>
-                    </div>
-                </nav>
-                <br>
+                                        </div>
+                                        <div class="col s12 input-field">
+                                            <input id="cedulaCuenta" type="number" class="validate" value="0">
+                                            <label class="active">Cedula</label>
 
+                                        </div>
+                                        <div class="col s12 input-field">
+                                            <input id="telefonoCuenta" type="number" class="validate" value="0">
+                                            <label class="active">Telefono</label>
 
-                <div class="col xl9 m8 s12">
-                    <div class="card">
-                        <div class="card-content invoice-print-area">
-
-                            <div class="row">
-
-                                <div class="col m6 s12 display-flex invoice-logo mt-1 push-m6">
-                                    <img src="img/vehiculos/20.jpg" width="220" height="126">
-                                </div>
-
-                                <!--
-                                <div class="col m6 s12 pull-m6">
-                                    <h4 class="indigo-text">Destroyer</h4>
-                                    <h6><b class="etiqueta">Placa: </b>IAM345</h6>
-                                    Placa:<input type="text" value="PLA34">
-                                    <h6><b class="etiqueta">Marca: </b>Ford</h6>
-                                    <h6><b class="etiqueta">Modelo: </b>2019</h6>
-                                </div>
-                                -->
-
-                                <div class="col m6 s12 pull-m6">
-                                    <table>
-                                        <tr>
-                                            <td><b class="etiqueta">Nombre:</b></td>
-                                            <td>
-                                                <h6> <input type="text" value="nombre"></h6>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><b class="etiqueta">Placa:</b></td>
-                                            <td>
-                                                <h6> <input type="text" value="PLACA"></h6>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><b class="etiqueta">Marca:</b></td>
-                                            <td>
-                                                <h6> <input type="text" value="PLACA"></h6>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><b class="etiqueta">Modelo:</b></td>
-                                            <td>
-                                                <h6> <input type="text" value="PLACA"></h6>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </div>
-
-
-
-                            </div>
-                            <div class="divider mb-3 mt-3"></div>
-
-                            <div class="row">
-                                <div class="col m6 s12">
-                                    <br>
-                                    <div class="invoice-action-btn">
-                                        <a href="#!" class="waves-effect waves-light btn">
-                                            <span>Modificar</span>
-                                        </a>
-                                        <a href="#!" class="waves-effect waves-light btn">
-                                            <span>Documentos</span>
-                                        </a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="documentos">
-
-                    <div class="col xl9 m8 s12">
-                        <div class="card">
-                            <div class="card-content invoice-print-area">
-                                <h4>Documentos</h4>
-
-                                <div class="documento" id="d1">
-                                    <ul class="collection">
-                                        <li class="collection-item avatar">
-                                            <i class="material-icons circle red">contact_mail</i>
-
-                                            <div class="row">
-                                                <div class="input-field col s7">
-                                                    <label class="active">Numero</label>
-                                                    <input type="text" id="numero" value="1234" class="validate">
-                                                </div>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="input-field col s7">
-                                                    <label class="active">Tipo Documento</label>
-                                                    <select id="tDocumento" class="browser-default">
-                                                        <option value="1">Soat</option>
-                                                        <option value="2" selected>Tecno-Mecánica</option>
-                                                        <option value="3">Impuesto Vehicular</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="input-field col s7">
-                                                    <label class="active">Fecha Vencimiento</label>
-                                                    <input type="date" id="fVencimiento" value="2025-03-01">
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="input-field col s7">
-                                                    <label class="active">Fecha Expedicion</label>
-                                                    <input type="date" id="fExpedicion" value="2024-02-28">
-                                                </div>
-                                            </div>
-
-                                            <br>
-                                            <a hred="#!" onClick="actualizarDocumento(1);" class="waves-effect waves-light btn">Modificar</a>
-                                            <a hred="#!" class="waves-effect waves-light btn">Eliminar</a>
-                                            <div><br></div>
-                                        </li>
-                                    </ul>
+                                <div class="col s12 display-flex justify-content-end mt-3">
+                                    <a hred="#!" onClick="actualizarUsuario();" class="waves-effect waves-light btn">Modificar</a>
+                                    <a hred="#!" onClick="verConfiguracionUsuario();" class="waves-effect waves-light btn">Ajustes</a>
                                 </div>
-
-                                <div class="documento" id="d2">
-                                    <ul class="collection">
-                                        <li class="collection-item avatar">
-                                            <i class="material-icons circle red">contact_mail</i>
-                                            <div class="row">
-                                                <div class="input-field col s5">
-                                                    <label class="active">Numero</label>
-                                                    <input type="text" id="numero" value="9876" class="validate">
-                                                </div>
-                                                <div class="input-field col s5">
-                                                    <label class="active">Tipo Documento</label>
-                                                    <select id="tDocumento" class="browser-default">
-                                                        <option value="1">Soat</option>
-                                                        <option value="2">Tecno-Mecánica</option>
-                                                        <option value="3">Impuesto Vehicular</option>
-                                                    </select>
-                                                </div>
-
-                                            </div>
-                                            <div class="row">
-                                                <div class="input-field col s5">
-                                                    <label class="active">Fecha Expedicion</label>
-                                                    <input type="date" id="fExpedicion" value="2051-11-28">
-                                                </div>
-                                                <div class="input-field col s5">
-                                                    <label class="active">Fecha Vencimiento</label>
-                                                    <input type="date" id="fVencimiento" value="2055-05-05">
-                                                </div>
-                                            </div>
-                                            <br>
-                                            <a hred="#!" onClick="actualizarDocumento(2);" class="waves-effect waves-light btn">Modificar</a>
-                                            <a hred="#!" class="waves-effect waves-light btn">Eliminar</a>
-                                            <div><br></div>
-                                        </li>
-                                    </ul>
-                                </div>
-
                             </div>
-                        </div>
+                        </form>
                     </div>
-                    <div>
-                        <a class="waves-effect waves-light btn" href="#!" onclick="mostrarFormRegistroVehiculo();">Añadir</a>
-                    </div>
-
                 </div>
 
 
@@ -303,6 +86,9 @@
             </div>
         </div>
     </div>
+
+
+
 
 
 
@@ -316,8 +102,11 @@
             M.AutoInit();
         });
 
-        window.onload = function() {}
+        window.onload = function() {
+            //validarLogin();
+        }
     </script>
+
 </body>
 
 </html>

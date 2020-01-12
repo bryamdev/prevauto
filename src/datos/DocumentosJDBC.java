@@ -314,6 +314,10 @@ public class DocumentosJDBC {
 			
 		}catch(Exception e) {
 			e.printStackTrace();
+		}finally {
+			Conexion.close(con);
+			Conexion.close(stmt);
+			Conexion.close(rs);
 		}
 		
 		return id;

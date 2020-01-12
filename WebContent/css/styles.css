@@ -2,12 +2,21 @@
     padding-left: 300px;
 }
 
+.contentForm {
+    padding-left: 200px;
+    padding-right: 200px;
+}
+
+.formElement {
+    text-align: center;
+}
+
 blockquote {
     font-size: 25px;
 }
 
 blockquote.alerta {
-    font-size: 20px;
+    font-size: 15px;
 }
 
 @media only screen and (max-width: 992px) {
@@ -16,6 +25,10 @@ blockquote.alerta {
     footer,
     .content {
         padding-left: 0;
+    }
+    .contentReg {
+        padding-left: 0;
+        padding-right: 0;
     }
 }
 

@@ -34,9 +34,9 @@
                 <div class="background">
                     <img src="img/office.jpg">
                 </div>
-                <a href="#user" id="urlFoto"><img class="circle" src="img/yuna.jpg"></a>
-                <a href="#name"><span class="white-text name" id="nombre">John Doe</span></a>
-                <a href="#email"><span class="white-text email" id="email">jdandturk@gmail.com</span></a>
+                <a href="#user" id="urlFoto"><img class="circle" src="img/usuarios/unknown.jpg"></a>
+                <a href="#name"><span class="white-text name" id="nombre"> </span></a>
+                <a href="#email"><span class="white-text email" id="email"> </span></a>
             </div>
         </li>
         <li><a href="vehiculos.html"><i class="material-icons">directions_car</i>Vehiculos</a></li>
@@ -88,8 +88,9 @@
         });
 
         window.onload = function() {
+            verificarSesion();
             listarSitiosRecomendados();
-            leerCookies();
+
         }
     </script>
 </body>

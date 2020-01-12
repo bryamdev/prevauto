@@ -4,10 +4,13 @@ package domain;
 
 public class Alerta {
 	
-	private String tipoDocumento;
+	private String tipoDocumentoNombre;
 	private Long numeroDocumento;
 	private String nombreVehiculo;
 	private String fechaVencimiento;
+	
+	//atributo inicializado calculando direfencia de dias en tiempo de consulta
+	private int diasRestantes;
 	
 	
 	public Alerta() {
@@ -15,13 +18,13 @@ public class Alerta {
 	}
 
 
-	public String getTipoDocumento() {
-		return tipoDocumento;
+	public String getTipoDocumentoNombre() {
+		return tipoDocumentoNombre;
 	}
 
 
-	public void setTipoDocumento(String tipoDocumento) {
-		this.tipoDocumento = tipoDocumento;
+	public void setTipoDocumentoNombre(String tipoDocumentoNombre) {
+		this.tipoDocumentoNombre = tipoDocumentoNombre;
 	}
 
 
@@ -53,13 +56,25 @@ public class Alerta {
 	public void setFechaVencimiento(String fechaVencimiento) {
 		this.fechaVencimiento = fechaVencimiento;
 	}
+	
+	
+	public int getDiasRestantes() {
+		return diasRestantes;
+	}
+
+
+	public void setDiasRestantes(int diasRestantes) {
+		this.diasRestantes = diasRestantes;
+	}
 
 
 	@Override
 	public String toString() {
-		return "Alerta: {tipoDocumento=" + tipoDocumento + ", numeroDocumento=" + numeroDocumento + ", nombreVehiculo="
-				+ nombreVehiculo + ", fechaVencimiento=" + fechaVencimiento + "}";
+		return "Alerta: {tipoDocumentoNombre=" + tipoDocumentoNombre + ", numeroDocumento=" + numeroDocumento + ", nombreVehiculo="
+				+ nombreVehiculo + ", fechaVencimiento=" + fechaVencimiento + ", diasRestantes=" + diasRestantes + "}";
 	}
+
+	
 	
 	
 }

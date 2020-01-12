@@ -14,6 +14,9 @@ public class ConfiguracionJDBC {
 	
 	private static final String SQL_UPDATE = "UPDATE configuracion SET valor = ? WHERE usuario_id = ?;";
 	
+	private static final String SQL_SELECT_DIAS_VALUE = "SELECT valor FROM configuracion WHERE tipo_config_id = 1"
+			+ " AND usuario_id = ?";
+	
 	private static final String SQL_INSERT_AFTER_INSERT_USUARIO = "INSERT INTO configuracion "
 			+ " (tipo_config_id, valor, usuario_id) VALUES (1, 10, ?);";
 	
@@ -87,6 +90,38 @@ public class ConfiguracionJDBC {
 		return response;
 		
 	}
+	
+	public static int selectDiasValue(int idUsuario) {
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		int dias = 0;
+		
+		try {
+			con = Conexion.getConnection();
+			pstmt = con.prepareStatement(SQL_SELECT_DIAS_VALUE);
+			pstmt.setInt(1, idUsuario);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				dias = rs.getInt(1);
+			}
+			
+			
+			
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		return dias;
+		
+		
+	}
+	
 	
 	public static Response insertAfterInsertUsuario(int idUsuario) {
 		

@@ -1,39 +1,44 @@
 package servicios.core;
 
-import java.io.*;
-import java.util.List;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.*;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import core.TransformacionObjetos;
 import datos.AlertasJDBC;
-import domain.Alerta;
+import domain.Response;
 
-@WebServlet("/core/verAlertas")
-public class VerAlertas extends HttpServlet {
-	
+/**
+ * Servlet implementation class ModificarAlertas
+ */
+@WebServlet("/core/actualizarAlertas")
+public class ActualizarAlertas extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    
-	  
-    public VerAlertas() {
+       
+  
+    public ActualizarAlertas() {
         super();
         // TODO Auto-generated constructor stub
     }
-	
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		int idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
 		
-		List<Alerta> listaAlertas = AlertasJDBC.selectAlertas(idUsuario);
-		String json = TransformacionObjetos.obtenerJson(listaAlertas);
+		Response res = AlertasJDBC.modificarEstadoAlertas(idUsuario);
+		String json = TransformacionObjetos.obtenerJson(res);
 		
 		response.setContentType("application/json");
 		PrintWriter out = response.getWriter();
-		
-		out.print(json);
+		out.println(json);
 		out.flush();
+		
 	}
+
 
 }
