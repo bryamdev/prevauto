@@ -44,7 +44,7 @@ public class Conexion {
 	
 	public static synchronized Connection getConnection()throws SQLException{
 		
-		/*
+		
 		try {
 			Class.forName(JDBC_DRIVER);
 		}catch (Exception e) {
@@ -52,9 +52,9 @@ public class Conexion {
 		}
 		
 		return DriverManager.getConnection(JDBC_URL,JDBC_USER, JDBC_PASS);
-		*/
 		
-		return getDataSource().getConnection();
+		
+		//return getDataSource().getConnection();
 		
 	}
 	
