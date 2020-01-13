@@ -26,7 +26,8 @@ public class Conexion {
 	private static final String JDBC_PASS = "3DggfloneO";
 	
 	
-	public static synchronized Connection getConnection()throws SQLException{
+	
+	public static DataSource getDataSource() {
 		
 		BasicDataSource basicDataSource = new BasicDataSource();
 		basicDataSource.setDriverClassName(JDBC_DRIVER);
@@ -34,11 +35,26 @@ public class Conexion {
 		basicDataSource.setUsername(JDBC_USER);
 		basicDataSource.setPassword(JDBC_PASS);
 		basicDataSource.setInitialSize(1);
-		basicDataSource.setMaxTotal(2);
+		basicDataSource.setMaxTotal(8);
 		
 		DataSource dataSource = basicDataSource;
 		
-		return dataSource.getConnection();
+		return dataSource;	
+	}
+	
+	public static synchronized Connection getConnection()throws SQLException{
+		
+		/*
+		try {
+			Class.forName(JDBC_DRIVER);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return DriverManager.getConnection(JDBC_URL,JDBC_USER, JDBC_PASS);
+		*/
+		
+		return getDataSource().getConnection();
 		
 	}
 	
