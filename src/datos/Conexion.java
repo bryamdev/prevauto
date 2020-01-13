@@ -33,8 +33,8 @@ public class Conexion {
 		basicDataSource.setUrl(JDBC_URL);
 		basicDataSource.setUsername(JDBC_USER);
 		basicDataSource.setPassword(JDBC_PASS);
-		basicDataSource.setInitialSize(2);
-		basicDataSource.setMaxTotal(4);
+		basicDataSource.setInitialSize(1);
+		basicDataSource.setMaxTotal(2);
 		
 		DataSource dataSource = basicDataSource;
 		
