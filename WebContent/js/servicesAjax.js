@@ -22,7 +22,7 @@ function validarLogin() {
             let datos = JSON.parse(this.responseText);
             console.log(datos);
             if (!datos.error) {
-                alert("Bienvenido!");
+                alert("Bienvenido/a !");
                 location.href = "vehiculos.html";
             } else {
                 alert(datos.mensaje);
@@ -164,19 +164,26 @@ function verConfiguracionUsuario() {
             ajustes.innerHTML = `<div class="card">
                                     <div class="card-content">
                                         <div class="row">
-                                            <div class="col s12 active" style="display: block;">
-                                                <div class="col s12 m6">
-                                                    <h4>Ajustes</h4>
-                                                    <div class="row">
-                                                        <div class="col s12 input-field">
-                                                            <input id="diasAjustes" type="number" class="validate" value="${datos.valor}">
-                                                            <label class="active">Dias</label>
-                                                            <p>Dias de anticipación para las alertas de vencimiento de documentos</p>
-                                                        </div>
+                                            <div class="col s12 m6">
+                                                <h4>Ajustes</h4>
+                                                <div class="row">
+                                                    <div class="col s12 input-field">
+                                                        <input id="diasAjustes" type="number" class="validate" value="${datos.valor}">
+                                                        <label class="active">Dias</label>
+                                                        <p>Dias de anticipación para las alertas de vencimiento de documentos</p>
                                                     </div>
                                                 </div>
-                                                <div class="col s12 display-flex justify-content-end mt-3">
-                                                    <a hred="#!" onClick="actualizarConfiguracionUsuario();" class="waves-effect waves-light btn">Modificar</a>
+                                                <div class="row">
+                                                    <div class="col s12 display-flex justify-content-end mt-3">
+                                                        <a hred="#!" onClick="actualizarConfiguracionUsuario();" class="waves-effect waves-light btn">Modificar</a>
+                                                    </div>
+                                                </div>
+                                                <br><br>
+                                                <div class="row">
+                                                    <div class="col s12 m8">
+                                                        <a hred="#!" onClick="eliminarUsuario();" class="waves-effect waves-light btn red">Eliminar cuenta</a>
+                                                        <p>Nota: se eliminará la cuenta y todos los datos asociados a esta!</p>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -184,8 +191,6 @@ function verConfiguracionUsuario() {
                                 </div>`;
         }
     }
-
-
 }
 
 function actualizarConfiguracionUsuario() {
@@ -213,12 +218,43 @@ function actualizarConfiguracionUsuario() {
 
 }
 
+function eliminarUsuario() {
+
+    let sel = confirm("¿Estas seguro de que quieres eliminar tu cuenta de PrevAuto?");
+
+    if (sel) {
+        let idUsuario = obtenerValorCookie('idUsuario');
+        let serviceUrl = `usuario/eliminar?idUsuario=${idUsuario}`;
+
+        const request = new XMLHttpRequest();
+        request.open('GET', serviceUrl, true);
+        request.send();
+
+        request.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                let res = JSON.parse(this.responseText);
+                console.log(res);
+
+                if (!res.error) {
+                    alert(res.mensaje);
+                    cerrarSesion();
+                } else {
+                    alert(res.mensaje);
+                }
+            }
+        }
+    } else {
+        console.log("NOO se eliminó");
+    }
+}
+
 
 function mostrarFormRegistroVehiculo() {
 
     let vehiculos = document.querySelector('#vehiculos');
 
-    vehiculos.innerHTML = `<nav>
+    vehiculos.innerHTML = `<div class="row">
+                            <nav>
                                 <div class="nav-wrapper blue darken-2">
                                     <div class="col s12">
                                         <a href="vehiculos.html" class="breadcrumb"> Vehiculos</a>
@@ -227,46 +263,51 @@ function mostrarFormRegistroVehiculo() {
                                 </div>
                             </nav>
                             <br>
-                            <div class="row">
-                                <div class="col s10 offset-s3">
-                                    <h4>Registro de vehiculo</h4>
-                                </div>
+
+                            <div class="formElement">
+                                <h4>Registro Vehículo</h4>
+                            </div>
+
+                            <div class="contentForm2">
                                 <form action="#" method="GET">
-                                    <div class="col s9 offset-s3">
+                                    <div class="col s12 m9 offset-m3 centered">
                                         <div class="row">
-                                            <div class="input-field col s6">
+                                            <div class="input-field col s12 m7">
+                                                <i class="material-icons prefix">create</i>
                                                 <input type="text" class="validate" id="nombreVehiculo">
-                                                <label for="text">Nombre</label>
+                                                <label>Nombre</label>
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="input-field col s6">
+                                            <div class="input-field col s12 m7">
+                                                <i class="material-icons prefix">label_outline</i>
                                                 <input type="text" class="validate" id="marca">
-                                                <label for="text">Marca</label>
+                                                <label>Marca</label>
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="input-field col s6">
-                                                <input type="text" class="validate" id="modelo">
-                                                <label for="text">Modelo</label>
+                                            <div class="input-field col s12 m7">
+                                                <i class="material-icons prefix">flag</i>
+                                                <input type="number" class="validate" id="modelo">
+                                                <label>Modelo</label>
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="input-field col s6">
+                                            <div class="input-field col s12 m7">
+                                                <i class="material-icons prefix">fiber_pin</i>
                                                 <input type="text" class="validate" id="placa">
-                                                <label for="text">Placa</label>
+                                                <label>Placa</label>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col s10 offset-s4">
+                                    <div class="formElement">
                                         <div class="row">
-                                            <div class="col s6">
-                                                <a class="waves-effect waves-light btn" id="validar" onclick="registrarVehiculo();">Registrar</a>
-                                            </div>
+                                            <a class="waves-effect waves-light btn" id="validar" onclick="registrarVehiculo();">Registrar</a>
                                         </div>
                                     </div>
                                 </form>
-                            </div>`;
+                            </div>
+                        </div>`;
 
 }
 
@@ -341,8 +382,14 @@ function listarVehiculos() {
                                                 <p>${item.marca}</p>
                                             </div>
                                             <div class="card-action">
-                                                <a href="#!" onClick="verDetallesVehiculo(${item.idVehiculo});">Detalles</a>
-                                                <a href="#!" onClick="eliminarVehiculo(${item.idVehiculo});">Eliminar</a>
+                                                <div class="row">
+                                                    <div class="col s6 m3 l3">
+                                                        <a href="#!" onClick="verDetallesVehiculo(${item.idVehiculo});">Detalles</a>
+                                                    </div>
+                                                    <div class="col s6 m3 l3">
+                                                        <a href="#!" onClick="eliminarVehiculo(${item.idVehiculo});">Eliminar</a>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -488,33 +535,40 @@ function eliminarVehiculo(idVehiculo) {
 
     //alert("eliminando vehiculo " + idVehiculo);
 
-    let serviceUrl = `vehiculo/eliminar?idVehiculo=${idVehiculo}`;
+    let acept = confirm("¿Quieres eliminar este vehículo?");
 
-    const request = new XMLHttpRequest();
-    request.open('GET', serviceUrl, true);
-    request.send();
+    if (acept) {
+        let serviceUrl = `vehiculo/eliminar?idVehiculo=${idVehiculo}`;
 
-    request.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            let res = JSON.parse(this.responseText);
-            if (!res.error) {
-                alert(res.mensaje);
-                location.reload();
-            } else {
-                alert(res.mensaje);
+        const request = new XMLHttpRequest();
+        request.open('GET', serviceUrl, true);
+        request.send();
+
+        request.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                let res = JSON.parse(this.responseText);
+                if (!res.error) {
+                    alert(res.mensaje);
+                    location.reload();
+                } else {
+                    alert(res.mensaje);
+                }
+                console.log(res.mensaje);
             }
-
-            console.log(res.mensaje);
-
         }
+    } else {
+        console.log("Eleccion NO!");
     }
+
+
 }
 
 function mostrarFormRegistroDocumento() {
 
     let elemento = document.querySelector('#vehiculos');
 
-    elemento.innerHTML = `<nav>
+    elemento.innerHTML = `<div class="row">
+                            <nav>
                                 <div class="nav-wrapper blue darken-2">
                                     <div class="col s12">
                                         <a href="vehiculos.html" class="breadcrumb"> Vehiculos</a>
@@ -524,20 +578,22 @@ function mostrarFormRegistroDocumento() {
                                 </div>
                             </nav>
                             <br>
-                            <div class="row">
-                                <div class="col s10 offset-s3">
-                                    <h4>Registro de documento</h4>
-                                </div>
+                            <div class="formElement">
+                                <h4>Registro Documento</h4>
+                            </div>
+
+                            <div class="contentForm2">
                                 <form action="#" method="GET">
-                                    <div class="col s9 offset-s3">
+                                    <div class="col s12 m9 offset-m3 centered">
                                         <div class="row">
-                                            <div class="input-field col s7">
+                                            <div class="input-field col s12 m7">
+                                                <i class="material-icons prefix">create</i>
                                                 <label class="active">Numero</label>
                                                 <input type="text" id="numero" class="validate">
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="input-field col s7">
+                                            <div class="input-field col s12 m7">
                                                 <label class="active">Tipo Documento</label>
                                                 <select id="tDocumento" class="browser-default">
                                                     <option value="1">Soat</option>
@@ -547,27 +603,28 @@ function mostrarFormRegistroDocumento() {
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="input-field col s7">
-                                                <label class="active">Fecha Vencimiento</label>
+                                            <div class="input-field col s12 m7">
+                                                <i class="material-icons prefix">event</i>
+                                                <label class="active">Fecha Expedicion</label>
                                                 <input type="date" id="fExpedicion" value="2020-01-01">
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="input-field col s7">
+                                            <div class="input-field col s12 m7">
+                                                <i class="material-icons prefix">date_range</i>
                                                 <label class="active">Fecha Vencimiento</label>
                                                 <input type="date" id="fVencimiento" value="2020-01-01">
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col s10 offset-s4">
+                                    <div class="formElement">
                                         <div class="row">
-                                            <div class="col s6">
-                                                <a class="waves-effect waves-light btn" id="validar" onclick="registrarDocumento()">Registrar</a>
-                                            </div>
+                                            <a class="waves-effect waves-light btn" id="validar" onclick="registrarDocumento()">Registrar</a>
                                         </div>
                                     </div>
                                 </form>
-                            </div>`;
+                            </div>
+                        </div>`;
 }
 
 function registrarDocumento() {
@@ -626,7 +683,7 @@ function listarDocumentos(idVehiculo) {
 
             if (datos.length != 0) {
 
-                let html = `<div class="col xl9 m8 s12">
+                let html = `<div class="col s12 m12">
                             <div class="card">
                                 <div class="card-content invoice-print-area">
                                     <h4>Documentos</h4>`;
@@ -654,36 +711,45 @@ function listarDocumentos(idVehiculo) {
                     }
 
                     html += `<div class="documento" id="d${item.idDocumento}">
-                            <ul class="collection">
-                                <li class="collection-item avatar">
-                                    <i class="material-icons circle red">contact_mail</i>
-                                    <div class="row">
-                                        <div class="input-field col s5">
-                                            <label class="active">Numero</label>
-                                            <input type="text" id="numero" value="${item.numero}" class="validate">                                                                    
+                                <ul class="collection">
+                                    <li class="collection-item avatar">
+                                        <div class="col s12 m5">
+                                            <br>
+                                            <i class="material-icons circle red">contact_mail</i>
                                         </div>
-                                        <div class="input-field col s5">                                    
-                                            <label class="active">Tipo Documento</label>
-                                            ${select}
+
+                                        <div class="row">
+                                            <div class="input-field col s12 m5">
+                                                <i class="material-icons prefix">create</i>
+                                                <label class="active">Numero</label>
+                                                <input type="text" id="numero" value="${item.numero}" class="validate">
+                                            </div>
+
+                                            <div class="input-field col s12 m5">
+                                                <label class="active">Tipo Documento</label>
+                                                ${select}
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="input-field col s5">
-                                            <label class="active">Fecha Expedicion</label>
-                                            <input type="date" id="fExpedicion" value="${item.fechaExpedicion}">
+                                        <div class="row">
+                                            <div class="input-field col s12 m5">
+                                                <i class="material-icons prefix">event</i>
+                                                <label class="active">Fecha Expedicion</label>
+                                                <input type="date" id="fExpedicion" value="${item.fechaExpedicion}">
+                                            </div>
+                                            <div class="input-field col s12 m5">
+                                                <i class="material-icons prefix">date_range</i>
+                                                <label class="active">Fecha Vencimiento</label>
+                                                <input type="date" id="fVencimiento" value="${item.fechaVencimiento}">
+                                            </div>
                                         </div>
-                                        <div class="input-field col s5">
-                                            <label class="active">Fecha Vencimiento</label>
-                                            <input type="date" id="fVencimiento" value="${item.fechaVencimiento}">
+                                        <br>
+                                        <div class="row">
+                                            <a hred="#!" onclick="actualizarDocumento(${item.idDocumento});" class="waves-effect waves-light btn-small">Modificar</a>
+                                            <a hred="#!" onclick="eliminarDocumento(${item.idDocumento})" class="waves-effect waves-light btn-small">Eliminar</a>
                                         </div>
-                                    </div>
-                                    <br>
-                                    <a hred="#!" onClick="actualizarDocumento(${item.idDocumento});" class="waves-effect waves-light btn">Modificar</a>
-                                    <a hred="#!" onClick="eliminarDocumento(${item.idDocumento})" class="waves-effect waves-light btn">Eliminar</a>
-                                    <div><br></div>
-                                </li>
-                            </ul>
-                        </div>`;
+                                    </li>
+                                </ul>
+                            </div>`;
                 }
                 html += `<div>
                             <a class="waves-effect waves-light btn" href="#!" onclick="mostrarFormRegistroDocumento();">Añadir</a>
@@ -740,25 +806,32 @@ function actualizarDocumento(idDocumento) {
 
 function eliminarDocumento(idDocumento) {
 
-    let serviceUrl = `vehiculo/documento/eliminar?idDocumento=${idDocumento}`;
+    let acept = confirm("¿Quieres eliminar este documento?");
 
-    const request = new XMLHttpRequest();
-    request.open('GET', serviceUrl, true);
-    request.send();
+    if (acept) {
 
-    request.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            let res = JSON.parse(this.responseText);
-            console.log(res);
+        let serviceUrl = `vehiculo/documento/eliminar?idDocumento=${idDocumento}`;
 
-            if (!res.error) {
-                alert(res.mensaje);
-                verDetallesVehiculo(obtenerValorCookie('idVehiculo'));
-                listarDocumentos(obtenerValorCookie('idVehiculo'));
-            } else {
-                alert(res.mensaje);
+        const request = new XMLHttpRequest();
+        request.open('GET', serviceUrl, true);
+        request.send();
+
+        request.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                let res = JSON.parse(this.responseText);
+                console.log(res);
+
+                if (!res.error) {
+                    alert(res.mensaje);
+                    verDetallesVehiculo(obtenerValorCookie('idVehiculo'));
+                    listarDocumentos(obtenerValorCookie('idVehiculo'));
+                } else {
+                    alert(res.mensaje);
+                }
             }
         }
+    } else {
+        console.log("Eleccion NO!");
     }
 }
 
@@ -875,10 +948,8 @@ function verAlertas() {
                                         </blockquote>`;
                 }
             } else {
-                alertas.innerHTML = `<blockquote class="alerta">No hay alertas de documentos pendientes</blockquote>`;
+                alertas.innerHTML = `<blockquote>No hay alertas de documentos pendientes</blockquote>`;
             }
-
-
         }
     }
 
@@ -972,13 +1043,13 @@ function verificarSesion() {
 function cerrarSesion() {
 
     console.log("Eliminando cookies");
-    document.cookie = 'nombre' + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-    document.cookie = 'email' + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-    document.cookie = 'urlFoto' + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-    document.cookie = 'idUsuario' + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-    document.cookie = 'idVehiculo' + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    document.cookie = 'nombre' + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+    document.cookie = 'email' + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+    document.cookie = 'urlFoto' + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+    document.cookie = 'idUsuario' + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+    document.cookie = 'idVehiculo' + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
 
-
+    //console.log("Despues de eliminar las cookies");
 
     location.href = "login.html";
 

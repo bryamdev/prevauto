@@ -18,66 +18,73 @@
 
 <body>
 
+    <div class="contentForm">
+        <div class="container">
+            <div class="section">
+                <div class="row">
 
-    <div class="container">
-        <div class="row">
+                    <div class="formElement">
+                        <h3>PrevAuto</h3> <br>
+                    </div>
 
-            <div class="formElement">
-                <h3>PrevAuto</h3>
+                    <form action="#" method="GET">
+                        <div class="row">
+                            <div class="row">
+                                <div class="col s12 m6 input-field">
+                                    <i class="material-icons prefix">person_outline</i>
+                                    <input id="nombre" type="text" class="validate">
+                                    <label class="active">Nombre</label>
+                                </div>
+                                <div class="col s12 m6 input-field">
+                                    <i class="material-icons prefix">person_outline</i>
+                                    <input id="apellido" type="text" class="validate">
+                                    <label class="active">Apellido</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col s12 m6 input-field">
+                                    <i class="material-icons prefix">mail_outline</i>
+                                    <input id="email" type="email" class="validate">
+                                    <label class="active">E-mail</label>
+                                </div>
+                                <div class="col s12 m6 input-field">
+                                    <i class="material-icons prefix pt-2">lock_outline</i>
+                                    <input id="password" type="password" class="validate">
+                                    <label class="active">Password</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col s12 m6 input-field">
+                                    <i class="material-icons prefix">contact_mail</i>
+                                    <input id="cedula" type="number" class="validate">
+                                    <label class="active">Cedula</label>
+                                </div>
+                                <div class="col s12 m6 input-field">
+                                    <i class="material-icons prefix">phone</i>
+                                    <input id="telefono" type="number" class="validate">
+                                    <label class="active">Telefono</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="formElement">
+                            <div class="row">
+                                <a class="waves-effect waves-light btn" id="validar" onclick="registrarUsuario();">Registrar</a>
+                            </div>
+                        </div>
+
+                        <div class="formElement">
+                            <div class="row">
+                                <p>Ya estas registrado? <a href="login.html">Regresar al Login</a></p>
+                            </div>
+                        </div>
+
+                    </form>
+
+                </div>
             </div>
-
-            <form action="#" method="GET">
-                <div class="col s9 offset-s2">
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <input type="text" class="validate" id="nombre">
-                            <label for="text">Nombre</label>
-                        </div>
-                        <div class="input-field col s6">
-                            <input type="text" class="validate" id="apellido">
-                            <label for="text">Apellido</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <input type="email" class="validate" id="email">
-                            <label for="email">Email</label>
-                        </div>
-                        <div class="input-field col s6">
-                            <input type="password" class="validate" id="password">
-                            <label for="password">Password</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <input type="number" class="validate" id="cedula">
-                            <label for="text">Cedula</label>
-                        </div>
-                        <div class="input-field col s6">
-                            <input type="number" class="validate" id="telefono">
-                            <label for="text">Telefono</label>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="formElement">
-                    <div class="row">
-                        <a class="waves-effect waves-light btn" id="validar" onclick="registrarUsuario();">Registrar</a>
-                    </div>
-                </div>
-
-                <div class="formElement">
-                    <div class="row">
-                        <p>Ya estas registrado? <a href="login.html">Regresar al Login</a></p>
-                    </div>
-                </div>
-
-
-
-
-            </form>
-
         </div>
+
     </div>
 
 

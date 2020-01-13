@@ -7,6 +7,11 @@
     padding-right: 200px;
 }
 
+.contentForm2 {
+    padding-left: 60px;
+    padding-right: 10px;
+}
+
 .formElement {
     text-align: center;
 }
@@ -26,9 +31,13 @@ blockquote.alerta {
     .content {
         padding-left: 0;
     }
-    .contentReg {
-        padding-left: 0;
-        padding-right: 0;
+    .contentForm {
+        padding-left: 25;
+        padding-right: 25;
+    }
+    .contentForm2 {
+        padding-left: 25;
+        padding-right: 25;
     }
 }
 

@@ -28,107 +28,85 @@
 
 
     <!--SideNav-->
-    <ul id="slide-out" class="sidenav sidenav-fixed">
+    <ul id="slide-out" class="sidenav sidenav-fixed" style="transform: translateX(-105%);">
         <li>
             <div class="user-view">
                 <div class="background">
                     <img src="img/office.jpg">
                 </div>
-                <a href="#user" id="urlFoto"><img class="circle" src="img/yuna.jpg"></a>
-                <a href="#name"><span class="white-text name" id="nombre">John Doe</span></a>
-                <a href="#email"><span class="white-text email" id="email">jdandturk@gmail.com</span></a>
+                <a href="#user" id="urlFoto"><img class="circle" src="img/usuarios/default.jpg"></a>
+                <a href="#name"><span class="white-text name" id="nombre">bryam</span></a>
+                <a href="#email"><span class="white-text email" id="email">bryro@gmail.com</span></a>
             </div>
         </li>
         <li class="active"><a href="#!"><i class="material-icons">directions_car</i>Vehiculos</a></li>
         <li><a href="cronograma.html"><i class="material-icons">date_range</i>Cronograma</a></li>
-        <li><a href="#!"><i class="material-icons">notifications</i>Alertas</a></li>
+        <li><a href="alertas.html"><i class="material-icons">notifications</i>Alertas</a></li>
         <li><a href="sitiosRecomendados.html"><i class="material-icons">collections_bookmark</i>Sitios Recomendados</a></li>
         <li>
             <div class="divider"></div>
         </li>
         <li><a class="subheader">Configuración</a></li>
-        <li><a class="waves-effect" href="#!"><i class="material-icons">account_box</i>Cuenta</a></li>
+        <li><a href="cuenta.html"><i class="material-icons">account_box</i>Cuenta</a></li>
         <li><a class="waves-effect" href="#!" onclick="cerrarSesion();"><i class="material-icons">exit_to_app</i>Salir</a></li>
     </ul>
 
     <div class="content">
         <div class="container">
-            <div class="section" id="alertas">
-
-                <div class="card">
-                    <div class="card-content">
-                        <!-- <div class="card-body"> -->
-
-                        <div class="row">
-                            <div class="col s12 active" id="account" style="display: block;">
-                                <!-- users edit media object start -->
-                                <div class="media display-flex align-items-center mb-2">
-                                    <a class="mr-2" href="#">
-                                        <img src="img/usuarios/default.jpg" alt="users avatar" class="z-depth-4 circle" width="64" height="64">
-                                    </a>
+            <div class="section" id="vehiculos">
+                <div id="listaVehiculos">
+                    <!-- Ejemplo para estructurar la respuesta del servicio -->
+                    <!--
+                        <div class="col s12 m7">
+                            <div class="card horizontal">
+                                <div class="card-image">
+                                    <img src="img/vehiculos/3.jpg">
                                 </div>
-
-                                <form>
+                                <div class="card-stacked">
+                                    <div class="card-content">
+                                        <p><b> La Nave</b></p>
+                                        <p>Tesla Model X </p>
+                                    </div>
+                                    <div class="card-action">
+                                        <a href="#">Detalles</a>
+                                        <a href="#">Eliminar</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        -->
+                    <div class="col s12 m7">
+                        <div class="card horizontal">
+                            <div class="card-image">
+                                <img src="img/vehiculos/default.jpg">
+                            </div>
+                            <div class="card-stacked">
+                                <div class="card-content">
+                                    <p><b>CazaPartners</b></p>
+                                    <p>BMW</p>
+                                </div>
+                                <div class="card-action">
                                     <div class="row">
-                                        <div class="col s12 m6">
-                                            <div class="row">
-                                                <div class="col s12 input-field">
-                                                    <input id="username" type="text" class="validate" value="dean3004">
-                                                    <label class="active">Nombre</label>
-
-                                                </div>
-                                                <div class="col s12 input-field">
-                                                    <input id="name" type="text" class="validate" value="Dean Stanley">
-                                                    <label class="active">Apellido</label>
-
-                                                </div>
-                                                <div class="col s12 input-field">
-                                                    <input id="email" type="email" class="validate" value="deanstanley@gmail.com">
-                                                    <label class="active">E-mail</label>
-
-                                                </div>
-                                            </div>
+                                        <div class="col s6 m3 l3">
+                                            <a href="#!" onclick="verDetallesVehiculo(56);">Detalles</a>
                                         </div>
-                                        <div class="col s12 m6">
-                                            <div class="row">
-                                                <div class="col s12 input-field">
-                                                    <input id="username" type="password" class="validate" value="dean3004">
-                                                    <label class="active">Password</label>
-
-                                                </div>
-                                                <div class="col s12 input-field">
-                                                    <input id="name" type="number" class="validate" value="1234">
-                                                    <label class="active">Cedula</label>
-
-                                                </div>
-                                                <div class="col s12 input-field">
-                                                    <input id="email" type="number" class="validate" value="5678">
-                                                    <label class="active">Telefono</label>
-
-                                                </div>
-                                                <div class="col s12 input-field">
-                                                    <input id="email" type="number" class="validate" value="5678">
-                                                    <label class="active">Telefono</label>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col s12 display-flex justify-content-end mt-3">
-
-                                            <a hred="#!" onClick="actualizarDocumento(1);" class="waves-effect waves-light btn">Modificar</a>
-                                            <a hred="#!" class="waves-effect waves-light btn">Eliminar</a>
+                                        <div class="col s6 m3 l3">
+                                            <a href="#!" onclick="eliminarVehiculo(56);">Eliminar</a>
                                         </div>
                                     </div>
-                                </form>
-                                <!-- users edit account form ends -->
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-
+                <div>
+                    <a class="waves-effect waves-light btn" href="#!" onclick="mostrarFormRegistroVehiculo();">Añadir</a>
+                </div>
 
             </div>
+
+
+
         </div>
     </div>
 
@@ -145,11 +123,15 @@
         });
 
         window.onload = function() {
+            //verificarSesion();
             //listarVehiculos();
-            //leerCookies();
-            verDetallesUsuario();
+
         }
     </script>
+
+
+    <div class="sidenav-overlay" style="display: none; opacity: 0;"></div>
+    <div class="drag-target"></div>
 </body>
 
 </html>

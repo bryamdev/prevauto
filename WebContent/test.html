@@ -12,76 +12,207 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="UTF-8" />
 
-    <title>Login - PrevAuto</title>
+    <title>Test</title>
 
 </head>
 
 <body>
 
-
     <div class="contentForm">
         <div class="container">
-            <div id="usuario" class="section">
-
+            <div class="section">
                 <div class="row">
-                    <div class="col s12 active" style="display: block;">
 
-                        <div class="titulo">
-                            <h3>Registro</h3>
-                            <br>
+                    <div class="formElement">
+                        <h3>PrevAuto</h3> <br>
+                    </div>
+
+                    <form action="#" method="GET">
+                        <div class="row">
+                            <div class="row">
+                                <div class="col s12 m6 input-field">
+                                    <i class="material-icons prefix">person_outline</i>
+                                    <input id="nombre" type="text" class="validate">
+                                    <label class="active">Nombre</label>
+                                </div>
+                                <div class="col s12 m6 input-field">
+                                    <i class="material-icons prefix">person_outline</i>
+                                    <input id="apellido" type="text" class="validate">
+                                    <label class="active">Apellido</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col s12 m6 input-field">
+                                    <i class="material-icons prefix">mail_outline</i>
+                                    <input id="email" type="email" class="validate">
+                                    <label class="active">E-mail</label>
+                                </div>
+                                <div class="col s12 m6 input-field">
+                                    <i class="material-icons prefix pt-2">lock_outline</i>
+                                    <input id="password" type="password" class="validate">
+                                    <label class="active">Password</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col s12 m6 input-field">
+                                    <i class="material-icons prefix">contact_mail</i>
+                                    <input id="cedula" type="number" class="validate">
+                                    <label class="active">Cedula</label>
+                                </div>
+                                <div class="col s12 m6 input-field">
+                                    <i class="material-icons prefix">phone</i>
+                                    <input id="telefono" type="number" class="validate">
+                                    <label class="active">Telefono</label>
+                                </div>
+                            </div>
                         </div>
 
-                        <form>
+                        <div class="formElement">
                             <div class="row">
-                                <div class="col s12 m6">
-                                    <div class="row">
-                                        <div class="col s12 input-field">
-                                            <input id="nombreCuenta" type="text" class="validate" value=" ">
-                                            <label class="active">Nombre</label>
+                                <a class="waves-effect waves-light btn" id="validar" onclick="registrarUsuario();">Registrar</a>
+                            </div>
+                        </div>
 
-                                        </div>
-                                        <div class="col s12 input-field">
-                                            <input id="apellidoCuenta" type="text" class="validate" value=" ">
-                                            <label class="active">Apellido</label>
+                        <div class="formElement">
+                            <div class="row">
+                                <p>Ya estas registrado? <a href="login.html">Regresar al Login</a></p>
+                            </div>
+                        </div>
 
-                                        </div>
-                                        <div class="col s12 input-field">
-                                            <input id="emailCuenta" type="email" class="validate" value="@">
-                                            <label class="active">E-mail</label>
+                    </form>
 
-                                        </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="container">
+            <div class="section" id="vehiculos">
+
+                <div class="row">
+                    <nav>
+                        <div class="nav-wrapper blue darken-2">
+                            <div class="col s12">
+                                <a href="vehiculos.html" class="breadcrumb"> Vehiculos</a>
+                                <a href="#!" class="breadcrumb">Registro</a>
+                            </div>
+                        </div>
+                    </nav>
+                    <br>
+
+                    <div class="formElement">
+                        <h4>Registro Vehículo</h4>
+                    </div>
+
+                    <div class="contentForm2">
+                        <form action="#" method="GET">
+                            <div class="col s12 m9 offset-m3 centered">
+                                <div class="row">
+                                    <div class="input-field col s12 m7">
+                                        <i class="material-icons prefix">create</i>
+                                        <input type="text" class="validate" id="nombreVehiculo">
+                                        <label>Nombre</label>
                                     </div>
                                 </div>
-                                <div class="col s12 m6">
-                                    <div class="row">
-                                        <div class="col s12 input-field">
-                                            <input id="passwordCuenta" type="password" class="validate" value=" ">
-                                            <label class="active">Password</label>
-
-                                        </div>
-                                        <div class="col s12 input-field">
-                                            <input id="cedulaCuenta" type="number" class="validate" value="0">
-                                            <label class="active">Cedula</label>
-
-                                        </div>
-                                        <div class="col s12 input-field">
-                                            <input id="telefonoCuenta" type="number" class="validate" value="0">
-                                            <label class="active">Telefono</label>
-
-                                        </div>
+                                <div class="row">
+                                    <div class="input-field col s12 m7">
+                                        <i class="material-icons prefix">label_outline</i>
+                                        <input type="text" class="validate" id="marca">
+                                        <label>Marca</label>
                                     </div>
                                 </div>
-                                <div class="col s12 display-flex justify-content-end mt-3">
-                                    <a hred="#!" onClick="actualizarUsuario();" class="waves-effect waves-light btn">Modificar</a>
-                                    <a hred="#!" onClick="verConfiguracionUsuario();" class="waves-effect waves-light btn">Ajustes</a>
+                                <div class="row">
+                                    <div class="input-field col s12 m7">
+                                        <i class="material-icons prefix">flag</i>
+                                        <input type="number" class="validate" id="modelo">
+                                        <label>Modelo</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s12 m7">
+                                        <i class="material-icons prefix">fiber_pin</i>
+                                        <input type="text" class="validate" id="placa">
+                                        <label>Placa</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="formElement">
+                                <div class="row">
+                                    <a class="waves-effect waves-light btn" id="validar" onclick="registrarVehiculo();">Registrar</a>
                                 </div>
                             </div>
                         </form>
                     </div>
                 </div>
 
+            </div>
+        </div>
+    </div>
 
+    <div class="content">
+        <div class="container">
+            <div class="section" id="vehiculos">
 
+                <div class="row">
+                    <nav>
+                        <div class="nav-wrapper blue darken-2">
+                            <div class="col s12">
+                                <a href="vehiculos.html" class="breadcrumb"> Vehiculos</a>
+                                <a href="#!" onClick="verDetallesVehiculo(obtenerValorCookie('idVehiculo'));" class="breadcrumb">Documentos</a>
+                                <a href="#!" class="breadcrumb">Registro</a>
+                            </div>
+                        </div>
+                    </nav>
+                    <br>
+                    <div class="formElement">
+                        <h4>Registro Documento</h4>
+                    </div>
+
+                    <div class="contentForm2">
+                        <form action="#" method="GET">
+                            <div class="col s12 m9 offset-m3 centered">
+                                <div class="row">
+                                    <div class="input-field col s12 m7">
+                                        <i class="material-icons prefix">create</i>
+                                        <label class="active">Numero</label>
+                                        <input type="text" id="numero" class="validate">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s12 m7">
+                                        <label class="active">Tipo Documento</label>
+                                        <select id="tDocumento" class="browser-default">
+                                            <option value="1">Soat</option>
+                                            <option value="2">Tecno-Mecánica</option>
+                                            <option value="3">Impuesto Vehicular</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s12 m7">
+                                        <i class="material-icons prefix">event</i>
+                                        <label class="active">Fecha Expedicion</label>
+                                        <input type="date" id="fExpedicion" value="2020-01-01">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s12 m7">
+                                        <i class="material-icons prefix">date_range</i>
+                                        <label class="active">Fecha Vencimiento</label>
+                                        <input type="date" id="fVencimiento" value="2020-01-01">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="formElement">
+                                <div class="row">
+                                    <a class="waves-effect waves-light btn" id="validar" onclick="registrarDocumento()">Registrar</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
 
             </div>
         </div>
@@ -89,7 +220,120 @@
 
 
 
+    <div class="content">
+        <div class="container">
+            <div class="section" id="vehiculos">
 
+                <nav>
+                    <div class="nav-wrapper blue darken-2">
+                        <div class="col s12">
+                            <a href="vehiculos.html" class="breadcrumb"> Vehiculos</a>
+                            <a href="#!" class="breadcrumb">Detalles</a>
+                        </div>
+                    </div>
+                </nav>
+                <br>
+                <div id="documentos">
+
+
+                    <div class="col s12 m12">
+                        <div class="card">
+                            <div class="card-content invoice-print-area">
+                                <h4>Documentos</h4>
+
+
+                                <div class="documento" id="d48">
+                                    <ul class="collection">
+                                        <li class="collection-item avatar">
+                                            <div class="col s12 m5">
+                                                <br>
+                                                <i class="material-icons circle red">contact_mail</i>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="input-field col s12 m5">
+                                                    <i class="material-icons prefix">create</i>
+                                                    <label class="active">Numero</label>
+                                                    <input type="text" id="numero" value="11111111" class="validate">
+                                                </div>
+
+                                                <div class="input-field col s12 m5">
+                                                    <label class="active">Tipo Documento</label>
+                                                    <select id="tDocumento" class="browser-default">
+                                                        <option value="1">Soat</option>
+                                                        <option value="2" selected="">Tecno-Mecánica</option>
+                                                        <option value="3">Impuesto Vehicular</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="input-field col s12 m5">
+                                                    <i class="material-icons prefix">event</i>
+                                                    <label class="active">Fecha Expedicion</label>
+                                                    <input type="date" id="fExpedicion" value="2020-01-12">
+                                                </div>
+                                                <div class="input-field col s12 m5">
+                                                    <i class="material-icons prefix">date_range</i>
+                                                    <label class="active">Fecha Vencimiento</label>
+                                                    <input type="date" id="fVencimiento" value="2020-01-31">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <a hred="#!" onclick="actualizarDocumento(48);" class="waves-effect waves-light btn-small">Modificar</a>
+                                                <a hred="#!" onclick="eliminarDocumento(48)" class="waves-effect waves-light btn-small">Eliminar</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div>
+                                    <a class="waves-effect waves-light btn" href="#!" onclick="mostrarFormRegistroDocumento();">Añadir</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="container">
+            <div class="section" id="vehiculos">
+
+                <div class="col s12 m7">
+                    <div class="card horizontal">
+                        <div class="card-image">
+                            <img src="img/vehiculos/default.jpg">
+                        </div>
+                        <div class="card-stacked">
+                            <div class="card-content">
+                                <p><b>${item.nombre}</b></p>
+                                <p>${item.marca}</p>
+                            </div>
+                            <div class="card-action">
+                                <div class="row">
+                                    <div class="col s5 m3 l3">
+                                        <a href="#!" onClick="verDetallesVehiculo(${item.idVehiculo});">Detalles</a>
+                                    </div>
+                                    <div class="col s5 m3 l3">
+                                        <a href="#!" onClick="eliminarVehiculo(${item.idVehiculo});">Eliminar</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
 
 
 
