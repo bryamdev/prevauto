@@ -1,7 +1,6 @@
 package servicios.vehiculo;
 
 import java.io.*;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,6 +14,13 @@ import domain.Vehiculo;
 
 @WebServlet("/vehiculo/verDetallesPorId")
 public class VerDetallesPorIdVehiculo extends HttpServlet {
+	
+	private static final long serialVersionUID = 1L;
+	  
+    public VerDetallesPorIdVehiculo() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		

@@ -2,8 +2,6 @@ package core;
 
 import java.util.List;
 import com.google.gson.Gson;
-import datos.*;
-import domain.*;
 
 public class TransformacionObjetos {
 	
@@ -15,33 +13,18 @@ public class TransformacionObjetos {
 	//Devuelve un string con el json de los sitios
 	public static String obtenerJson(Object objeto) {
 	
-		String sitiosJson = gson.toJson(objeto);
+		String json = gson.toJson(objeto);
 	
-		return sitiosJson;
+		return json;
 	}
 	
 	public static String obtenerJson(List<Object> lista) {
 		
-		String sitiosJson = gson.toJson(lista);
+		String json = gson.toJson(lista);
 	
-		return sitiosJson;
+		return json;
 	}
 	
-	
-	/*public String obtenerVehiculosJson(int idUsuario) {
-		vehiculoJDBC = new VehiculosJDBC();
-		List<Vehiculo> vehiculos = vehiculoJDBC.selectVehiculos(idUsuario);
-		String vehiculosJson = gson.toJson(vehiculos);
-		
-		return vehiculosJson;
-	}
-	
-	public String obtenerDocumentosJson(int vehiculoId) {
-		documentosJDBC = new DocumentosJDBC();
-		List<Documento> documentos = documentosJDBC.selectDocumentos(vehiculoId);
-		String documentosJson = gson.toJson(documentos);
-		
-		return documentosJson;
-	}*/
+
 			
 }

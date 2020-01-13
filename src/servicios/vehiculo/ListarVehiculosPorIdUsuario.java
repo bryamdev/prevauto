@@ -16,6 +16,13 @@ import domain.Vehiculo;
  */
 @WebServlet("/vehiculo/listarPorId")
 public class ListarVehiculosPorIdUsuario extends HttpServlet {
+	
+	private static final long serialVersionUID = 1L;
+	  
+    public ListarVehiculosPorIdUsuario() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
 	TransformacionObjetos transformacion = new TransformacionObjetos();
 	

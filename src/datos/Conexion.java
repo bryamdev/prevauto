@@ -3,6 +3,12 @@ package datos;
 
 import java.sql.*;
 
+import javax.sql.DataSource;
+
+import org.apache.commons.dbcp2.BasicDataSource;
+
+
+
 
 public class Conexion {
 	
@@ -21,22 +27,26 @@ public class Conexion {
 	
 	
 	public static synchronized Connection getConnection()throws SQLException{
-		try {
-			Class.forName(JDBC_DRIVER);
-		}catch (Exception e) {
-			e.printStackTrace();
-		}
 		
-		return DriverManager.getConnection(JDBC_URL,JDBC_USER, JDBC_PASS);
+		BasicDataSource basicDataSource = new BasicDataSource();
+		basicDataSource.setDriverClassName(JDBC_DRIVER);
+		basicDataSource.setUrl(JDBC_URL);
+		basicDataSource.setUsername(JDBC_USER);
+		basicDataSource.setPassword(JDBC_PASS);
+		basicDataSource.setInitialSize(2);
+		basicDataSource.setMaxTotal(4);
+		
+		DataSource dataSource = basicDataSource;
+		
+		return dataSource.getConnection();
+		
 	}
 	
 	
-	
-	
-	public static void close(Connection c) {
+	public static void close(Connection con) {
 		try {
-			if(c != null) {
-				c.close();
+			if(con != null) {
+				con.close();
 			}
 		}catch (SQLException e) {
 			e.printStackTrace();

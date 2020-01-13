@@ -125,9 +125,26 @@ public class Test {
 		}	
 		*/
 		
+		/*
 		int idUsuario = 40;
 		Response response = AlertasJDBC.modificarEstadoAlertas(idUsuario);
 		System.out.println(response);
+		*/
+		
+		Connection con = null;
+		Statement stmt = null;
+		
+		try {
+			con = Conexion.getConnection();
+			stmt = con.createStatement();
+			boolean res = stmt.execute("SELECT 1");
+			System.out.println(con.getCatalog() + " " + res);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally{
+			Conexion.close(stmt);
+			Conexion.close(con);
+		}
 		
 		
 	
