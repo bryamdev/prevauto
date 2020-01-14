@@ -131,6 +131,7 @@ public class Test {
 		System.out.println(response);
 		*/
 		
+		/*
 		Connection con = null;
 		Statement stmt = null;
 		
@@ -142,9 +143,18 @@ public class Test {
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally{
-			Conexion.close(stmt);
-			Conexion.close(con);
+			//Conexion.close(stmt);
+			//Conexion.close(con);
 		}
+		*/
+		
+		int idUsuario = 1;
+		Usuario usuario = UsuariosJDBC.selectUsuario(idUsuario);
+		System.out.println(usuario);
+		
+		int idDocumento = 21;
+		Documento documento = DocumentosJDBC.selectDetallesById(idDocumento);
+		System.out.println(documento);
 		
 		
 	

@@ -109,11 +109,12 @@ public class ConfiguracionJDBC {
 				dias = rs.getInt(1);
 			}
 			
-			
-			
-			
 		}catch(Exception e) {
 			e.printStackTrace();
+		}finally {
+			Conexion.close(rs);
+			Conexion.close(pstmt);
+			Conexion.close(con);
 		}
 		
 		

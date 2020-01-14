@@ -26,7 +26,6 @@ public class Conexion {
 	private static final String JDBC_PASS = "3DggfloneO";
 	
 	
-	
 	public static DataSource getDataSource() {
 		
 		BasicDataSource basicDataSource = new BasicDataSource();
@@ -34,8 +33,8 @@ public class Conexion {
 		basicDataSource.setUrl(JDBC_URL);
 		basicDataSource.setUsername(JDBC_USER);
 		basicDataSource.setPassword(JDBC_PASS);
-		basicDataSource.setInitialSize(1);
-		basicDataSource.setMaxTotal(8);
+		//basicDataSource.setInitialSize(8);
+		//basicDataSource.setMaxTotal(8);
 		
 		DataSource dataSource = basicDataSource;
 		
@@ -52,7 +51,6 @@ public class Conexion {
 		}
 		
 		return DriverManager.getConnection(JDBC_URL,JDBC_USER, JDBC_PASS);
-		
 		
 		//return getDataSource().getConnection();
 		

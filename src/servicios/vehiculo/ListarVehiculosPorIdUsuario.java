@@ -29,15 +29,6 @@ public class ListarVehiculosPorIdUsuario extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		
-		Cookie[] cookies = request.getCookies();
-		String url = request.getContextPath() + "/login.html";
-		
-		if(cookies == null) {
-			//response.sendError(401);
-			response.sendRedirect(url);
-			
-		}
-		
 		int idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
 		
 		

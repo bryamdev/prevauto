@@ -47,6 +47,7 @@ public class VehiculosJDBC {
 				
 				vehiculos.add(vehiculo);
 			}
+			
 		}catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
