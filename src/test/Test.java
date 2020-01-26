@@ -148,15 +148,6 @@ public class Test {
 		}
 		*/
 		
-		int idUsuario = 1;
-		Usuario usuario = UsuariosJDBC.selectUsuario(idUsuario);
-		System.out.println(usuario);
-		
-		int idDocumento = 21;
-		Documento documento = DocumentosJDBC.selectDetallesById(idDocumento);
-		System.out.println(documento);
-		
-		
 	
 	}
 

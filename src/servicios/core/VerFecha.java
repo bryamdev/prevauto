@@ -15,10 +15,10 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class verFecha
  */
 @WebServlet("/verFecha")
-public class verFecha extends HttpServlet {
+public class VerFecha extends HttpServlet {
 	private static final long serialVersionUID = 1L;
    
-    public verFecha() {
+    public VerFecha() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -38,7 +38,6 @@ public class verFecha extends HttpServlet {
 		out.println(fechaTexto);
 		out.println(horaTexto);
 		out.println(date);
-		
 		
 	}
 
