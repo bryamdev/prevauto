@@ -21,9 +21,9 @@ public class Conexion {
 	
 	
 	private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-	private static final String JDBC_URL = "jdbc:mysql://remotemysql.com:3306/hh4pFTYsk4?useSSL=false";
-	private static final String JDBC_USER = "hh4pFTYsk4";
-	private static final String JDBC_PASS = "3DggfloneO";
+	private static final String JDBC_URL = "jdbc:mysql://remotemysql.com:3306/V4aLmGDctA?useSSL=false";
+	private static final String JDBC_USER = "V4aLmGDctA";
+	private static final String JDBC_PASS = "gZFnFHTQoD";
 	
 	
 	public static DataSource getDataSource() {
